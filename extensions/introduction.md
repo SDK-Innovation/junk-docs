@@ -19,7 +19,7 @@ guide describes, using the same hooks and the same configuration format availabl
 There is no privileged internal path that the shipped extensions use and yours cannot.
 
 ![The Junk Store interface, showing the Epic tab. Each store is a tab across the top, and
-the grid below shows that store's games.](images/epic-store-grid.png)
+the grid below shows that store's games.](images/epic-store-grid.webp)
 
 **This goes further than the storefronts.** The Generator is an extension. So is the download
 queue, and so is the Other tab that collects shortcuts added from the file manager. They are

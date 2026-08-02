@@ -138,7 +138,7 @@ The variables do not simply appear in the environment. A launcher scriptlet asks
 and the shape of that request is visible in the shipped Proton scriptlet:
 
 ![The text editor open on the Proton launcher script, showing the opening lines of the
-scriptlet as multi-line shell.](../images/field-text-editor.png)
+scriptlet as multi-line shell.](../images/field-text-editor.webp)
 
 The two lines that matter are the request and the evaluation:
 

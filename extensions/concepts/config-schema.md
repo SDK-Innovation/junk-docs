@@ -159,12 +159,12 @@ A config editor has two columns. The fields are on the left, and a **help panel 
 right** shows context for whatever is focused.
 
 ![A config screen with nothing focused. The help panel on the right is empty apart from the
-section heading.](../images/config-screen-two-columns.png) That panel is built entirely from
+section heading.](../images/config-screen-two-columns.webp) That panel is built entirely from
 `Description` values, which is what makes them worth writing.
 
 ![A config screen with a field focused. The help panel on the right shows the section
 heading in capitals, the focused field's description, and each enum choice
-beneath.](../images/config-help-panel-focused-field.png)
+beneath.](../images/config-help-panel-focused-field.webp)
 
 Note the repeated words in that panel, "English English" and "German German". Those are
 enum choices whose `Description` was left to default to the label, which is the case
@@ -314,7 +314,7 @@ screen**, which is how a user chooses how much they want to see. An item appears
 dropdown is at or above the item's level.
 
 ![The visibility dropdown open, listing Basic, Advanced, Expert and All, with All
-selected.](../images/config-visibility-dropdown.png)
+selected.](../images/config-visibility-dropdown.webp)
 
 | Value | Level |
 |---|---|

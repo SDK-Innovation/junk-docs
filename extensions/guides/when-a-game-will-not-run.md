@@ -33,12 +33,12 @@ detail page, open the actions menu and choose **File Manager**. It opens already
 which game you came from.
 
 ![An installed game's detail page, with its artwork, description, and the row of action
-controls underneath.](../images/game-detail-page.png)
+controls underneath.](../images/game-detail-page.webp)
 
 Opening the actions menu on that page gives you File Manager:
 
 ![The game actions menu, listing File Manager among the other per game
-actions.](../images/game-actions-menu.png)
+actions.](../images/game-actions-menu.webp)
 
 1. Go to the game in Junk Store and open its detail page.
 2. Open the actions menu and choose **File Manager**.
@@ -61,7 +61,7 @@ three shortcuts:
 
 ![The file manager opened from a game. The sidebar lists Game Install Directory, Steam
 Proton Prefix and Steam Shader Cache, and the breadcrumb shows the game's real install
-path.](../images/file-manager-from-game.png)
+path.](../images/file-manager-from-game.webp)
 
 Those are the first three places worth looking, so the whole of the loop below is reachable
 from that one menu without typing a path.
@@ -83,7 +83,7 @@ launcher's notes, which is usually where the real message is.
 
 ![launcher.log open in the text viewer. The first lines are the scriptlet's own notes, the
 Running: line holds the full command, and the game's own errors are interleaved with
-them.](../images/launcher-log-in-viewer.png)
+them.](../images/launcher-log-in-viewer.webp)
 
 Read from the bottom. The last thing logged before it stopped is the thing that failed.
 
@@ -146,7 +146,7 @@ and you want to see what it actually stored.
 
 ![The SQLite viewer open on a database, with a table picker, a row count, and the rows
 displayed in a grid. NULL values are shown in italics rather than as empty
-cells.](../images/sqlite-viewer.png)
+cells.](../images/sqlite-viewer.webp)
 
 Pick a table from the dropdown, which shows each table's row count, and the rows appear. The
 **Schema** tab shows the column definitions when you need to know what a value is supposed to
@@ -175,7 +175,7 @@ That chord is one of a set. **Hold SELECT for a couple of seconds** and Junk Sto
 list rather than making you remember it:
 
 ![The controller hints sheet, listing SELECT plus A, B, X and Y against the tool each
-opens.](../images/select-chord-hints.png)
+opens.](../images/select-chord-hints.webp)
 
 | Chord | Opens |
 |---|---|
@@ -203,7 +203,7 @@ extension health.
 
 ![The Processes tab, showing a filterable table of running processes with PID, CPU percent,
 memory percent, RSS, user and the full command line, sorted by CPU
-usage.](../images/diagnostics-processes.png)
+usage.](../images/diagnostics-processes.webp)
 
 Filter by the game's name or executable and watch while you launch. What you see tells you
 which problem you have:

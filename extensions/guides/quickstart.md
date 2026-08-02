@@ -16,7 +16,7 @@ aimed at simple launchers such as emulators.
 ![The wizard's first step, Extension Name. It asks for a name with no spaces, and shows two
 annotated pictures of the interface with arrows pointing at where the answer will
 appear: the tab strip along the top, and the section heading on the main
-menu.](../images/wizard.png)
+menu.](../images/wizard.webp)
 
 Each step explains where your answer ends up. The first one asks for a name and then points
 at the two places it will show: the tab across the top, and the group it is listed under on
