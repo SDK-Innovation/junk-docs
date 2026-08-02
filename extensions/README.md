@@ -12,7 +12,8 @@ are the authority; the guides are worked examples of using them.
 It is readable without being a developer, and much of it needs no code at all, since an
 extension can be set up entirely through the wizard and settings. But it is written for
 someone building something, and it does not stop to explain shell scripting or the basics of
-the interface.
+the interface. If a word here is unfamiliar, the
+**[glossary](../glossary.md)** explains the vocabulary in plain language.
 
 Nothing here requires a compiler, a git checkout, or development tools.
 

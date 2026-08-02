@@ -8,6 +8,9 @@ Each top-level directory is a section, written to be read on its own.
 |---|---|
 | [Extensions](extensions/) | Writing extensions: the scripts Junk Store calls, what they receive, what they print, and how configuration reaches them |
 
+[**Glossary**](glossary.md) — the vocabulary used across all of it, in plain language.
+Start here if a word is unfamiliar.
+
 ## Building the PDF
 
 Any section can be rendered as a single PDF. This builds the extension documentation:

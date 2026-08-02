@@ -49,6 +49,8 @@ PAGES=(
     "reference/dosbox-import.md"
     "reference/sharing-and-licensing.md"
     "troubleshooting.md"
+    # Lives at the docs root: it serves every section, not just this one.
+    "../glossary.md"
 )
 
 python3 "${HERE}/tools/md2html.py" "${DOCS}" "${WORK}/doc.html" "${PAGES[@]}"

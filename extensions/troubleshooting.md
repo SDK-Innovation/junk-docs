@@ -6,6 +6,9 @@ a script that does not run, an extension that does not appear.
 If instead a **game will not start**, that is a different problem needing a different method.
 See [When a game will not run](guides/when-a-game-will-not-run.md).
 
+If a word here is unfamiliar, the [glossary](../glossary.md) explains the vocabulary in
+plain language.
+
 ## My change did not do anything
 
 This is the most common problem, and it usually has one of two causes.

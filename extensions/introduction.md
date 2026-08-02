@@ -1,5 +1,9 @@
 # Introduction
 
+This guide is written for people building extensions, so it uses the vocabulary that goes
+with that. If a word is unfamiliar, the [glossary](../glossary.md) explains the terms in
+plain language.
+
 ## What an extension is
 
 An extension teaches Junk Store about a place your games come from.
