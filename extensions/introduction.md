@@ -220,10 +220,10 @@ lines out" also survives being called from Python, or a compiled binary, or a sc
 shells out to something else entirely, because nothing in it is language specific.
 
 **The core and the extension surface are separate decisions.** Junk Store's own backend began
-in Python and was later rewritten in something else, which is a choice about what its author
-wants to work in day to day. The extension surface did not follow it. Extensions stayed at
-the lowest common denominator, shell and Python, because the point of them is that other
-people can write them.
+in Python and was later rewritten in something else. That is a decision about the core's own
+development, and the extension surface did not follow it. Extensions stayed at the lowest
+common denominator, shell and Python, because the point of them is that other people can
+write them.
 
 That is worth noticing because the easier path was the other one. Extensions in whatever the
 core happens to be written in would have meant one toolchain, one set of idioms, and no
@@ -235,10 +235,9 @@ So the scripting interface is not a consequence of the implementation, and does 
 when the implementation does. It is a deliberately low bar, held there on purpose.
 
 It is worth saying plainly that this is a preference and not a law. The system is built the
-way its author wanted such a system to be built: light, inspectable, and immediately editable
-on the device. If you would rather work with stronger guarantees than a text file gives you,
-nothing here stops you; the contracts are the floor, not the ceiling, and what you build on
-top of them is your choice.
+way it is on purpose: light, inspectable, and immediately editable on the device. If you would
+rather work with stronger guarantees than a text file gives you, nothing here stops you; the
+contracts are the floor, not the ceiling, and what you build on top of them is your choice.
 
 **Convention rather than registration.** Nothing declares an extension to the system. It is
 found because it is in the right directory, contains a `store.sh`, and that file adds its
