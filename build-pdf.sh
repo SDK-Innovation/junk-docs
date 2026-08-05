@@ -1,18 +1,29 @@
 #!/usr/bin/env bash
-# Build a single PDF from the extension documentation.
+# Build a single PDF from one section of the documentation.
 #
 # Read-only: this script never modifies the markdown. It renders a copy in a
-# temporary directory and writes the PDF to the path given (default ./junk-store-extensions.pdf).
+# temporary directory and writes the PDF to the path given.
 #
 # Requires: python3, and either chromium or google-chrome for the PDF step.
-# Usage: ./build-pdf.sh [output.pdf]
+#
+# Usage: ./build-pdf.sh [section] [output.pdf]
+#   ./build-pdf.sh                     -> extensions, junk-store-extensions.pdf
+#   ./build-pdf.sh user                -> user, junk-store-user.pdf
+#   ./build-pdf.sh user /tmp/out.pdf
 
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# Docs are organised into top-level sections; this builds the extensions one.
-DOCS="${HERE}/extensions"
-OUT="${1:-${HERE}/junk-store-extensions.pdf}"
+SECTION="${1:-extensions}"
+DOCS="${HERE}/${SECTION}"
+OUT="${2:-${HERE}/junk-store-${SECTION}.pdf}"
+
+if [ ! -d "${DOCS}" ]; then
+    echo "No such section: ${SECTION}" >&2
+    echo "Sections: $(cd "${HERE}" && find . -maxdepth 1 -mindepth 1 -type d \
+        -not -name '.*' -not -name tools -printf '%f ')" >&2
+    exit 1
+fi
 WORK="$(mktemp -d)"
 trap 'rm -rf "${WORK}"' EXIT
 
@@ -25,7 +36,31 @@ if [ -z "${BROWSER}" ]; then
     exit 1
 fi
 
-# Reading order. Mirrors README, which is the only place the order is recorded.
+# Reading order per section. Mirrors each section's README, which is the only
+# other place the order is recorded. The glossary lives at the docs root and is
+# appended to every section, since it serves all of them.
+if [ "${SECTION}" = "user" ]; then
+PAGES=(
+    "introduction.md"
+    "main-menu.md"
+    "games.md"
+    "game-page.md"
+    "game-settings.md"
+    "proton-settings.md"
+    "store-settings.md"
+    "store-settings-reference.md"
+    "setting-up-by-hand.md"
+    "file-manager.md"
+    "file-manager-driving.md"
+    "file-manager-steam.md"
+    "file-manager-tools.md"
+    "networking.md"
+    "file-manager-reference.md"
+    "settings.md"
+    "diagnostics.md"
+    "../glossary.md"
+)
+else
 PAGES=(
     "introduction.md"
     "workflows.md"
@@ -49,9 +84,9 @@ PAGES=(
     "reference/dosbox-import.md"
     "reference/sharing-and-licensing.md"
     "troubleshooting.md"
-    # Lives at the docs root: it serves every section, not just this one.
     "../glossary.md"
 )
+fi
 
 python3 "${HERE}/tools/md2html.py" "${DOCS}" "${WORK}/doc.html" "${PAGES[@]}"
 

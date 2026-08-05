@@ -69,8 +69,8 @@ What it discards is everything set on top of that: the adjustments you made thro
 screen after the extension was generated. If those matter, so does the confirmation dialog.
 
 Two things soften it. The dialog is asked first, and **nothing is written until you save**, so
-a reset you did not mean can be abandoned by leaving without saving. Once saved, there is no
-undo.
+a reset you did not mean can be abandoned by backing out and choosing **Discard** at the
+Unsaved Changes prompt. Once saved, there is no undo.
 
 **The cog on a field changes its type.** If a field is presenting the wrong kind of
 control for what you need, you can switch it between Boolean, Number, String, List,

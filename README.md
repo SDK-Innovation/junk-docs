@@ -6,6 +6,7 @@ Each top-level directory is a section, written to be read on its own.
 
 | Section | For |
 |---|---|
+| [Using Junk Store](user/) | Using the product: the File Manager, and how to get things done day to day |
 | [Extensions](extensions/) | Writing extensions: the scripts Junk Store calls, what they receive, what they print, and how configuration reaches them |
 
 [**Glossary**](glossary.md) — the vocabulary used across all of it, in plain language.
@@ -16,9 +17,12 @@ Start here if a word is unfamiliar.
 Any section can be rendered as a single PDF. This builds the extension documentation:
 
 ```bash
-./build-pdf.sh                  # -> junk-store-extensions.pdf
-./build-pdf.sh /path/to/out.pdf
+./build-pdf.sh                       # extensions -> junk-store-extensions.pdf
+./build-pdf.sh user                  # user       -> junk-store-user.pdf
+./build-pdf.sh user /path/to/out.pdf
 ```
+
+The glossary is appended to every section, since it serves all of them.
 
 Needs `python3` and either `chromium` or `google-chrome`. The script is read-only:
 it renders a copy in a temporary directory and never modifies the markdown.

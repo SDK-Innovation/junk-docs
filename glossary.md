@@ -81,9 +81,10 @@ Proton is a version of Wine that Valve maintains for games.
 **Prefix**, sometimes **Wine prefix**
 : A private folder that pretends to be a Windows installation, holding the fake
 C: drive, the registry and the settings for one game. Each game normally gets its
-own, which is why one game's Windows quirks do not affect another. If a Windows
-game starts misbehaving, deleting its prefix is a common fix, though it also
-loses anything stored inside it.
+own, which is why one game's Windows quirks do not affect another.
+**A Windows game's saved games usually live in here**, so a prefix is worth
+looking inside before you delete it. Deleting the prefix is a common fix when a
+game misbehaves, but it takes the saves with it unless you copy them out first.
 
 **ROM**
 : A copy of a game from a cartridge or disc, as a file on disk. Emulators run
@@ -122,6 +123,22 @@ the main one, because it makes them slow enough to think about first.
 : A way of connecting to another machine over the network to run commands on it.
 Used for putting games on a server rather than the Deck itself, and for reaching
 your Deck from a computer.
+
+**SSH key**
+: A pair of files that proves who you are to another machine, used instead of a
+password. The *private* half stays on your machine and should be guarded like a
+password. The *public* half is copied to machines you connect to, and is safe to
+share. Junk Store authenticates this way because a password cannot be typed from
+Game Mode.
+
+**authorized_keys**
+: The file on a machine listing the public keys allowed to connect to it. Pairing
+adds a key here; removing a trusted key takes it out again.
+
+**Pairing**
+: Granting one machine access to another, by comparing a six digit code shown on
+both and accepting. What it grants is SSH access to the whole user account, not
+only to Junk Store.
 
 **Flatpak**
 : A way of packaging Linux applications so they run anywhere, bundling what they
