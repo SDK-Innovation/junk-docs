@@ -342,6 +342,32 @@ Most settings overwrite when a later layer sets them. The autoexec text is the
 exception: layers are **concatenated**, so a game's autoexec lines are added to
 whatever it inherits rather than replacing it.
 
+## The live tab configuration is not in generator.db
+
+The natural model is that the definition lives in the Generator's database and everything
+downstream is generated from it. **Generation does not overwrite an existing
+`<store>tabconfig.json`**, it preserves what is already there.
+
+For most settings that never shows, because you set them in one place. For **Download
+method** and **Data source** it matters, because those are commonly set through the tab
+configuration UI, which writes to that file directly.
+
+Three consequences follow:
+
+- **A value set only in the definition does not reach a machine that has already
+  generated.** The file wins.
+- **Importing a preset containing them has no effect** for the same reason. The import
+  succeeds, and the file keeps what it had.
+- **A value set only through the interface is not in your export.** It was never in the
+  definition, so it does not travel.
+
+**So set both when you are building an extension to share**, or delete the generated file
+and regenerate so the definition is written out fresh.
+
+**Known issue.** Nothing indicates the exception, and every one of these fails silently.
+See [Settings](../reference/settings.md#download-method-and-data-source-set-them-in-two-places)
+for what that looks like in practice.
+
 ## Seeing the result
 
 Rather than reasoning about the layers, ask Junk Store what it computed. Two actions

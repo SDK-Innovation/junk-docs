@@ -68,6 +68,7 @@ PAGES=(
     "guides/overriding-actions.md"
     "guides/authoring-by-hand.md"
     "guides/emulators-and-roms.md"
+    "guides/non-launchable-items.md"
     "guides/when-a-game-will-not-run.md"
     "concepts/how-extensions-are-found.md"
     "concepts/how-launching-works.md"

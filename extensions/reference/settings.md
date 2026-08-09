@@ -162,6 +162,43 @@ is a long list, covering PC stores (`Steam`, `Epic`, `Gog`, `Amazon`, `Origin`,
 Pick the platform your games actually belong to and artwork lookups will match.
 `Libretro` is the special case: it uses the RetroArch thumbnail repository instead.
 
+**`script` is missing from the dropdown**, even though it is the field's own
+`DefaultValue`. If you want it, press **Y** on the field and type it. That escape hatch
+works on any field, but this is the one case where the value you need is absent from its own
+list of choices.
+
+### Download method and Data source: set them in two places
+
+**These two need setting in the Generator definition *and* in the tab configuration UI**,
+and missing either one fails silently. It is the first thing that stops a hand-built
+extension working.
+
+The two places do different jobs:
+
+| Where | Why it matters |
+|---|---|
+| **The Generator definition** | This is what gets exported. A value not set here does not travel with a shared extension, so someone installing yours gets the default |
+| **The tab configuration UI** | This is what runs. Generation **preserves** an existing `<store>tabconfig.json` rather than overwriting it, so a value set only in the definition does not reach a machine that has already generated |
+
+**So set both.** Setting only the definition leaves your own machine on the old value.
+Setting only the tab config means it works for you and not for anyone you share with.
+
+**The alternative is to delete the generated file and regenerate.** With no
+`<store>tabconfig.json` to preserve, generation writes a fresh one from the definition. That
+is the way to make an already-generated extension pick up a definition change.
+
+**Known issue: the failure is silent.** An import that includes these reports success and
+changes nothing, and the symptom is several steps removed from the cause:
+
+- The extension stays on whatever download method it had, commonly `rsync`.
+- The rsync listing path then runs against an unset `ROMS_PATH`, finds nothing, and writes
+  `listing.txt` at 0 bytes on every refresh.
+- `getlisting` is never called, so the tab populates nothing.
+- Regenerating does not help, because the generated file is preserved.
+
+That last point is why it survives repeated attempts. See
+[Config layering](../concepts/config-layering.md#the-live-tab-configuration-is-not-in-generatordb).
+
 ## ENVIRONMENT
 
 Environment variables passed to the game, mainly for Proton and umu behaviour.

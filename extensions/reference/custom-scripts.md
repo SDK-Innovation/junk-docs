@@ -145,6 +145,7 @@ error, so emit only what you know:
 | `genre` | string | Free text. A single string, not a list |
 | `release_date` | string | Free text, so any format your source gives you is accepted |
 | `sorting_title` | string | Used for alphabetical ordering. **Falls back to `title`** when absent, so only set it when they differ, such as dropping a leading "The" |
+| | | Sorting is **ascending and textual**. Newest-first needs an inverted, zero-padded key: without padding, `10-9` sorts after `10-10` |
 | `database_id` | string | Your source's own identifier for the game |
 | `store_url` | string | A web address for the game |
 | `images` | array | Artwork, see below |
@@ -152,6 +153,12 @@ error, so emit only what you know:
 **`getgameinfo` only runs when Data source is `script`.** Any other value means artwork and
 metadata are looked up externally instead and your script is never called. That is the setting
 to check first when a `getgameinfo` you wrote appears to be ignored.
+
+**It runs once per listed item, as its own process.** At a few dozen games that is
+invisible. At a few hundred it is the dominant cost of a refresh, and anything expensive
+inside it is multiplied by the list size. Walking an install directory to report a size cost
+roughly 30,000 extra `stat()` calls per refresh in one extension before it was cached. See
+[Items that are not games](../guides/non-launchable-items.md#scale).
 
 **The `images` array.** Each entry is an object with four keys, all optional:
 
@@ -881,6 +888,45 @@ For a script that already exists, the workflow is the same as any script change:
 
 Import before you regenerate, or your edit is overwritten. See
 [Authoring by hand](../guides/authoring-by-hand.md#order-matters-and-getting-it-wrong-loses-your-work).
+
+### Two reasons no file appears
+
+**Known issue: both of these fail silently.** The entry is stored, the editor shows it,
+generation reports success, and nothing is written. No error, no log line.
+
+**`filename` must be set, or nothing is written.** That field decides what the file is
+called, and it is **not** defaulted from the entry's name. `generate` reads like the switch
+controlling whether a file appears, and `filename` reads like an optional override of an
+obvious default, but an entry without it produces nothing however complete the rest is.
+Shipped extensions all carry it, which is exactly why the requirement is easy to miss.
+
+**Check `filename` first** when a file does not appear.
+
+**A name Junk Store does not recognise is never written**, with or without `filename`.
+Generation only writes files for the fixed set of hook names listed on this page. An entry
+called `installtool` or `removetool` is stored in `generator.db`, shows in the editor, and
+never reaches disk.
+
+The two failures are indistinguishable from the interface, which is what makes them
+expensive to diagnose. If `filename` is set and the file still does not appear, the name is
+the cause.
+
+**`userlib` is the one slot for your own code**, and the answer to "where do I put a helper
+script". It is a single row in the table above and easy to overlook.
+
+### Interpreters and PATH
+
+**Known issue: actions run with a PATH that does not include `/usr/bin`.** A commandmap body
+calling `python3` exits 127, while the same `#!/usr/bin/env python3` shebang works in a
+script Junk Store invokes directly, such as `getlisting` or `getgameinfo`.
+
+The inconsistency between the two contexts is the surprising part. **Do not rely on PATH in
+a commandmap body**; use an absolute interpreter path with a lookup as a fallback:
+
+```bash
+PY="$(command -v python3 || echo /usr/bin/python3)"
+"$PY" "$SCRIPT"
+```
 
 ## Testing a hook
 

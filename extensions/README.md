@@ -35,6 +35,7 @@ Read these in order the first time. Each one takes you through a whole task.
 | [Overriding actions](guides/overriding-actions.md) | Changing how one action behaves on an existing store |
 | [Authoring by hand](guides/authoring-by-hand.md) | Writing an extension's scripts yourself, for full control |
 | [Emulators and ROM discovery](guides/emulators-and-roms.md) | Setting up an emulator and getting your ROMs to show up |
+| [Items that are not games](guides/non-launchable-items.md) | Listing runtimes, tools or anything else that does not launch |
 | [When a game will not run](guides/when-a-game-will-not-run.md) | Finding out why a game does not start, without leaving game mode |
 
 ## Concepts

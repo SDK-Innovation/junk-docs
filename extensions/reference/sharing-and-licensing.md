@@ -139,6 +139,40 @@ host, ROMs path, and the use SSH flag. Those describe your machine rather than t
 extension, so expect to set them again after importing on a different setup. That
 includes importing your own export onto a second machine.
 
+### Known issue: an export is not a complete snapshot
+
+Two gaps are worth planning around if you are keeping an extension in git, since neither
+reports a problem.
+
+**Commandmap entries only round-trip their `SCRIPT`.** The rest of the entry is not
+included:
+
+| Field | In the export? |
+|---|---|
+| `SCRIPT` | Yes |
+| `title` | No |
+| `script-set` | No |
+| `confirm` | No |
+| `type` | No |
+
+Reimporting brings the body back without its wiring.
+
+**Download method and Data source need setting in the Generator, or they will not be in
+your export.** Both also have to be set in the tab configuration UI for the extension to
+work on your own machine, so it is easy to set the second, see everything working, and ship
+an export without them.
+
+If you only ever set them through the tab configuration UI, **your extension works for you
+and arrives on someone else's Deck with the defaults.** See
+[Settings](settings.md#download-method-and-data-source-set-them-in-two-places).
+
+**Check your export before sharing it.** Both values should appear in the `.json`. This is
+the single most likely reason an extension that works locally does nothing for whoever you
+sent it to.
+
+Treat an export as most of an extension rather than all of it, and keep a note of anything
+you set by hand.
+
 ## Sharing with someone else
 
 **Read the licensing section below before you share anything derived from a shipped

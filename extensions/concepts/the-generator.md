@@ -450,6 +450,13 @@ after changing its definition, use **Regenerate installed extensions**, which is
 global but at least skips anything not installed. That asymmetry is worth knowing, since it
 means regeneration is the one step you cannot narrow.
 
+**That skip catches people out during development.** "Installed" means the extension has
+installed games. A new extension you are still building usually has none, so **Regenerate
+installed extensions does nothing for it**, and reports no problem while doing nothing.
+
+**Use Generate all extensions while developing.** It is the one that works on an extension
+with nothing installed yet. Once yours has games installed, either will do.
+
 ### The direction that matters
 
 Generation goes **definition to files**. Saving scripts back goes **files to

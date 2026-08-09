@@ -97,6 +97,60 @@ game list, `GameDetails`, `GameImages`, `GameSize`, `Status`, and the various
 editor types. The simplest way to get these right is to read the corresponding
 script in a shipped extension and match its output.
 
+### How long a result stays on screen
+
+**The two types differ in more than wording**, which is worth knowing before deciding which
+to return:
+
+| Type | Shown as | Stays? |
+|---|---|---|
+| `Success` | A toast | No. It fades, and is easily missed |
+| `Error` | A dialog | Yes, until dismissed |
+
+**Known issue: there is no advisory type between them.** Anything the user has to read has
+to be returned as an `Error` to stay on screen, which means a deliberate refusal renders
+under *Something went wrong*.
+
+A safety check such as "this version is used by 2 games" therefore reads as a fault. Until
+a third type exists, an error dialog with carefully chosen wording is usually the lesser of
+the two, since a toast the user misses is worse than one that overstates its severity.
+
+**`getdetails` is not rendered when the tab is a list.** It returns a `Description`, and
+that only reaches the screen for a grid. Overriding the action is wasted work on a
+list-rendered tab.
+
+### What a list row receives
+
+Each item in a game list arrives with six fields, and nothing else:
+
+```
+ID, SteamClientID, Publisher, Images, ShortName, Name
+```
+
+That decides what you can put in front of someone while they browse:
+
+| Field | Rendered? | Use |
+|---|---|---|
+| `Name` | Yes | The only place to surface per-item state |
+| `Publisher` | Yes, at the right of the row | The second visible field. A natural home for a size, a date or a source on anything that is not a game |
+| `Images` | Yes | The only visual channel |
+| `ID`, `ShortName`, `SteamClientID` | No | Identity and install state |
+
+**Rows cannot be coloured or styled.** There is no status, class or style field, so any
+design that depends on marking rows visually needs rethinking before you start.
+
+**`notes` never reaches the list**, and neither does anything else you emit. Keys outside
+the documented set are dropped.
+
+### `SteamClientID` is what "installed" means
+
+**The interface treats an item as installed when its `steamclientid` column has a value.**
+That drives the installed filter and the per-row controls.
+
+The install lifecycle normally writes it. An extension that installs its own items never
+goes through that lifecycle, so it has to maintain the column itself. See
+[Items that are not games](../guides/non-launchable-items.md#install-state-is-steamclientid).
+
 ## Action types
 
 When an action is registered in the Generator it has a *type*, which mostly declares what
