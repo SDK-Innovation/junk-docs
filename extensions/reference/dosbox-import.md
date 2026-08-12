@@ -9,7 +9,7 @@ There are two ways it happens.
 
 ### Automatically, on install
 
-When a game is installed, Junk Store looks for conf files and imports them without being
+When a game is installed, Junk Store Pro looks for conf files and imports them without being
 asked. It searches these locations under the game directory:
 
 ```
@@ -71,7 +71,7 @@ This is where the config set tagging described in
 [Config layering](../concepts/config-layering.md) becomes practical. DOSBox-X and Staging
 accept settings the original does not, so importing a Staging tuned conf against the
 `staging` fork keeps it from breaking the others. You can import several confs for the same
-game, each against a different fork, and Junk Store picks the right one when the game runs.
+game, each against a different fork, and Junk Store Pro picks the right one when the game runs.
 
 The dropdown offers those three named forks. A fork of your own is not in the list, so import
 against **All forks** and adjust from the config screen afterwards, where the fork field can
@@ -82,10 +82,10 @@ be typed by hand.
 Sections and their `key=value` options become config fields, and the `[autoexec]` block
 becomes the Autoexec text.
 
-A setting Junk Store has never heard of is kept, not discarded. Any `key=value` line inside a
+A setting Junk Store Pro has never heard of is kept, not discarded. Any `key=value` line inside a
 section becomes a field, so a conf written for a fork with its own settings imports intact.
 That is what makes this a workable route for a custom DOS setup: you are not limited to the
-keys Junk Store happens to know.
+keys Junk Store Pro happens to know.
 
 Two things are dropped:
 

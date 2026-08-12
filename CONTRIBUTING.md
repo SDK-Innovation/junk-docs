@@ -72,7 +72,7 @@ translation is granted an explicit exception, provided it credits the original,
 links back to this repository, and states that it is a translation. Open an issue
 before starting a substantial one, so effort is not duplicated.
 
-A note on scope: the shipped Junk Store extensions (Epic, Amazon, GOG, Itch) are
+A note on scope: the shipped Junk Store Pro extensions (Epic, Amazon, GOG, Itch) are
 source available rather than open source, and that is unrelated to this licence.
 This repository covers the documentation only. See
 [Sharing and licensing](extensions/reference/sharing-and-licensing.md#what-you-may-and-may-not-share)

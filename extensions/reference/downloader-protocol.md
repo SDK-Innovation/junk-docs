@@ -81,7 +81,7 @@ failing, so partial or malformed output degrades gracefully.
 | `completed` | Finished successfully |
 | `cancelled` | Stopped by the user |
 | `queued` | Waiting to start |
-| `paused` | Suspended. Set by Junk Store when the user pauses, rather than by your script |
+| `paused` | Suspended. Set by Junk Store Pro when the user pauses, rather than by your script |
 
 **Emit `Status:completed` when you finish.** Without it the operation may not be
 recognised as done.
@@ -177,11 +177,11 @@ your `Percent` line stopped parsing.
 
 | Status | Effect |
 |---|---|
-| `completed` | The download is finished. Junk Store then moves on to the install phase, where the caption changes to "Configuring Steam shortcut and artwork" and the bar goes indeterminate. That phase is signalled separately by Junk Store, not by you |
+| `completed` | The download is finished. Junk Store Pro then moves on to the install phase, where the caption changes to "Configuring Steam shortcut and artwork" and the bar goes indeterminate. That phase is signalled separately by Junk Store Pro, not by you |
 | `error` | Treated as a failure, with your `Error` text shown |
 | `cancelled`, `stopped` | The download ends without being counted as finished |
 | `downloading`, `queued` | Ongoing, keeps the panel in its progress state |
-| `paused` | Set by Junk Store when the user pauses, not something a downloader normally emits |
+| `paused` | Set by Junk Store Pro when the user pauses, not something a downloader normally emits |
 
 This is why omitting `Status:completed` matters. The bar can sit at 100% while the operation
 is never recognised as done, because the percentage and the lifecycle are separate signals.

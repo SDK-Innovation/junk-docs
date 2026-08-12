@@ -10,7 +10,7 @@ development tools.
 
 ## A. Create a new extension with the wizard
 
-Open Junk Store, go to the Generator tab, and start the extension wizard. It is
+Open Junk Store Pro, go to the Generator tab, and start the extension wizard. It is
 aimed at simple launchers such as emulators.
 
 ![The wizard's first step, Extension Name. It asks for a name with no spaces, and shows two
@@ -61,7 +61,7 @@ files and re register them, which is the normal workflow rather than an unusual 
 
 ## B. Download a published preset
 
-**The preset server carries the Junk Store extensions only.** This is how you get Epic,
+**The preset server carries the Junk Store Pro extensions only.** This is how you get Epic,
 Amazon, GOG, Itch and the rest, or bring one back after removing it. It is not a general
 repository, so an extension somebody else wrote will not appear here no matter how widely it
 is shared. For those, see
@@ -71,7 +71,7 @@ is shared. For those, see
 2. Choose **Download preset from server** for the one you want, or **Download all presets
    from server**.
 3. Confirm when prompted.
-4. Regenerate, which turns the downloaded data into the scripts Junk Store runs.
+4. Regenerate, which turns the downloaded data into the scripts Junk Store Pro runs.
 
 If you are already maintaining extensions of your own, regenerate just the one you
 downloaded rather than rebuilding everything, so you do not disturb work in progress
@@ -82,7 +82,7 @@ The new store appears as a tab. If it does not, see
 
 ## Importing a preset file someone sent you
 
-**This is the only route for an extension Junk Store did not publish.** Anything written by
+**This is the only route for an extension Junk Store Pro did not publish.** Anything written by
 someone else reaches you as a `.json` file, however they chose to share it, and is imported
 with the command below. There is no in interface browse and install for third party
 extensions.
@@ -146,7 +146,7 @@ Change a setting, then regenerate, as described below.
 
 ## The one step people forget: regenerate
 
-Junk Store keeps your extension definition in a database and generates the actual
+Junk Store Pro keeps your extension definition in a database and generates the actual
 scripts from it. Editing a setting or a script does not change what runs until you
 regenerate.
 

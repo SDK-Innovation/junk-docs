@@ -23,7 +23,7 @@ below cover each in turn.
 `none` and `rsync` are built in because they cover common cases without anyone writing code.
 They are not the boundary of what an extension can do.
 
-**`script` is the general case, and it has no opinion about how you get a game.** Junk Store
+**`script` is the general case, and it has no opinion about how you get a game.** Junk Store Pro
 runs your `getlisting` to find out what exists, your `downloader` to fetch one, and reads the
 progress keys you print. What happens in between is entirely yours: a store's own client, a
 torrent tool, `curl` against an API, `git`, a tape robot, unpacking from an archive you keep
@@ -38,7 +38,7 @@ The only obligations are the contracts:
 | Print progress keys as you go, and `Status:completed` at the end | [Downloader protocol](downloader-protocol.md) |
 
 Satisfy those and the interface behaves exactly as it does for a shipped store: the same
-grid, the same progress bar, the same install and uninstall buttons. Junk Store never
+grid, the same progress bar, the same install and uninstall buttons. Junk Store Pro never
 inspects *how* the bytes arrived.
 
 The same is true elsewhere. The shipped launcher scriptlets, the Generator editors, the config
@@ -51,7 +51,7 @@ So if none of the three methods fits, that is not a dead end. It means you want 
 
 ## none
 
-**Nothing is downloaded.** The games are already where they need to be, and Junk Store just
+**Nothing is downloaded.** The games are already where they need to be, and Junk Store Pro just
 finds and launches them.
 
 The listing is built by scanning your install directory for files matching **ROMs
@@ -75,13 +75,13 @@ The listing is built by listing that path for files matching your download exten
 stripping the extension to get the game names. If **Use SSH** is enabled the listing and the
 copy both happen over SSH; otherwise both run against a local path.
 
-**With SSH off, the source is any path the device can reach.** Junk Store runs `find` and
+**With SSH off, the source is any path the device can reach.** Junk Store Pro runs `find` and
 `rsync` against it directly, so an SD card, a USB drive, a dock, or a network share the
 system has already mounted all work the same way. There is nothing remote-specific about
 `rsync` here; it is being used for its copying and resume behaviour rather than for
 networking.
 
-Junk Store does not mount anything itself. If the path is not currently mounted, the listing
+Junk Store Pro does not mount anything itself. If the path is not currently mounted, the listing
 comes back empty and installs fail. For media that is not always attached, an action's
 `script-pre` and `script-post` can mount and unmount around the operation; see
 [Mounting the source yourself](../guides/emulators-and-roms.md#mounting-the-source-yourself).
@@ -101,7 +101,7 @@ Use this when:
   demand.
 - The source is a mounted drive you would rather not fill the Deck from permanently.
 
-**SSH must already work.** Junk Store does not set up keys for you. Public key
+**SSH must already work.** Junk Store Pro does not set up keys for you. Public key
 authentication needs to be working before this method will list anything, and the listing
 step uses a short connection timeout, so an unreachable host produces an empty list rather
 than an error.

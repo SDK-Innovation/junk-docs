@@ -1,6 +1,6 @@
 # Script output: how scripts talk back
 
-Custom scripts communicate with Junk Store by printing to standard output. There are two
+Custom scripts communicate with Junk Store Pro by printing to standard output. There are two
 formats, and which one you use depends on the script.
 
 What follows covers the conventions shared by all of them. For which format a particular script

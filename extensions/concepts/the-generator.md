@@ -5,7 +5,7 @@ The Generator is reached from the **SELECT** side menu, under **Tools**:
 ![The SELECT side menu, listing Games, Tools, News and
 Settings.](../images/select-side-menu.png)
 
-The Generator turns your extension's definition into the shell scripts Junk Store
+The Generator turns your extension's definition into the shell scripts Junk Store Pro
 runs. What follows explains the entries that hold that definition, and what each
 field does when generation happens.
 
@@ -15,7 +15,7 @@ or how they are built.
 
 ## Some of what it does is emergent
 
-Worth setting expectations before the detail. A lot of Junk Store's behaviour is not
+Worth setting expectations before the detail. A lot of Junk Store Pro's behaviour is not
 individually designed; it **falls out** of how the Generator composes things. Definitions
 produce scripts, scripts are discovered by name, settings become environment variables, and
 what an extension can do is the product of those rules rather than a list somebody wrote.
@@ -289,7 +289,7 @@ lost on the next regenerate unless you save it back to the database first. That 
 trap described in
 [Authoring by hand](../guides/authoring-by-hand.md#order-matters-and-getting-it-wrong-loses-your-work).
 
-**The set of custom scripts is fixed.** You cannot invent a new one. The names Junk Store
+**The set of custom scripts is fixed.** You cannot invent a new one. The names Junk Store Pro
 knows about are built into the product, and each is called at a specific point by that name.
 A script with a name nothing looks for would simply never run.
 
@@ -384,7 +384,7 @@ Both cases exist among the shipped extensions. Some use the shared Proton templa
 as is, while Epic and GOG each carry a modified version. Check which situation you
 are in before editing, so you do not change more than you intend.
 
-**Shared templates are replaced when Junk Store updates.** They ship with the product, so
+**Shared templates are replaced when Junk Store Pro updates.** They ship with the product, so
 an update overwrites them and any change you made to a shared template is lost. There is no
 merge and no warning.
 

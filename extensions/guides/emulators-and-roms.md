@@ -13,7 +13,7 @@ a store, using the extension wizard. This expands on
 
 ### The emulator must be installed
 
-Junk Store does not bundle emulators. It runs them, which means the flatpak has to be
+Junk Store Pro does not bundle emulators. It runs them, which means the flatpak has to be
 on the system already. Each launcher calls a specific flatpak:
 
 | Launcher | Flatpak |
@@ -82,11 +82,11 @@ path is an ordinary filesystem path, so anything the device can see works:
 - An **SD card**, keeping the library off the internal drive.
 - An **external drive** over USB, or a dock.
 - A **network share already mounted** by the system, whether SMB, NFS, or anything else.
-  Junk Store does not care how it got there; from its side it is a directory.
+  Junk Store Pro does not care how it got there; from its side it is a directory.
 
 With **Use SSH** turned on, the same two operations run over SSH against a remote host
 instead. That needs a reachable SSH server with public key authentication already working,
-and Junk Store will not set up keys for you.
+and Junk Store Pro will not set up keys for you.
 
 The distinction matters because the SSH route is the one with prerequisites. If the media is
 something you can already browse to in the file manager, leave SSH off and point the ROMs
@@ -94,7 +94,7 @@ path at it.
 
 ### Mounting the source yourself
 
-Junk Store does not mount anything. It runs `find` and `rsync` against the path you gave it,
+Junk Store Pro does not mount anything. It runs `find` and `rsync` against the path you gave it,
 so if that path is not mounted, the listing comes back empty and an install fails.
 
 For removable media that is not always present, you can do the mounting as part of the
@@ -209,7 +209,7 @@ The wizard covers simple launchers. For anything else you edit what it generated
 RetroArch extensions have an extra choice: the **core** that runs the game.
 
 **The core list is a catalogue of known cores, not a list of what you have
-installed.** Junk Store offers every core it knows about, so you can select one you do
+installed.** Junk Store Pro offers every core it knows about, so you can select one you do
 not have yet. That is deliberate, because a missing core is fetched for you on first
 launch.
 

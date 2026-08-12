@@ -125,7 +125,7 @@ keep, put it in the Generator definition and let generation write the file.
 ## Related
 
 - What makes an extension discoverable at all:
-  [How Junk Store finds your extension](../concepts/how-extensions-are-found.md)
+  [How Junk Store Pro finds your extension](../concepts/how-extensions-are-found.md)
 - The `Type` values an action can carry:
   [Actions, results, and types](actions-and-types.md)
 - Where the definition that generates this lives:

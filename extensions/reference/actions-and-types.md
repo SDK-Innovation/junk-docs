@@ -7,12 +7,12 @@ field types. For how any of it fits together, see the concepts sections.
 
 | Path | What it is |
 |---|---|
-| `~/.local/share/junkstore/scripts/Extensions/<Store>/` | The scripts Junk Store runs, and what the Generator imports from |
+| `~/.local/share/junkstore/scripts/Extensions/<Store>/` | The scripts Junk Store Pro runs, and what the Generator imports from |
 | `~/.config/junkstore/overrides/<Store>/store.sh` | Your personal action overrides |
 | `~/.config/junkstore/databases/generator.db` | The Generator database, source of truth for regeneration |
 | `~/.config/junkstore/` | Settings and databases generally |
 
-Junk Store does not use any other location. References to `homebrew` in older
+Junk Store Pro does not use any other location. References to `homebrew` in older
 notes or internal strings are historical.
 
 ## Actions
@@ -69,7 +69,7 @@ per platform scriptlets in `launchers/`, not by an action in `store.sh`. The
 
 ## Action results
 
-Scripts talk to Junk Store by printing JSON on stdout. Two shapes you will use
+Scripts talk to Junk Store Pro by printing JSON on stdout. Two shapes you will use
 most:
 
 **Success**
@@ -223,8 +223,8 @@ Found in the Generator tab:
 | Save all scripts back to DB | The same, across all extensions |
 | Import the preset from a file | Load an extension from a `.json` file. Done from the command line, see below |
 | Export the preset to a file | Save an extension to a `.json` file. Done from the command line, see below |
-| Download preset from server | Fetch one Junk Store extension |
-| Download all presets from server | Fetch all Junk Store extensions |
+| Download preset from server | Fetch one Junk Store Pro extension |
+| Download all presets from server | Fetch all Junk Store Pro extensions |
 | Delete Extension | Remove an extension |
 | Add Game | Add a single game entry. Reached through the file manager rather than a form, see below |
 | Extension wizard | Create a new extension from answers to a few questions |
@@ -273,7 +273,7 @@ scripts rather than the ones you edited.
 Store project.
 
 **`importpresetfile` runs somebody else's code.** An extension contains shell and Python
-scripts that Junk Store executes as you, unsandboxed, and some of them run simply because the
+scripts that Junk Store Pro executes as you, unsandboxed, and some of them run simply because the
 extension is present. Only import from a source you trust, and read the scripts first if you
 are unsure. See
 [Only import extensions from people you trust](sharing-and-licensing.md#only-import-extensions-from-people-you-trust).

@@ -59,7 +59,7 @@ did not parse.
 
 This is the most common problem, and it usually has one of two causes.
 
-**You did not regenerate.** Junk Store generates the scripts it runs from the
+**You did not regenerate.** Junk Store Pro generates the scripts it runs from the
 Generator database. Editing a setting, or editing a script and stopping there, does
 not change what runs.
 
@@ -70,7 +70,7 @@ extensions.
 **You edited a script but did not import it first.** The Generator regenerates from
 its database, not from your files. If you edited a script and then regenerated, your
 edit was overwritten by whatever the database still held. This is especially easy to
-hit when you edit in an external editor such as VS Code, since nothing in Junk Store
+hit when you edit in an external editor such as VS Code, since nothing in Junk Store Pro
 knows those files changed.
 
 Fix, in this order:
@@ -99,7 +99,7 @@ Check the path and the store name spelling. It has to be exactly:
 ~/.config/junkstore/overrides/<Store>/store.sh
 ```
 
-`<Store>` matches the store name Junk Store uses, such as `Epic`, `Gog`, `Amazon`,
+`<Store>` matches the store name Junk Store Pro uses, such as `Epic`, `Gog`, `Amazon`,
 `Itch`. Confirm the store's own script is looking for it:
 
 ```bash
@@ -169,7 +169,7 @@ of lock errors. Take the pattern only if your list is small.
 
 ## Reading the logs
 
-You do not need Desktop Mode or a terminal for this. **Use Junk Store's own file
+You do not need Desktop Mode or a terminal for this. **Use Junk Store Pro's own file
 manager**, which will open a log in its text viewer.
 
 1. Open the file manager.
@@ -195,7 +195,7 @@ install directory in the file manager and open it there.
 
 That file records the resolved game path, the arguments, dependency installation, and the
 final command, which is usually enough to see why a launch failed. Because the Steam
-shortcut runs the launcher directly, it is written whether or not Junk Store was open.
+shortcut runs the launcher directly, it is written whether or not Junk Store Pro was open.
 
 ### From a terminal instead
 
@@ -232,7 +232,7 @@ journalctl --user -u junk-loader.service -f
 ## An action runs but the UI shows nothing, or shows an error
 
 Actions report back by printing JSON on stdout. If the JSON is malformed, or if
-your script prints anything else before it, Junk Store cannot read the result.
+your script prints anything else before it, Junk Store Pro cannot read the result.
 
 Run the script by hand to see exactly what it prints:
 

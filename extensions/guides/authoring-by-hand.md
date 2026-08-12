@@ -10,7 +10,7 @@ development tools.
 ## The model in one paragraph
 
 An extension is a directory of shell scripts plus a definition held in Junk
-Store's Generator database. The Generator *generates* the top level `store.sh`
+Store Pro's Generator database. The Generator *generates* the top level `store.sh`
 from that definition, wiring up the action functions the UI calls. Your job is to
 supply the scripts that do the real work, register them in the Generator, and
 regenerate.
@@ -19,7 +19,7 @@ regenerate.
 
 ```
 ~/.local/share/junkstore/scripts/Extensions/<Store>/
-    The runtime tree. This is what Junk Store executes.
+    The runtime tree. This is what Junk Store Pro executes.
     This is also what the Generator imports from.
 
 ~/.config/junkstore/databases/generator.db
@@ -37,11 +37,11 @@ Skipping step 2 or 3 is the most common reason a change appears to do nothing.
 ### Order matters, and getting it wrong loses your work
 
 Generation writes **from the database to your files**. So if you edit a script outside
-Junk Store, in a text editor such as VS Code, and then regenerate without importing
+Junk Store Pro, in a text editor such as VS Code, and then regenerate without importing
 first, **the database version overwrites your edits and they are gone.**
 
 This is the single easiest way to lose work in this workflow. Whenever you have edited
-files outside Junk Store:
+files outside Junk Store Pro:
 
 ```
 Save scripts back to DB    <- first, always
@@ -72,7 +72,7 @@ produced. See
 [Quick start](quickstart.md#a-create-a-new-extension-with-the-wizard).
 
 **Do not copy an existing extension's directory.** It looks like a shortcut and it is
-the opposite. Junk Store is convention driven: the store name appears in the directory
+the opposite. Junk Store Pro is convention driven: the store name appears in the directory
 name, in `PLATFORMS`, in `STORE_NAME`, in the name of every action function
 (`<Store>_<action>`), and in the Generator database entry that ties it all together. A
 copied directory means renaming all of that consistently, and anything you miss fails
@@ -227,7 +227,7 @@ bash -n store.sh          # syntax check
 ./downloader --help       # or whatever your script expects
 ```
 
-Junk Store communicates with scripts over stdout using JSON. If you run a script
+Junk Store Pro communicates with scripts over stdout using JSON. If you run a script
 by hand you will see that JSON, which is a good way to confirm you are emitting
 the right shape. See [Action results](../reference/actions-and-types.md#action-results).
 

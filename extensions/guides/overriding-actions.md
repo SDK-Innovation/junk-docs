@@ -64,7 +64,7 @@ half a store.
 ~/.config/junkstore/overrides/<Store>/store.sh
 ```
 
-`<Store>` is the store name as Junk Store knows it: `Epic`, `Gog`, `Amazon`,
+`<Store>` is the store name as Junk Store Pro knows it: `Epic`, `Gog`, `Amazon`,
 `Itch`, or whatever your own extension is called. The directory will not exist
 until you create it.
 
@@ -188,7 +188,7 @@ app ID.
 
 ## Returning results to the UI
 
-Actions communicate back to Junk Store by printing JSON on stdout. If your
+Actions communicate back to Junk Store Pro by printing JSON on stdout. If your
 override needs to report success or a message, match the shape the original used.
 A common one is:
 
@@ -196,7 +196,7 @@ A common one is:
 echo "{\"Type\": \"Success\", \"Content\": {\"Message\": \"Done\"}}"
 ```
 
-See [Action results](../reference/actions-and-types.md#action-results) for the shapes Junk Store
+See [Action results](../reference/actions-and-types.md#action-results) for the shapes Junk Store Pro
 understands. If your action does not need to report anything, printing nothing is
 fine.
 
@@ -209,7 +209,7 @@ step. To check your file is valid shell before triggering it from the UI:
 bash -n ~/.config/junkstore/overrides/Epic/store.sh
 ```
 
-Then trigger the action from Junk Store and watch the logs. See
+Then trigger the action from Junk Store Pro and watch the logs. See
 [Troubleshooting](../troubleshooting.md#reading-the-logs).
 
 ## Removing an override
@@ -225,6 +225,6 @@ The store returns to its normal behaviour immediately.
 ## Limits
 
 An override can replace action functions. It cannot add a brand new action that
-Junk Store does not already know about, because the UI builds its buttons from the
+Junk Store Pro does not already know about, because the UI builds its buttons from the
 extension's registered action list. If you need new actions, that is
 [authoring by hand](authoring-by-hand.md).

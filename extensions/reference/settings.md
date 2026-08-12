@@ -12,7 +12,7 @@ the data source, artwork settings, and download method already set to something 
 the values below.
 
 Use this reference to learn what a setting means. To find out what it is currently set to, look
-at the extension itself, or ask Junk Store for the resolved value. See
+at the extension itself, or ask Junk Store Pro for the resolved value. See
 [Settings and environment variables](../concepts/config-layering.md#seeing-the-result).
 
 ## Finding settings: the visibility dropdown
@@ -262,7 +262,7 @@ downloader still needs somewhere to keep its base URL. See
 
 ## Generator placement settings
 
-These control where your extension appears in the Junk Store interface, and are
+These control where your extension appears in the Junk Store Pro interface, and are
 set on the extension in the Generator rather than per store.
 
 | Setting | Type | Default | Level | What it does |

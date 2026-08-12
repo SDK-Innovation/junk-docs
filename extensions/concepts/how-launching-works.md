@@ -3,10 +3,10 @@
 Launching is a separate path from the actions an extension declares, which matters
 because it means an override cannot change it.
 
-**`launcher.sh` is what the Steam shortcut runs.** When a game is installed, Junk Store
+**`launcher.sh` is what the Steam shortcut runs.** When a game is installed, Junk Store Pro
 creates a Steam shortcut whose target is the extension's `launcher.sh`. So pressing play
-on the game in your library, whether from Junk Store or from the Steam library directly,
-runs that script. Junk Store does not have to be open.
+on the game in your library, whether from Junk Store Pro or from the Steam library directly,
+runs that script. Junk Store Pro does not have to be open.
 
 ```
 Steam shortcut  (or the play button)
@@ -50,6 +50,6 @@ Two more consequences worth knowing:
 
 Launch output is logged next to the game, in `launcher.log` inside the game
 directory, which is the first place to look when a game does not start. Because the
-Steam shortcut runs the script directly, that log is written whether or not Junk Store
+Steam shortcut runs the script directly, that log is written whether or not Junk Store Pro
 was open at the time.
 

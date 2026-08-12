@@ -21,7 +21,7 @@ once without interfering.
 
 ### How a config set is chosen
 
-When Junk Store needs a game's config it knows the platform, fork, and version in play, and
+When Junk Store Pro needs a game's config it knows the platform, fork, and version in play, and
 looks for the **most specific** stored set that fits. A stored set matches when each of its
 three tags is either **exactly equal** to what is being asked for, or **empty**.
 
@@ -59,7 +59,7 @@ matching only ever compares strings.
 
 That is what makes this useful for your own setups. If you build a patched DOSBox, or keep
 two Proton builds side by side, you can give each a fork name of your choosing and hang its
-own config off it. Junk Store does not need to know the name in advance.
+own config off it. Junk Store Pro does not need to know the name in advance.
 
 To use one:
 
@@ -321,7 +321,7 @@ setting one field on a game does not discard everything else it inherits.
 ### Specificity, and why empty means "any"
 
 Configuration is stored against a combination of **platform**, **fork**, and
-**version**. When Junk Store looks for the settings to apply, a stored row matches if
+**version**. When Junk Store Pro looks for the settings to apply, a stored row matches if
 each of those fields either equals what it is looking for **or is empty**, where empty
 means "applies to anything".
 
@@ -370,7 +370,7 @@ for what that looks like in practice.
 
 ## Seeing the result
 
-Rather than reasoning about the layers, ask Junk Store what it computed. Two actions
+Rather than reasoning about the layers, ask Junk Store Pro what it computed. Two actions
 exist purely to expose the resolved configuration as shell assignments:
 
 | Action | Gives you |
