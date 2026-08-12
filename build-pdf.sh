@@ -40,6 +40,14 @@ fi
 # other place the order is recorded. The glossary lives at the docs root and is
 # appended to every section, since it serves all of them.
 if [ "${SECTION}" = "user" ]; then
+TITLE="Junk Store Pro"
+SUBTITLE="User manual"
+NOTE="This is a printable copy of the Junk Store Pro user manual. It documents \
+Junk Store Pro, not the free Decky plugin. It was written by working through \
+the source, and is a first pass at material that had not been documented \
+before. It is accurate where it makes a claim, but it is not complete. Cross \
+references between pages appear as plain text here; the online version links \
+them."
 PAGES=(
     "introduction.md"
     "main-menu.md"
@@ -61,6 +69,14 @@ PAGES=(
     "../glossary.md"
 )
 else
+TITLE="Junk Store Pro"
+SUBTITLE="Extension developer guide"
+NOTE="This is a printable copy of the extension documentation. It documents \
+Junk Store Pro, not the free Decky plugin. It was written by working through \
+the source, and is a first pass at material that had not been documented \
+before. It is accurate where it makes a claim, but it is not complete. Cross \
+references between pages appear as plain text here; the online version links \
+them."
 PAGES=(
     "introduction.md"
     "workflows.md"
@@ -89,7 +105,9 @@ PAGES=(
 )
 fi
 
-python3 "${HERE}/tools/md2html.py" "${DOCS}" "${WORK}/doc.html" "${PAGES[@]}"
+python3 "${HERE}/tools/md2html.py" \
+    --title "${TITLE}" --subtitle "${SUBTITLE}" --note "${NOTE}" \
+    "${DOCS}" "${WORK}/doc.html" "${PAGES[@]}"
 
 "${BROWSER}" --headless --disable-gpu --no-sandbox \
     --no-pdf-header-footer \
