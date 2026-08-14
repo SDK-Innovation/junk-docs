@@ -1,4 +1,4 @@
-# How Junk Store finds your extension
+# How Junk Store Pro finds your extension
 
 Discovery is by directory and by naming convention. There is no registry file and no
 install step, which is why an extension can be added simply by putting it in place.
@@ -10,7 +10,7 @@ An extension is found when it satisfies four things:
    name.
 2. **It contains a `store.sh`.** The dispatcher sources `store.sh` from each
    extension directory. No `store.sh` means the extension does not exist as far as
-   Junk Store is concerned.
+   Junk Store Pro is concerned.
 3. **Its `store.sh` registers the store name.** Generated scripts do this near the
    top with `PLATFORMS+=("MyStore")`, which is how the store announces itself.
 4. **It contains a `static.json`.** This is what puts the extension on screen: its tab,

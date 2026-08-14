@@ -6,14 +6,14 @@ plain language.
 
 ## What an extension is
 
-An extension teaches Junk Store about a place your games come from.
+An extension teaches Junk Store Pro about a place your games come from.
 
 That place can be a storefront you bought games from, an emulator with a folder of ROMs, a
 directory of DOS games, or a machine on your network holding an archive. Each one becomes a
 tab in the interface, with its own games, its own artwork, and its own install and launch
 behaviour.
 
-Everything you already see in Junk Store is an extension. The Epic, GOG, Amazon, and Itch
+Everything you already see in Junk Store Pro is an extension. The Epic, GOG, Amazon, and Itch
 tabs are not special cases wired into the product; they are built from the same parts this
 guide describes, using the same hooks and the same configuration format available to you.
 There is no privileged internal path that the shipped extensions use and yours cannot.
@@ -59,7 +59,7 @@ That leaves a lot of room. Ideas that fit the existing contracts without stretch
 The last one is worth drawing out, because it is the least obvious. The Generator is an
 extension, its data lives in a database like any other, and preset files are just JSON. So a
 tool that produces extension definitions is a legitimate thing to build. It does not need to
-be inside Junk Store, and it does not need permission from the Generator.
+be inside Junk Store Pro, and it does not need permission from the Generator.
 
 ### Not everything has to look like a grid
 
@@ -125,7 +125,7 @@ It documents the whole surface: what an extension is made of, which scripts get 
 when, what they receive and what they must print, how configuration is declared and layered,
 and how a game gets launched.
 
-It is written for people **building extensions**, not for people working on Junk Store
+It is written for people **building extensions**, not for people working on Junk Store Pro
 itself. Everything described here is a documented contract you code against, and nothing in
 it requires a compiler, a source checkout, or development tools: the scripts are shell and
 Python, and the configuration is a form you fill in.
@@ -133,12 +133,12 @@ Python, and the configuration is a form you fill in.
 That makes the audience developers first, in the sense that the material is contracts and
 protocols rather than a tour of the interface. It does not make it closed to anyone else.
 Plenty of it is usable without writing code at all, and a curious user will find that the
-guide explains what Junk Store is doing on their behalf. It simply does not slow down to
+guide explains what Junk Store Pro is doing on their behalf. It simply does not slow down to
 teach shell scripting.
 
 ## Where the closed part is, and why it does not get in your way
 
-Junk Store's core is a compiled binary and is not distributed as source. That is worth stating
+Junk Store Pro's core is a compiled binary and is not distributed as source. That is worth stating
 plainly, because you will see `junk-store` invoked throughout this guide and should know what
 it is.
 
@@ -165,7 +165,7 @@ does not need to be.
 The limitation is real, though, and worth knowing before you hit it. **If a contract does not
 expose something, you cannot reach past it.** You can print a key the downloader protocol does
 not define and nothing will happen; you cannot add a new custom script name and have Junk
-Store call it. Where this guide says something is a fixed set, that is a genuine boundary and
+Store Pro call it. Where this guide says something is a fixed set, that is a genuine boundary and
 not an invitation to work around it. The honest answer in those cases is to ask for the
 contract to be widened, which has happened before. See
 [The system is still growing](#the-system-is-still-growing).
@@ -175,7 +175,7 @@ contract to be widened, which has happened before. See
 A few design decisions shape everything else, and knowing them makes the rest predictable.
 
 **Extensions are shell scripts, not plugins.** There is no API to compile against and no
-build step. An extension is a directory of scripts with known names, and Junk Store calls
+build step. An extension is a directory of scripts with known names, and Junk Store Pro calls
 them at known moments. This has a cost, in that a script gets less help than a typed plugin
 would, and a large benefit: anyone who can write a shell script can extend the product, and
 you can inspect and change anything on your own machine with a text editor.
@@ -200,12 +200,12 @@ ignored rather than refused, output in the wrong shape fails at run time rather 
 time, and nothing tells you a contract exists until you read about it. The `diagnostics`
 framework and the log files exist partly to soften that; they do not remove it.
 
-**None of it is withheld, though.** Junk Store only sees arguments going in and lines coming
+**None of it is withheld, though.** Junk Store Pro only sees arguments going in and lines coming
 out, so what produces those lines is entirely your business. A Rust binary, a Go program, a
 TypeScript tool compiled to something runnable: if it prints the right shape, it is an
 extension. That means the typed surface in the right hand column is not missing so much as
 unwritten. Somebody could build a library in a language of their choice that models the
-contracts, checks them at compile time, and emits the protocol, and Junk Store would neither
+contracts, checks them at compile time, and emits the protocol, and Junk Store Pro would neither
 know nor care.
 
 The reason that is not in the box is that it would have to exist for one language, and
@@ -245,7 +245,7 @@ name to a list. Actions are found because they are functions named `<Store>_<act
 is no manifest to keep in sync, and no install step to get wrong.
 
 **Generation from a definition.** You do not usually write `store.sh` by hand. You describe
-what actions exist and what each one does, and Junk Store generates the script. This is why
+what actions exist and what each one does, and Junk Store Pro generates the script. This is why
 editing a generated file does not last, and why regenerating is a step you have to remember;
 it is also what lets the interface understand an extension well enough to render it.
 
@@ -261,12 +261,12 @@ settings cannot express something, you can write the script yourself. The intent
 are never stuck at a level, but also never forced up to one you do not need.
 
 **What ships is a convenience, not a boundary.** This is the one most easily missed. Junk
-Store provides an rsync downloader, a set of launcher scriptlets, the Generator editors, and a
+Store Pro provides an rsync downloader, a set of launcher scriptlets, the Generator editors, and a
 collection of config sections. Each exists so that a common case needs no code. None of them
 is the limit of what an extension may do.
 
 The real constraints are the contracts: a script is handed certain arguments, and must print
-a certain shape on standard output. Satisfy those and Junk Store does not care what happened
+a certain shape on standard output. Satisfy those and Junk Store Pro does not care what happened
 in between. A downloader that fetches over a protocol nobody anticipated, or copies from
 media, or generates a game from nothing, is treated exactly like a shipped one, because the
 only thing being checked is the output.
@@ -285,7 +285,7 @@ not what either intended. This guide points those out where it finds them. See
 
 ## Some history, and why the shapes are odd
 
-Junk Store did not arrive fully formed. Parts of it were built for one purpose and turned out
+Junk Store Pro did not arrive fully formed. Parts of it were built for one purpose and turned out
 to be general, and the guide points this out where it explains something otherwise puzzling.
 
 The clearest example is the configuration format. It began as a way to edit DOSBox `.conf`
@@ -296,14 +296,14 @@ an Epic store's settings, and the Generator's own editors. It is also why a real
 can be read straight in.
 
 Other oddities have similar explanations, and the guide gives them where they matter: a set of
-environment variables named for a plugin system Junk Store no longer has anything to do with,
+environment variables named for a plugin system Junk Store Pro no longer has anything to do with,
 a misspelling that became part of a contract, a field that behaves differently depending on
 where it is used. These are noted rather than hidden. A guide that presents a system as
 cleaner than it is will mislead you at exactly the moment you need it most.
 
 ## The system is still growing
 
-Junk Store was not designed in one pass and then implemented. It grows when a real need
+Junk Store Pro was not designed in one pass and then implemented. It grows when a real need
 appears, and most of the machinery in this guide exists because something could not be done
 without it.
 
@@ -356,7 +356,7 @@ first one gets you a working extension without writing anything.
 
 If you are trying to understand a mechanism, the concepts sections explain how the pieces fit.
 They are worth reading once even if you never author an extension, because they explain what
-Junk Store is doing on your behalf.
+Junk Store Pro is doing on your behalf.
 
 If you are mid-task and need a fact, the reference sections hold the contracts: what each script
 receives, what it must print, what each setting does.

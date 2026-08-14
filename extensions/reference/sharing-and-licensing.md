@@ -139,6 +139,40 @@ host, ROMs path, and the use SSH flag. Those describe your machine rather than t
 extension, so expect to set them again after importing on a different setup. That
 includes importing your own export onto a second machine.
 
+### Known issue: an export is not a complete snapshot
+
+Two gaps are worth planning around if you are keeping an extension in git, since neither
+reports a problem.
+
+**Commandmap entries only round-trip their `SCRIPT`.** The rest of the entry is not
+included:
+
+| Field | In the export? |
+|---|---|
+| `SCRIPT` | Yes |
+| `title` | No |
+| `script-set` | No |
+| `confirm` | No |
+| `type` | No |
+
+Reimporting brings the body back without its wiring.
+
+**Download method and Data source need setting in the Generator, or they will not be in
+your export.** Both also have to be set in the tab configuration UI for the extension to
+work on your own machine, so it is easy to set the second, see everything working, and ship
+an export without them.
+
+If you only ever set them through the tab configuration UI, **your extension works for you
+and arrives on someone else's Deck with the defaults.** See
+[Settings](settings.md#download-method-and-data-source-set-them-in-two-places).
+
+**Check your export before sharing it.** Both values should appear in the `.json`. This is
+the single most likely reason an extension that works locally does nothing for whoever you
+sent it to.
+
+Treat an export as most of an extension rather than all of it, and keep a note of anything
+you set by hand.
+
 ## Sharing with someone else
 
 **Read the licensing section below before you share anything derived from a shipped
@@ -156,13 +190,13 @@ For them to use it:
 3. Run **Regenerate installed extensions**.
 
 Sending someone the file is the way to share an extension. Distributing through Junk
-Store itself is not something you can do; the extensions offered in **Download preset
+Store Pro itself is not something you can do; the extensions offered in **Download preset
 from server** are published by the Junk Store project.
 
 ## Only import extensions from people you trust
 
 **An extension is executable code, not a settings file.** Importing one and regenerating puts
-shell and Python scripts on your machine that Junk Store will run. Treat receiving a `.json`
+shell and Python scripts on your machine that Junk Store Pro will run. Treat receiving a `.json`
 export exactly as you would treat being sent a shell script and told to run it.
 
 What an imported extension can do, if its author intended harm:
@@ -172,7 +206,7 @@ What an imported extension can do, if its author intended harm:
   your files, read your saves and configuration, reach the network, install other software,
   add things that persist across reboots.
 - **Run before you choose to do anything with it.** This is the part people get wrong. Code
-  does not wait until you press install. To find out which stores exist, Junk Store sources
+  does not wait until you press install. To find out which stores exist, Junk Store Pro sources
   every extension's `store.sh`, and each `store.sh` sources its own `settings.sh` at the top.
   So an imported extension gets to run code simply by being present. Importing it *is* running
   it.
@@ -198,7 +232,7 @@ that reads like configuration.
   assistant deserves the same reading as one from a stranger. It is not malicious, but it is
   not reviewed either, and it will run with the same permissions.
 
-None of this is unique to Junk Store; it is the ordinary risk of running someone else's code.
+None of this is unique to Junk Store Pro; it is the ordinary risk of running someone else's code.
 It is worth stating plainly because an extension arrives looking like a settings file rather
 than like a program.
 

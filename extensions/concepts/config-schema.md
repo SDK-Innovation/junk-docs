@@ -1,6 +1,6 @@
 # The config schema format
 
-Every configuration screen in Junk Store, the tab config, the game config, the install
+Every configuration screen in Junk Store Pro, the tab config, the game config, the install
 options form, and the Generator's own editors, is rendered from the same data structure.
 This section describes that structure.
 
@@ -199,7 +199,7 @@ Some practical consequences:
 
 **An imported DOSBox conf is the exception, and shows where the descriptions really come
 from.** A `.conf` carries only keys and values, so on its own it would give you a wall of
-settings with an empty panel beside each one. It does not, because Junk Store ships a schema
+settings with an empty panel beside each one. It does not, because Junk Store Pro ships a schema
 for each DOSBox fork, carrying DOSBox's own documentation for every option across all of its
 sections.
 
@@ -404,7 +404,7 @@ and has a meaningful "not set" state.
 
 ## Shipped schemas for runtimes
 
-Junk Store ships a schema for each runtime it knows, describing that runtime's own settings
+Junk Store Pro ships a schema for each runtime it knows, describing that runtime's own settings
 rather than any extension's. They live in `conf_schemas`, named for the platform, fork and
 version they apply to, which is the same triple config sets are keyed on:
 
@@ -463,7 +463,7 @@ looking at the stored data directly and wondering where it went.
 ## Declaring fields from a script
 
 You rarely build this JSON by hand. The usual route is the `key:::label:::value` format,
-where the type is inferred from the value and Junk Store builds the option objects for you.
+where the type is inferred from the value and Junk Store Pro builds the option objects for you.
 That covers Boolean, Enum, Range, Number, and String, which is most of what you need.
 
 See [The pre install form](../reference/custom-scripts.md#the-pre-install-form-getdeps-getdlc-getlanguages-userconfigs)

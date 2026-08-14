@@ -9,11 +9,57 @@ See [When a game will not run](guides/when-a-game-will-not-run.md).
 If a word here is unfamiliar, the [glossary](../glossary.md) explains the vocabulary in
 plain language.
 
+## Nothing happened and there is no error
+
+**Known issue: several things fail without reporting anything.** Your entry is stored, the
+editor shows it, generation reports success, and no file appears or no value takes effect.
+Nothing is written to a log.
+
+This is the single most common way to lose an hour, so the list is worth knowing. Work down
+it when something that should have happened did not.
+
+| Symptom | Likely cause |
+|---|---|
+| A custom script is in the database but no file is written | The entry has no **`filename`**, or its **name is not one Junk Store recognises**. See below |
+| A commandmap override runs the stock behaviour | The `script` body **failed to parse** and the default was written instead |
+| A setting imported from a preset has no effect | **Download method or Data source.** The generated tab config is preserved and wins. See [Settings](reference/settings.md#download-method-and-data-source-set-them-in-two-places) |
+| A tab populates nothing and `listing.txt` is 0 bytes | Usually the above: the extension is still on a download method you did not intend |
+| An extension works for you but not for whoever you shared it with | Download method or Data source were set in the tab config UI only, so they are not in the export |
+| Everything looks installed, or nothing does | The `steamclientid` column is what the interface reads. See [Items that are not games](guides/non-launchable-items.md#install-state-is-steamclientid) |
+
+### A custom script that is never written
+
+Two different causes produce an identical result, and neither reports anything:
+
+**The entry has no `filename`.** That field decides what gets written. It is not defaulted
+from the entry's name, so a hand-made entry without it produces nothing even with
+`generate` on and a script body present. Shipped extensions all carry it, which is why the
+requirement is easy to miss. **Check this first.**
+
+**The name is not one Junk Store recognises.** Generation only writes files for the fixed
+set of known script names. An entry named something of your own is stored, shown in the
+editor, and never written, whether `filename` is set or not.
+
+**`userlib` is the one slot for your own code.** If you need a helper script, that is where
+it goes. See [Custom scripts](reference/custom-scripts.md).
+
+### A commandmap script that is silently replaced
+
+**A `script` body that is not valid shell is discarded, and the default body is generated
+in its place.** The value stays in the database and stays visible in the editor, so the
+action behaves as though the override was never written.
+
+A single stray line is enough to drop the whole script.
+
+If an override is being ignored and the path and spelling are right, compare the stored
+value against the generated file. If the generated file holds the stock one-liner, the body
+did not parse.
+
 ## My change did not do anything
 
 This is the most common problem, and it usually has one of two causes.
 
-**You did not regenerate.** Junk Store generates the scripts it runs from the
+**You did not regenerate.** Junk Store Pro generates the scripts it runs from the
 Generator database. Editing a setting, or editing a script and stopping there, does
 not change what runs.
 
@@ -24,7 +70,7 @@ extensions.
 **You edited a script but did not import it first.** The Generator regenerates from
 its database, not from your files. If you edited a script and then regenerated, your
 edit was overwritten by whatever the database still held. This is especially easy to
-hit when you edit in an external editor such as VS Code, since nothing in Junk Store
+hit when you edit in an external editor such as VS Code, since nothing in Junk Store Pro
 knows those files changed.
 
 Fix, in this order:
@@ -53,7 +99,7 @@ Check the path and the store name spelling. It has to be exactly:
 ~/.config/junkstore/overrides/<Store>/store.sh
 ```
 
-`<Store>` matches the store name Junk Store uses, such as `Epic`, `Gog`, `Amazon`,
+`<Store>` matches the store name Junk Store Pro uses, such as `Epic`, `Gog`, `Amazon`,
 `Itch`. Confirm the store's own script is looking for it:
 
 ```bash
@@ -81,9 +127,49 @@ fails to load, usually silently:
 bash -n ~/.config/junkstore/overrides/Epic/store.sh
 ```
 
+## Database is locked
+
+Each store has its own SQLite database, and several processes reach for it at once: the
+interface, your scripts, the download queue, and any refresh in flight. **Ordinary
+contention is handled.** Writers queue rather than failing, so a brief overlap costs a short
+wait and nothing more.
+
+**So a lock error means sustained pressure, not an unlucky collision.** Something is writing
+much more often than the design expects, and it is nearly always an extension doing it.
+
+**The usual causes, in the order worth checking:**
+
+**A refresh triggered from a code path that runs often.** A full refresh writes one row per
+item. Firing it from something that happens repeatedly, such as a list-empty check, turns a
+single expensive operation into a continuous one. This is the most common cause and the
+easiest to introduce by accident.
+
+**Per-item work at scale.** A refresh spawns one `getgameinfo` process per item, and
+rendering a list spawns one process per row for its menu. At a few dozen games that is
+invisible. At several hundred it is a sustained load, and anything writing underneath it
+will contend.
+
+**Polling.** A script that checks state in a loop, rather than waiting to be called, adds
+pressure for as long as it runs.
+
+**What to do:**
+
+- **Find what is writing repeatedly**, rather than trying to make the writes faster. The
+  fix is almost always removing a refresh, not optimising one.
+- **Cache expensive work** in `getgameinfo`. It runs once per item, so a directory walk or
+  a size calculation inside it is multiplied by the list size.
+- **Do not refresh on a condition that recurs.** Refresh on an explicit user action, or once
+  when a tab has genuinely never been populated.
+
+**A caution about copying shipped extensions.** The Itch extension's `GetGames` override
+fires a full refresh whenever the list comes back empty, which populates a new tab on first
+open. Copied into an extension with a few hundred items it produces a full refresh and a
+full set of row writes landing underneath whatever else is reading, and it is a direct cause
+of lock errors. Take the pattern only if your list is small.
+
 ## Reading the logs
 
-You do not need Desktop Mode or a terminal for this. **Use Junk Store's own file
+You do not need Desktop Mode or a terminal for this. **Use Junk Store Pro's own file
 manager**, which will open a log in its text viewer.
 
 1. Open the file manager.
@@ -109,7 +195,7 @@ install directory in the file manager and open it there.
 
 That file records the resolved game path, the arguments, dependency installation, and the
 final command, which is usually enough to see why a launch failed. Because the Steam
-shortcut runs the launcher directly, it is written whether or not Junk Store was open.
+shortcut runs the launcher directly, it is written whether or not Junk Store Pro was open.
 
 ### From a terminal instead
 
@@ -146,7 +232,7 @@ journalctl --user -u junk-loader.service -f
 ## An action runs but the UI shows nothing, or shows an error
 
 Actions report back by printing JSON on stdout. If the JSON is malformed, or if
-your script prints anything else before it, Junk Store cannot read the result.
+your script prints anything else before it, Junk Store Pro cannot read the result.
 
 Run the script by hand to see exactly what it prints:
 
@@ -163,6 +249,36 @@ echo "debug info" >&2
 ```
 
 See [Action results](reference/actions-and-types.md#action-results) for the expected shapes.
+
+## Process exited with code 127
+
+**127 means "not found", and two different things produce it.** Having found one, it is easy
+to fix something that was never in the failing path, because the error does not change.
+
+**The extension has no `downloader` script.** This is the usual cause when the message comes
+from the download queue. The queue's row carries `game_id`, `path` and `mode`, which mirror
+`downloader`'s three arguments exactly, so a row that looks correct alongside a 127 points
+at the script being absent rather than at its arguments being wrong.
+
+**The interpreter is not on PATH.** See below. A `#!/usr/bin/env python3` shebang that works
+when the script is called directly can still fail from a commandmap body.
+
+## An action cannot find python3, or another interpreter
+
+**Known issue: actions run with a PATH that does not include `/usr/bin`.** A commandmap body
+calling `python3` exits 127, while the same shebang in a script Junk Store invokes directly,
+such as `getlisting` or `getgameinfo`, works.
+
+The inconsistency between the two contexts is the surprising part, and it is worth knowing
+before you spend time on the script itself.
+
+**Do not rely on PATH in a commandmap body.** Use an absolute interpreter path, with a
+lookup as a fallback:
+
+```bash
+PY="$(command -v python3 || echo /usr/bin/python3)"
+"$PY" "$SCRIPT"
+```
 
 ## I typed a value into a field and now it is broken
 

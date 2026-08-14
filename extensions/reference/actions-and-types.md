@@ -7,12 +7,12 @@ field types. For how any of it fits together, see the concepts sections.
 
 | Path | What it is |
 |---|---|
-| `~/.local/share/junkstore/scripts/Extensions/<Store>/` | The scripts Junk Store runs, and what the Generator imports from |
+| `~/.local/share/junkstore/scripts/Extensions/<Store>/` | The scripts Junk Store Pro runs, and what the Generator imports from |
 | `~/.config/junkstore/overrides/<Store>/store.sh` | Your personal action overrides |
 | `~/.config/junkstore/databases/generator.db` | The Generator database, source of truth for regeneration |
 | `~/.config/junkstore/` | Settings and databases generally |
 
-Junk Store does not use any other location. References to `homebrew` in older
+Junk Store Pro does not use any other location. References to `homebrew` in older
 notes or internal strings are historical.
 
 ## Actions
@@ -69,7 +69,7 @@ per platform scriptlets in `launchers/`, not by an action in `store.sh`. The
 
 ## Action results
 
-Scripts talk to Junk Store by printing JSON on stdout. Two shapes you will use
+Scripts talk to Junk Store Pro by printing JSON on stdout. Two shapes you will use
 most:
 
 **Success**
@@ -96,6 +96,60 @@ Other `Type` values exist for structured content, for example `GameGrid` for a
 game list, `GameDetails`, `GameImages`, `GameSize`, `Status`, and the various
 editor types. The simplest way to get these right is to read the corresponding
 script in a shipped extension and match its output.
+
+### How long a result stays on screen
+
+**The two types differ in more than wording**, which is worth knowing before deciding which
+to return:
+
+| Type | Shown as | Stays? |
+|---|---|---|
+| `Success` | A toast | No. It fades, and is easily missed |
+| `Error` | A dialog | Yes, until dismissed |
+
+**Known issue: there is no advisory type between them.** Anything the user has to read has
+to be returned as an `Error` to stay on screen, which means a deliberate refusal renders
+under *Something went wrong*.
+
+A safety check such as "this version is used by 2 games" therefore reads as a fault. Until
+a third type exists, an error dialog with carefully chosen wording is usually the lesser of
+the two, since a toast the user misses is worse than one that overstates its severity.
+
+**`getdetails` is not rendered when the tab is a list.** It returns a `Description`, and
+that only reaches the screen for a grid. Overriding the action is wasted work on a
+list-rendered tab.
+
+### What a list row receives
+
+Each item in a game list arrives with six fields, and nothing else:
+
+```
+ID, SteamClientID, Publisher, Images, ShortName, Name
+```
+
+That decides what you can put in front of someone while they browse:
+
+| Field | Rendered? | Use |
+|---|---|---|
+| `Name` | Yes | The only place to surface per-item state |
+| `Publisher` | Yes, at the right of the row | The second visible field. A natural home for a size, a date or a source on anything that is not a game |
+| `Images` | Yes | The only visual channel |
+| `ID`, `ShortName`, `SteamClientID` | No | Identity and install state |
+
+**Rows cannot be coloured or styled.** There is no status, class or style field, so any
+design that depends on marking rows visually needs rethinking before you start.
+
+**`notes` never reaches the list**, and neither does anything else you emit. Keys outside
+the documented set are dropped.
+
+### `SteamClientID` is what "installed" means
+
+**The interface treats an item as installed when its `steamclientid` column has a value.**
+That drives the installed filter and the per-row controls.
+
+The install lifecycle normally writes it. An extension that installs its own items never
+goes through that lifecycle, so it has to maintain the column itself. See
+[Items that are not games](../guides/non-launchable-items.md#install-state-is-steamclientid).
 
 ## Action types
 
@@ -169,8 +223,8 @@ Found in the Generator tab:
 | Save all scripts back to DB | The same, across all extensions |
 | Import the preset from a file | Load an extension from a `.json` file. Done from the command line, see below |
 | Export the preset to a file | Save an extension to a `.json` file. Done from the command line, see below |
-| Download preset from server | Fetch one Junk Store extension |
-| Download all presets from server | Fetch all Junk Store extensions |
+| Download preset from server | Fetch one Junk Store Pro extension |
+| Download all presets from server | Fetch all Junk Store Pro extensions |
 | Delete Extension | Remove an extension |
 | Add Game | Add a single game entry. Reached through the file manager rather than a form, see below |
 | Extension wizard | Create a new extension from answers to a few questions |
@@ -219,7 +273,7 @@ scripts rather than the ones you edited.
 Store project.
 
 **`importpresetfile` runs somebody else's code.** An extension contains shell and Python
-scripts that Junk Store executes as you, unsandboxed, and some of them run simply because the
+scripts that Junk Store Pro executes as you, unsandboxed, and some of them run simply because the
 extension is present. Only import from a source you trust, and read the scripts first if you
 are unsure. See
 [Only import extensions from people you trust](sharing-and-licensing.md#only-import-extensions-from-people-you-trust).

@@ -1,24 +1,32 @@
-# Junk Store documentation
+# Junk Store Pro documentation
 
-Documentation for [Junk Store](https://junkstore.xyz), a game launcher for the Steam Deck.
+Documentation for [Junk Store Pro](https://junkstore.xyz), a game launcher for the Steam Deck.
+
+**All of this documents Junk Store Pro, not the free Decky plugin.** The two share a name and
+a good deal of behaviour, but they aren't the same product, and much of what's described here
+either works differently on the plugin or isn't there at all.
 
 Each top-level directory is a section, written to be read on its own.
 
 | Section | For |
 |---|---|
-| [Extensions](extensions/) | Writing extensions: the scripts Junk Store calls, what they receive, what they print, and how configuration reaches them |
+| [Using Junk Store Pro](user/) | Using the product: the File Manager, and how to get things done day to day |
+| [Extensions](extensions/) | Writing extensions: the scripts Junk Store Pro calls, what they receive, what they print, and how configuration reaches them |
 
-[**Glossary**](glossary.md) — the vocabulary used across all of it, in plain language.
-Start here if a word is unfamiliar.
+The [**glossary**](glossary.md) explains the vocabulary used across all of it, in plain
+language. Start here if a word is unfamiliar.
 
 ## Building the PDF
 
 Any section can be rendered as a single PDF. This builds the extension documentation:
 
 ```bash
-./build-pdf.sh                  # -> junk-store-extensions.pdf
-./build-pdf.sh /path/to/out.pdf
+./build-pdf.sh                       # extensions -> junk-store-extensions.pdf
+./build-pdf.sh user                  # user       -> junk-store-user.pdf
+./build-pdf.sh user /path/to/out.pdf
 ```
+
+The glossary is appended to every section, since it serves all of them.
 
 Needs `python3` and either `chromium` or `google-chrome`. The script is read-only:
 it renders a copy in a temporary directory and never modifies the markdown.
@@ -44,7 +52,7 @@ provided you credit the source. You may not distribute modified versions.
 Faithful translations are granted an explicit exception. See
 [CONTRIBUTING.md](CONTRIBUTING.md#licence).
 
-This covers the documentation only. Junk Store's shipped extensions are source
+This covers the documentation only. Junk Store Pro's shipped extensions are source
 available rather than open source, which is a separate matter. See
 [Sharing and licensing](extensions/reference/sharing-and-licensing.md#what-you-may-and-may-not-share)
 for what applies to extension code.

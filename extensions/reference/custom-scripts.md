@@ -1,6 +1,6 @@
 # Custom scripts, and where each one is called from
 
-Custom scripts are the hooks an extension provides. Junk Store looks for a script by
+Custom scripts are the hooks an extension provides. Junk Store Pro looks for a script by
 name at the point it needs that job done, runs it if present, and skips it if not.
 
 What follows lists the scripts, what each is for, and when it gets called.
@@ -40,12 +40,12 @@ given script should output. Itch is the smallest of the four and the easiest to 
 
 Three things are worth knowing before the list.
 
-**They are found by name.** Junk Store builds the path from the extension directory
+**They are found by name.** Junk Store Pro builds the path from the extension directory
 and the script name, then checks whether the file exists. Nothing registers a hook;
 the file's presence is the registration. That is why the names matter and why a typo
 means silence rather than an error.
 
-**Your config arrives as environment variables.** Before running a script, Junk Store
+**Your config arrives as environment variables.** Before running a script, Junk Store Pro
 turns the tab configuration into environment variables and passes them in. So a script
 reads settings from the environment rather than taking them as arguments. This is the
 same mechanism the launcher uses.
@@ -57,7 +57,7 @@ its output.
 
 **They are optional, but the set is fixed.** A simple extension needs very few of these, so
 supply only the ones whose behaviour you need. What you cannot do is invent a new one: the
-names below are the names Junk Store looks for, each at its own specific point. A script
+names below are the names Junk Store Pro looks for, each at its own specific point. A script
 named anything else would never be called.
 
 If you need extra code of your own, put it in `userlib` and call it from one of the scripts
@@ -145,6 +145,7 @@ error, so emit only what you know:
 | `genre` | string | Free text. A single string, not a list |
 | `release_date` | string | Free text, so any format your source gives you is accepted |
 | `sorting_title` | string | Used for alphabetical ordering. **Falls back to `title`** when absent, so only set it when they differ, such as dropping a leading "The" |
+| | | Sorting is **ascending and textual**. Newest-first needs an inverted, zero-padded key: without padding, `10-9` sorts after `10-10` |
 | `database_id` | string | Your source's own identifier for the game |
 | `store_url` | string | A web address for the game |
 | `images` | array | Artwork, see below |
@@ -152,6 +153,12 @@ error, so emit only what you know:
 **`getgameinfo` only runs when Data source is `script`.** Any other value means artwork and
 metadata are looked up externally instead and your script is never called. That is the setting
 to check first when a `getgameinfo` you wrote appears to be ignored.
+
+**It runs once per listed item, as its own process.** At a few dozen games that is
+invisible. At a few hundred it is the dominant cost of a refresh, and anything expensive
+inside it is multiplied by the list size. Walking an install directory to report a size cost
+roughly 30,000 extra `stat()` calls per refresh in one extension before it was cached. See
+[Items that are not games](../guides/non-launchable-items.md#scale).
 
 **The `images` array.** Each entry is an object with four keys, all optional:
 
@@ -603,10 +610,10 @@ Taking those in turn:
 to exporting the three paths yourself. The fallback matters, since the file is not guaranteed
 to be there.
 
-The `DECKY_` prefix on those variable names is **legacy**. Junk Store is not a Decky plugin
+The `DECKY_` prefix on those variable names is **legacy**. Junk Store Pro is not a Decky plugin
 and has no Decky runtime dependency; the names date from an early plan to stay backwards
 compatible with Decky, which was dropped. They are technical debt kept only because scripts
-already reference them, and their values point at Junk Store's own directories:
+already reference them, and their values point at Junk Store Pro's own directories:
 
 | Variable | Actually points at |
 |---|---|
@@ -632,11 +639,11 @@ names directly would break at that point. Two habits keep the damage to a minimu
   ```
 
 - **Prefer the shared env file over exporting them yourself.** Sourcing
-  `~/.config/junkstore/env.sh` when it exists means the definitions come from Junk Store, so a
+  `~/.config/junkstore/env.sh` when it exists means the definitions come from Junk Store Pro, so a
   rename arrives with the update. Keep your fallback branch, but understand that it is the part
   most likely to go stale, since it hard codes both the names and the paths.
 
-If a script of yours suddenly cannot find its directories after a Junk Store update, an
+If a script of yours suddenly cannot find its directories after a Junk Store Pro update, an
 unprefixed rename is the first thing to check. Compare against a shipped extension's script,
 which will have been updated alongside the change.
 
@@ -650,7 +657,7 @@ from breaking other distributions.
 **4. Working directory.** Change into the junkstore directory before invoking the client, since
 the shipped scripts call it by relative path.
 
-**5. Flush the login status cache.** Junk Store caches whether you are logged in, so without
+**5. Flush the login status cache.** Junk Store Pro caches whether you are logged in, so without
 this the interface keeps showing the old state. Do the same in your `logout` script.
 
 If your store's login is non interactive, a token or a device code with no GUI, you can skip
@@ -683,7 +690,7 @@ All three are read by name, so all three need to be present. `workingdir` and `g
 written back as the game's stored paths, which means a wrong value here does not just affect
 this launch, it updates the record.
 
-**Its mere existence changes the launch path.** Junk Store checks whether the
+**Its mere existence changes the launch path.** Junk Store Pro checks whether the
 `get-launch-options` file is present, and if it is, your script becomes the authority on all
 three paths. If it is absent, the paths are worked out from the game's stored record instead.
 So adding this script takes over path resolution entirely, and removing it hands that back.
@@ -739,7 +746,7 @@ as unsupported.
 |---|---|---|---|
 | `diagnostics` | none | none | One JSON object of test results, see below |
 
-This one is wired into a real feature. Junk Store has a **diagnostics framework** with its own
+This one is wired into a real feature. Junk Store Pro has a **diagnostics framework** with its own
 tab in the diagnostics modal, and your script's results appear there alongside the core and
 system checks. Use it to report your extension's health: whether the client binary is present,
 whether tokens exist, what paths resolved.
@@ -833,7 +840,7 @@ Return `{"error": "..."}` only if the check itself could not run; a failed *chec
 
 | File | Purpose |
 |---|---|
-| `junklib` | The helper Junk Store ships. Imported by your scripts |
+| `junklib` | The helper Junk Store Pro ships. Imported by your scripts |
 | `userlib` | The slot for your own shared code |
 | `settings` | Becomes `settings.sh`, which is sourced before anything else |
 
@@ -863,7 +870,7 @@ Custom scripts are managed through the Generator's **customscripts** editor, whi
 controls the contents, the filename it is written as, and whether it is bash or python. See
 [customscripts: extra scripts](../concepts/the-generator.md#customscripts-extra-scripts).
 
-That choice of two is the editor's, not the contract's. Junk Store runs the file and reads
+That choice of two is the editor's, not the contract's. Junk Store Pro runs the file and reads
 what it prints, so a hook you write and place yourself can be anything executable, including
 a compiled binary. Bash and python are what the editor will generate for you.
 
@@ -882,6 +889,45 @@ For a script that already exists, the workflow is the same as any script change:
 Import before you regenerate, or your edit is overwritten. See
 [Authoring by hand](../guides/authoring-by-hand.md#order-matters-and-getting-it-wrong-loses-your-work).
 
+### Two reasons no file appears
+
+**Known issue: both of these fail silently.** The entry is stored, the editor shows it,
+generation reports success, and nothing is written. No error, no log line.
+
+**`filename` must be set, or nothing is written.** That field decides what the file is
+called, and it is **not** defaulted from the entry's name. `generate` reads like the switch
+controlling whether a file appears, and `filename` reads like an optional override of an
+obvious default, but an entry without it produces nothing however complete the rest is.
+Shipped extensions all carry it, which is exactly why the requirement is easy to miss.
+
+**Check `filename` first** when a file does not appear.
+
+**A name Junk Store does not recognise is never written**, with or without `filename`.
+Generation only writes files for the fixed set of hook names listed on this page. An entry
+called `installtool` or `removetool` is stored in `generator.db`, shows in the editor, and
+never reaches disk.
+
+The two failures are indistinguishable from the interface, which is what makes them
+expensive to diagnose. If `filename` is set and the file still does not appear, the name is
+the cause.
+
+**`userlib` is the one slot for your own code**, and the answer to "where do I put a helper
+script". It is a single row in the table above and easy to overlook.
+
+### Interpreters and PATH
+
+**Known issue: actions run with a PATH that does not include `/usr/bin`.** A commandmap body
+calling `python3` exits 127, while the same `#!/usr/bin/env python3` shebang works in a
+script Junk Store invokes directly, such as `getlisting` or `getgameinfo`.
+
+The inconsistency between the two contexts is the surprising part. **Do not rely on PATH in
+a commandmap body**; use an absolute interpreter path with a lookup as a fallback:
+
+```bash
+PY="$(command -v python3 || echo /usr/bin/python3)"
+"$PY" "$SCRIPT"
+```
+
 ## Testing a hook
 
 Because the scripts are ordinary executables that read the environment and print to
@@ -893,11 +939,11 @@ cd ~/.local/share/junkstore/scripts/Extensions/MyStore
 ./getgameinfo some-game-shortname
 ```
 
-Run by hand they will not have the config environment Junk Store provides, so set any
+Run by hand they will not have the config environment Junk Store Pro provides, so set any
 variable the script depends on first. Checking the output shape this way is much faster
 than triggering the action through the interface each time.
 
-If a hook works by hand but not in Junk Store, the usual causes are a missing
+If a hook works by hand but not in Junk Store Pro, the usual causes are a missing
 environment variable it silently depended on, or output that is not the shape the
 caller expects. See [Action results](actions-and-types.md#action-results) and
 [Troubleshooting](../troubleshooting.md).

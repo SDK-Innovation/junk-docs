@@ -1,6 +1,6 @@
 # Glossary
 
-Words that come up in Junk Store and in this documentation, in plain language.
+Words that come up in Junk Store Pro and in this documentation, in plain language.
 
 You do not need to read this. It is here so that if you meet a word you do not
 know, particularly if you have wandered into the developer documentation, there
@@ -11,10 +11,10 @@ alphabetically, since related words are easier to understand together.
 
 ---
 
-## Things you see in Junk Store
+## Things you see in Junk Store Pro
 
 **Extension**
-: The part of Junk Store that knows about one place your games come from. Epic,
+: The part of Junk Store Pro that knows about one place your games come from. Epic,
 GOG, Amazon and Itch are extensions, and so is a folder of DOS games you set up
 yourself. Each one appears as its own tab. If you have ever installed a browser
 add-on, the idea is the same: the main program stays the same, and extensions
@@ -26,7 +26,7 @@ the machinery; the store is what you see. The documentation uses "store" when it
 means the tab you click and "extension" when it means the files behind it.
 
 **Tab**
-: The row of names along the top of Junk Store. One per extension, plus the
+: The row of names along the top of Junk Store Pro. One per extension, plus the
 Generator and the download queue. Those last two are extensions as well, built on
 the same machinery as the rest.
 
@@ -43,7 +43,7 @@ games. No files, no scripts.
 
 **Preset**
 : A ready-made extension you can download rather than build. The presets on the
-server are the official Junk Store ones, such as Epic and GOG. An extension
+server are the official Junk Store Pro ones, such as Epic and GOG. An extension
 someone else wrote is not a preset and arrives as a file instead.
 
 **Settings and configuration**
@@ -65,7 +65,7 @@ differently: a Windows game needs Proton, a DOS game needs DOSBox, a console gam
 needs an emulator. The launcher is whichever of those applies.
 
 **Platform**
-: Junk Store's word for which launcher a game uses. Setting a game's platform to
+: Junk Store Pro's word for which launcher a game uses. Setting a game's platform to
 `Proton` means "start this with Proton". The shipped ones include `Proton`,
 `Linux`, `Dosbox`, `RetroArch`, `ScummVM`, `Dolphin`, `Ryujinx` and `Yuzu`.
 
@@ -81,13 +81,14 @@ Proton is a version of Wine that Valve maintains for games.
 **Prefix**, sometimes **Wine prefix**
 : A private folder that pretends to be a Windows installation, holding the fake
 C: drive, the registry and the settings for one game. Each game normally gets its
-own, which is why one game's Windows quirks do not affect another. If a Windows
-game starts misbehaving, deleting its prefix is a common fix, though it also
-loses anything stored inside it.
+own, which is why one game's Windows quirks do not affect another.
+**A Windows game's saved games usually live in here**, so a prefix is worth
+looking inside before you delete it. Deleting the prefix is a common fix when a
+game misbehaves, but it takes the saves with it unless you copy them out first.
 
 **ROM**
 : A copy of a game from a cartridge or disc, as a file on disk. Emulators run
-these. Junk Store never supplies them; you point it at ones you already have.
+these. Junk Store Pro never supplies them; you point it at ones you already have.
 
 **Emulator**
 : A program that imitates older hardware so its games can run. RetroArch, Dolphin
@@ -98,7 +99,7 @@ and ScummVM are emulators.
 DOSBox-X and DOSBox Staging are alternative versions of it, with more features.
 
 **Shortcut**
-: An entry in your Steam library. Junk Store adds one per installed game, so games
+: An entry in your Steam library. Junk Store Pro adds one per installed game, so games
 it manages appear in your library and can be launched from there like anything
 else.
 
@@ -107,14 +108,14 @@ else.
 ## The Steam Deck itself
 
 **Game Mode**
-: The controller-driven interface the Deck starts in. Junk Store runs inside it.
+: The controller-driven interface the Deck starts in. Junk Store Pro runs inside it.
 
 **Desktop Mode**
 : The ordinary Linux desktop, reached from the power menu. Some operations are
 easier there because you have a keyboard, a mouse and a terminal.
 
 **Terminal**, or **command line**
-: A window where you type commands rather than clicking. A few Junk Store
+: A window where you type commands rather than clicking. A few Junk Store Pro
 operations are deliberately only available this way, importing an extension being
 the main one, because it makes them slow enough to think about first.
 
@@ -122,6 +123,22 @@ the main one, because it makes them slow enough to think about first.
 : A way of connecting to another machine over the network to run commands on it.
 Used for putting games on a server rather than the Deck itself, and for reaching
 your Deck from a computer.
+
+**SSH key**
+: A pair of files that proves who you are to another machine, used instead of a
+password. The *private* half stays on your machine and should be guarded like a
+password. The *public* half is copied to machines you connect to, and is safe to
+share. Junk Store Pro authenticates this way because a password cannot be typed from
+Game Mode.
+
+**authorized_keys**
+: The file on a machine listing the public keys allowed to connect to it. Pairing
+adds a key here; removing a trusted key takes it out again.
+
+**Pairing**
+: Granting one machine access to another, by comparing a six digit code shown on
+both and accepting. What it grants is SSH access to the whole user account, not
+only to Junk Store Pro.
 
 **Flatpak**
 : A way of packaging Linux applications so they run anywhere, bundling what they
@@ -135,7 +152,7 @@ You will only meet these if you have opened the extension documentation. They ar
 here so it is readable, not because you need them.
 
 **Script**
-: A text file of commands that a computer runs in order. Junk Store extensions are
+: A text file of commands that a computer runs in order. Junk Store Pro extensions are
 built from scripts, which is why they can be read and changed without any
 development tools.
 
@@ -171,7 +188,7 @@ the original extension. Your change survives updates because the extension is le
 alone.
 
 **Generate**, or **regenerate**
-: Junk Store stores an extension's definition in a database and writes the actual
+: Junk Store Pro stores an extension's definition in a database and writes the actual
 scripts out from it. Regenerating is that writing-out step. Changing a setting or
 a script does not take effect until you regenerate, which is the single most
 common reason a change appears to do nothing.
@@ -187,12 +204,12 @@ configuration, such as DOSBox-X alongside DOSBox.
 : The editor in the Generator listing an extension's actions and how each is run.
 
 **Database**
-: A file storing structured information. Junk Store keeps its extension
+: A file storing structured information. Junk Store Pro keeps its extension
 definitions, your games and their settings in several of these.
 
 **JSON**
 : A text format for structured data, used for configuration files and for what
-scripts print back to Junk Store. Readable, if fussy about punctuation.
+scripts print back to Junk Store Pro. Readable, if fussy about punctuation.
 
 **CLI**
 : Command Line Interface. A program you drive by typing rather than clicking.

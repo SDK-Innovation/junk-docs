@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Join the extension docs into one printable HTML file.
+"""Join one section of the docs into one printable HTML file.
 
 Read-only. Takes the markdown as it is on disk and writes a single HTML file
 somewhere else; nothing under the docs directory is modified.
 
-Usage: md2html.py <docs-root> <output.html> <page.md> [page.md ...]
+Usage: md2html.py [--title T] [--subtitle S] [--note N] \
+                  <docs-root> <output.html> <page.md> [page.md ...]
+
+The cover differs per section, so build-pdf.sh supplies those three.
 
 Deliberately small: it handles the subset of markdown these documents use
 (headings, tables, fenced code, lists, blockquotes, links, inline emphasis and
@@ -49,7 +52,7 @@ li { margin: .25em 0; }
 a { color: #05a; text-decoration: none; }
 hr { border: none; border-top: 1px solid #ccc; margin: 1.5em 0; }
 figure { margin: 1em 0; page-break-inside: avoid; text-align: center; }
-figure img { max-width: 100%; height: auto; border: 1px solid #bbb; border-radius: 3px; }
+figure img { max-width: 74%; height: auto; border: 1px solid #bbb; border-radius: 3px; }
 figcaption { font-size: 8.5pt; color: #555; margin-top: .4em; text-align: left;
              line-height: 1.35; }
 .cover { page-break-after: always; text-align: center; padding-top: 28vh; }
@@ -64,6 +67,15 @@ figcaption { font-size: 8.5pt; color: #555; margin-top: .4em; text-align: left;
 .toc .part { font-family: "DejaVu Sans", Helvetica, sans-serif; font-weight: bold;
              margin-top: 1em; }
 """
+
+# Neutral fallbacks, so a caller that forgets an option does not mislabel the
+# document. build-pdf.sh overrides all three.
+COVER = {
+    'title': 'Junk Store Pro',
+    'subtitle': 'Documentation',
+    'note': 'Cross references between pages appear as plain text here; the '
+            'online version links them.',
+}
 
 IMAGE = re.compile(r'!\[([^\]]*)\]\(([^)]+)\)')
 INLINE_CODE = re.compile(r'`([^`]+)`')
@@ -89,7 +101,8 @@ def embed_image(src):
         return ''
     ext = os.path.splitext(path)[1].lstrip('.').lower()
     mime = {'png': 'image/png', 'jpg': 'image/jpeg', 'jpeg': 'image/jpeg',
-            'gif': 'image/gif', 'svg': 'image/svg+xml'}.get(ext, 'image/png')
+            'gif': 'image/gif', 'svg': 'image/svg+xml',
+            'webp': 'image/webp'}.get(ext, 'image/png')
     with open(path, 'rb') as fh:
         return f'data:{mime};base64,' + base64.b64encode(fh.read()).decode()
 
@@ -270,9 +283,21 @@ def convert(md, slug):
 
 
 def main():
-    if len(sys.argv) < 4:
+    cover, args = dict(COVER), []
+    argv = sys.argv[1:]
+    i = 0
+    while i < len(argv):
+        key = argv[i][2:]
+        if argv[i].startswith('--') and key in cover and i + 1 < len(argv):
+            cover[key] = argv[i + 1]
+            i += 2
+        else:
+            args.append(argv[i])
+            i += 1
+
+    if len(args) < 3:
         sys.exit(__doc__)
-    root, output, pages = sys.argv[1], sys.argv[2], sys.argv[3:]
+    root, output, pages = args[0], args[1], args[2:]
 
     parts, toc, body = [], [], []
     for n, rel in enumerate(pages):
@@ -293,19 +318,17 @@ def main():
         toc.append(f'<li><a href="#{n}-{anchor}">{html.escape(title)}</a></li>')
         body.append(convert(md, n))
 
+    title = html.escape(cover['title'])
+    subtitle = html.escape(cover['subtitle'])
+    note = html.escape(cover['note'])
+
     doc = f"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Junk Store extensions</title>
+<html><head><meta charset="utf-8"><title>{title}: {subtitle}</title>
 <style>{CSS}</style></head><body>
 <div class="cover">
-  <h1>Junk Store</h1>
-  <div class="sub">Extensions: user guide</div>
-  <div class="note">
-    This is a printable copy of the extension documentation. It was written by
-    working through the source, and is a first pass at material that had not been
-    documented before. It is accurate where it makes a claim, but it is not
-    complete. Cross references between pages appear as plain text here; the
-    online version links them.
-  </div>
+  <h1>{title}</h1>
+  <div class="sub">{subtitle}</div>
+  <div class="note">{note}</div>
 </div>
 <div class="toc"><h1 class="first">Contents</h1><ol>{''.join(toc)}</ol></div>
 {''.join(body)}

@@ -21,7 +21,7 @@ once without interfering.
 
 ### How a config set is chosen
 
-When Junk Store needs a game's config it knows the platform, fork, and version in play, and
+When Junk Store Pro needs a game's config it knows the platform, fork, and version in play, and
 looks for the **most specific** stored set that fits. A stored set matches when each of its
 three tags is either **exactly equal** to what is being asked for, or **empty**.
 
@@ -59,7 +59,7 @@ matching only ever compares strings.
 
 That is what makes this useful for your own setups. If you build a patched DOSBox, or keep
 two Proton builds side by side, you can give each a fork name of your choosing and hang its
-own config off it. Junk Store does not need to know the name in advance.
+own config off it. Junk Store Pro does not need to know the name in advance.
 
 To use one:
 
@@ -321,7 +321,7 @@ setting one field on a game does not discard everything else it inherits.
 ### Specificity, and why empty means "any"
 
 Configuration is stored against a combination of **platform**, **fork**, and
-**version**. When Junk Store looks for the settings to apply, a stored row matches if
+**version**. When Junk Store Pro looks for the settings to apply, a stored row matches if
 each of those fields either equals what it is looking for **or is empty**, where empty
 means "applies to anything".
 
@@ -342,9 +342,35 @@ Most settings overwrite when a later layer sets them. The autoexec text is the
 exception: layers are **concatenated**, so a game's autoexec lines are added to
 whatever it inherits rather than replacing it.
 
+## The live tab configuration is not in generator.db
+
+The natural model is that the definition lives in the Generator's database and everything
+downstream is generated from it. **Generation does not overwrite an existing
+`<store>tabconfig.json`**, it preserves what is already there.
+
+For most settings that never shows, because you set them in one place. For **Download
+method** and **Data source** it matters, because those are commonly set through the tab
+configuration UI, which writes to that file directly.
+
+Three consequences follow:
+
+- **A value set only in the definition does not reach a machine that has already
+  generated.** The file wins.
+- **Importing a preset containing them has no effect** for the same reason. The import
+  succeeds, and the file keeps what it had.
+- **A value set only through the interface is not in your export.** It was never in the
+  definition, so it does not travel.
+
+**So set both when you are building an extension to share**, or delete the generated file
+and regenerate so the definition is written out fresh.
+
+**Known issue.** Nothing indicates the exception, and every one of these fails silently.
+See [Settings](../reference/settings.md#download-method-and-data-source-set-them-in-two-places)
+for what that looks like in practice.
+
 ## Seeing the result
 
-Rather than reasoning about the layers, ask Junk Store what it computed. Two actions
+Rather than reasoning about the layers, ask Junk Store Pro what it computed. Two actions
 exist purely to expose the resolved configuration as shell assignments:
 
 | Action | Gives you |

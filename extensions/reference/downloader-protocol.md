@@ -16,6 +16,12 @@ downloader <game-id> <install-path> <mode>
 The install path is created before your script runs, so you can write into it
 immediately.
 
+**The queue row mirrors those three arguments.** Its `game_id`, `path` and `mode` columns
+are exactly what gets passed, which makes the row a useful diagnostic: if it looks right and
+the run still fails with **exit code 127**, the likely cause is that the extension has no
+`downloader` script at all rather than anything wrong with the arguments. See
+[Troubleshooting](../troubleshooting.md#process-exited-with-code-127).
+
 ### The third argument is a mode
 
 `downloader` is not only called to install. The same script is reused for checking and
@@ -75,7 +81,7 @@ failing, so partial or malformed output degrades gracefully.
 | `completed` | Finished successfully |
 | `cancelled` | Stopped by the user |
 | `queued` | Waiting to start |
-| `paused` | Suspended. Set by Junk Store when the user pauses, rather than by your script |
+| `paused` | Suspended. Set by Junk Store Pro when the user pauses, rather than by your script |
 
 **Emit `Status:completed` when you finish.** Without it the operation may not be
 recognised as done.
@@ -171,14 +177,43 @@ your `Percent` line stopped parsing.
 
 | Status | Effect |
 |---|---|
-| `completed` | The download is finished. Junk Store then moves on to the install phase, where the caption changes to "Configuring Steam shortcut and artwork" and the bar goes indeterminate. That phase is signalled separately by Junk Store, not by you |
+| `completed` | The download is finished. Junk Store Pro then moves on to the install phase, where the caption changes to "Configuring Steam shortcut and artwork" and the bar goes indeterminate. That phase is signalled separately by Junk Store Pro, not by you |
 | `error` | Treated as a failure, with your `Error` text shown |
 | `cancelled`, `stopped` | The download ends without being counted as finished |
 | `downloading`, `queued` | Ongoing, keeps the panel in its progress state |
-| `paused` | Set by Junk Store when the user pauses, not something a downloader normally emits |
+| `paused` | Set by Junk Store Pro when the user pauses, not something a downloader normally emits |
 
 This is why omitting `Status:completed` matters. The bar can sit at 100% while the operation
 is never recognised as done, because the percentage and the lifecycle are separate signals.
+
+### The install phase is one way
+
+**Once you emit `Status:completed` the install phase runs, and an extension cannot opt out
+of it afterwards.** It creates a Steam shortcut, which is what makes a game launchable.
+
+For anything that is not launchable, that shortcut is a dead tile with an empty `Exe`.
+
+**Ending on `Status:cancelled` skips the install phase entirely.** Everything else still
+works: the queue row, the progress bar, the speed and the ETA. Your files are already
+wherever your downloader put them. The only cost is that the queue row reads as cancelled
+rather than finished.
+
+```
+Status:cancelled
+```
+
+That is the way to opt out for items that should not become library entries.
+
+**Uninstall removes the shortcut it knows about**, using the game's `steamclientid`. An
+extension that manages its own install state has to keep that column current, or the
+shortcut is left behind and a reinstall adds a second one. See
+[Items that are not games](../guides/non-launchable-items.md#install-state-is-steamclientid).
+
+For something that should never have had a shortcut in the first place, ending on
+`cancelled` is simpler than maintaining one so it can be cleaned up later.
+
+See [Items that are not games](../guides/non-launchable-items.md) for the rest of what
+follows from this.
 
 ### Two rates, and why the database is not the display
 

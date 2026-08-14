@@ -1,8 +1,11 @@
-# Junk Store extensions
+# Junk Store Pro extensions
 
-Extensions are how Junk Store learns about new places your games come from: a
+Extensions are how Junk Store Pro learns about new places your games come from: a
 storefront, an emulator, a folder of ROMs, a collection of DOS games. Everything
-you see in the Junk Store tabs (Epic, GOG, Amazon, Itch) is an extension.
+you see in the Junk Store Pro tabs (Epic, GOG, Amazon, Itch) is an extension.
+
+**This documents Junk Store Pro, not the free Decky plugin.** The extension system described
+here is Junk Store Pro's. Nothing below is a guide to writing extensions for the plugin.
 
 **This is documentation for people writing them.** It covers the contracts an extension has
 to satisfy: which scripts get called and when, what they receive, what they must print, how
@@ -35,6 +38,7 @@ Read these in order the first time. Each one takes you through a whole task.
 | [Overriding actions](guides/overriding-actions.md) | Changing how one action behaves on an existing store |
 | [Authoring by hand](guides/authoring-by-hand.md) | Writing an extension's scripts yourself, for full control |
 | [Emulators and ROM discovery](guides/emulators-and-roms.md) | Setting up an emulator and getting your ROMs to show up |
+| [Items that are not games](guides/non-launchable-items.md) | Listing runtimes, tools or anything else that does not launch |
 | [When a game will not run](guides/when-a-game-will-not-run.md) | Finding out why a game does not start, without leaving game mode |
 
 ## Concepts
@@ -44,7 +48,7 @@ to look something up.
 
 | Section | Explains |
 |---|---|
-| [How Junk Store finds your extension](concepts/how-extensions-are-found.md) | Discovery by directory and naming convention |
+| [How Junk Store Pro finds your extension](concepts/how-extensions-are-found.md) | Discovery by directory and naming convention |
 | [How launching works](concepts/how-launching-works.md) | The path from the Steam shortcut through `launcher.sh` to a platform scriptlet |
 | [The config schema format](concepts/config-schema.md) | The structure every config screen is built from, and its DOSBox origins |
 | [Config layering](concepts/config-layering.md) | Which stored config applies to a game, and how values reach your scripts as environment variables |
@@ -73,10 +77,10 @@ where to look when a script does not behave.
 
 ## The three ways to change things
 
-Junk Store offers three levels. Picking the right one saves a lot of effort, and
+Junk Store Pro offers three levels. Picking the right one saves a lot of effort, and
 most people never need the deepest one.
 
-**Level 1: the wizard and settings.** Point and click inside Junk Store. The
+**Level 1: the wizard and settings.** Point and click inside Junk Store Pro. The
 Generator's extension wizard creates a working extension from a few answers, and the
 cog menu adjusts its settings afterwards. This covers most emulator and "folder of
 games" cases. No files, no scripts.
@@ -84,7 +88,7 @@ See [Quick start](guides/quickstart.md).
 
 **Level 2: an override.** You like an existing store but want one action to
 behave differently, such as an extra step before install. You drop a small shell
-file in one place and Junk Store picks it up. The original extension is untouched,
+file in one place and Junk Store Pro picks it up. The original extension is untouched,
 so updates will not clobber your change. Note this covers actions, not launching.
 See [Overriding actions](guides/overriding-actions.md).
 
@@ -102,15 +106,15 @@ Two directories matter. Both are inside your home folder, and neither needs root
 
 ```
 ~/.local/share/junkstore/scripts/Extensions/<Store>/
-    The scripts Junk Store actually runs for a store.
+    The scripts Junk Store Pro actually runs for a store.
 
 ~/.config/junkstore/
     Your settings, databases, and overrides.
     overrides/<Store>/store.sh   <- your personal changes go here
 ```
 
-Older notes and some strings inside Junk Store mention a `homebrew` directory.
-That is historical and can be ignored. Junk Store only uses the two paths above.
+Older notes and some strings inside Junk Store Pro mention a `homebrew` directory.
+That is historical and can be ignored. Junk Store Pro only uses the two paths above.
 
 ## Sharing your work
 

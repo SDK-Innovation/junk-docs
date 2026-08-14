@@ -1,12 +1,12 @@
 # When a game will not run
 
-Junk Store automates what can be anticipated. A game that is not on Steam is, by definition,
+Junk Store Pro automates what can be anticipated. A game that is not on Steam is, by definition,
 one nobody planned for, so sooner or later you will hit one that does not start and no amount
 of configuration fixes it by guessing.
 
 At that point the job stops being "configure the launcher" and becomes "find out what
 actually happened". That is most of the work in getting non-Steam games running, and Junk
-Store gives you the tools to do it **without leaving game mode**. You do not need a terminal,
+Store Pro gives you the tools to do it **without leaving game mode**. You do not need a terminal,
 a desktop session, or another machine.
 
 What follows is the loop. Work through it in order; each step narrows what can be wrong.
@@ -40,7 +40,7 @@ Opening the actions menu on that page gives you File Manager:
 ![The game actions menu, listing File Manager among the other per game
 actions.](../images/game-actions-menu.webp)
 
-1. Go to the game in Junk Store and open its detail page.
+1. Go to the game in Junk Store Pro and open its detail page.
 2. Open the actions menu and choose **File Manager**.
 3. In the sidebar, select **Game Install Directory**.
 4. Focus `launcher.log` and press **X**.
@@ -49,7 +49,7 @@ The file manager opens in the text viewer. No file type configuration is needed;
 that is not an image, PDF, markdown, media file, or known binary opens as text, which
 includes logs.
 
-**The sidebar is mapped for the game you came from.** Junk Store asks the extension where
+**The sidebar is mapped for the game you came from.** Junk Store Pro asks the extension where
 that game is actually installed, rather than guessing from a naming convention, and adds
 three shortcuts:
 
@@ -132,8 +132,8 @@ executable or in the prefix. Open them in the text viewer. A game pointing at a 
 your device does not have, or a path from the machine it was packaged on, is a common cause,
 and seeing it is usually enough to know what to do.
 
-**Junk Store has no general text editor.** The viewers read files; they do not write them.
-Config editing in the interface covers Junk Store's own settings, through the config screens
+**Junk Store Pro has no general text editor.** The viewers read files; they do not write them.
+Config editing in the interface covers Junk Store Pro's own settings, through the config screens
 and the Y gesture on a field, and a DOSBox conf can be imported into those. A game's own
 config file is not one of those, so if you need to change one, edit it in Desktop Mode or
 over SSH. This is a gap rather than a decision, and worth knowing before you go looking for
@@ -171,7 +171,7 @@ process list.
 **Press SELECT and Y together to open it**, from anywhere in the interface. The view has four
 tabs, moved between with L1 and R1.
 
-That chord is one of a set. **Hold SELECT for a couple of seconds** and Junk Store shows the
+That chord is one of a set. **Hold SELECT for a couple of seconds** and Junk Store Pro shows the
 list rather than making you remember it:
 
 ![The controller hints sheet, listing SELECT plus A, B, X and Y against the tool each
@@ -231,7 +231,7 @@ backend and the device.
 Make a single change, launch, read the log again. Changing several things at once means a
 success tells you nothing about which one mattered.
 
-The changes available here are Junk Store's own settings, which is most of what matters:
+The changes available here are Junk Store Pro's own settings, which is most of what matters:
 they decide the platform, the fork, the executable, and everything that reaches the launcher
 as an environment variable. Editing the game's own files is a Desktop Mode job, as above.
 
@@ -252,7 +252,7 @@ DOSBox. See [Config layering](../concepts/config-layering.md).
 If the failure is during download rather than launch, the progress caption and the developer
 view carry the detail.
 
-Junk Store shows a faint line beneath the progress bar containing the downloader's raw
+Junk Store Pro shows a faint line beneath the progress bar containing the downloader's raw
 output, but only when the interface is in a developer mode. That is where an underlying
 tool's real error message appears when the friendly message is not enough.
 

@@ -16,7 +16,7 @@ This is the common case with games that are not on Steam, and the reason several
 tools exist at all. Ninety percent of the work is finding out *why*, and none of it requires
 leaving game mode.
 
-**Hold SELECT** and Junk Store shows you the four tools it can open from anywhere in the Steam
+**Hold SELECT** and Junk Store Pro shows you the four tools it can open from anywhere in the Steam
 interface:
 
 ![The controller hints sheet, listing SELECT plus A, B, X and Y against the tool each
@@ -121,7 +121,7 @@ fields.](images/generator-commandmap.webp)
 This is the middle rung. Above it is changing a setting; below it is writing the extension
 yourself. You are never forced up a level you do not need.
 
-## Teaching Junk Store about a source it has never seen
+## Teaching Junk Store Pro about a source it has never seen
 
 The general case: a storefront with its own client, an API, an archive on a NAS, a machine on
 your network. Whatever it is, two scripts are enough.
@@ -133,7 +133,7 @@ your network. Whatever it is, two scripts are enough.
    keys as you go.
    → [Downloader protocol](reference/downloader-protocol.md)
 
-3. **Print progress and get a real progress bar.** You emit keys; Junk Store assembles the
+3. **Print progress and get a real progress bar.** You emit keys; Junk Store Pro assembles the
    caption. The bar, the percentage, the speed and the ETA all come from lines your script
    printed.
 
@@ -160,7 +160,7 @@ checks.](images/diagnostics-modal.webp)
    → [Diagnostics](reference/custom-scripts.md#diagnostics)
 
 Satisfy those contracts and your extension is indistinguishable from a shipped one: same grid,
-same progress bar, same buttons. Junk Store never asks how the bytes arrived.
+same progress bar, same buttons. Junk Store Pro never asks how the bytes arrived.
 
 ## What you do not have to build
 
@@ -196,14 +196,14 @@ Adding a non Steam game is the clearest example. A shortcut has to be created in
 accepts, given an identifier Steam will keep, and matched to a `compatdata` directory before
 Proton will run anything. None of that is published. More to the point, **Steam is running the
 whole time and owns all of it.** It maintains its own view of your shortcuts, assigns its own
-identifiers, and has no idea Junk Store exists. Everything Junk Store does has to fit into that
+identifiers, and has no idea Junk Store Pro exists. Everything Junk Store Pro does has to fit into that
 without the two fighting over the same records.
 
 That is the part that took the longest, and it is not the kind of work that shows up as
 volume. It is the difference between something that functions in isolation and something that
 coexists with a client that was never told to expect it.
 
-**An extension author never touches any of it.** You print a game identifier and Junk Store
+**An extension author never touches any of it.** You print a game identifier and Junk Store Pro
 does the rest: the shortcut, the identifier, the prefix, the launch path, and keeping all of
 it consistent with what Steam believes.
 
@@ -296,14 +296,14 @@ That is worth understanding before you read the totals as a measure of difficult
 hundred lines is what it costs to wrap a client that already knows how to talk to a store; it
 is not what it costs to write that client, and it is certainly not what it costs to work out
 a storefront's protocol from nothing. If your source has no such client, expect to write more,
-and expect most of the extra to be about your source rather than about Junk Store.
+and expect most of the extra to be about your source rather than about Junk Store Pro.
 
 The upside is that this is the normal shape rather than a compromise. A `downloader` that
 shells out to a tool and translates its output is exactly what the contract is designed for,
 which is why the junklib parsers exist. It also means the client is replaceable: three of
 these four have replaced theirs without the interface noticing.
 
-Two patterns are worth noticing. **The lifecycle scripts are tiny** — account switching,
+Two patterns are worth noticing. **The lifecycle scripts are tiny**. Account switching,
 logout and import handling are two to nine lines each, in every extension, because they only
 have to say what to run.
 
