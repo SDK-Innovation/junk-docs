@@ -11,6 +11,9 @@ together before changing anything. Most of it you will never need.
 At the top of the screen is a dropdown with four levels. **It decides how much of the
 screen you can see**, and it's the single most useful thing on the page.
 
+![The visibility dropdown open, offering Basic, Advanced, Expert and
+All.](images/store-visibility.webp)
+
 | Level | Shows |
 |---|---|
 | **Basic** | The handful of settings most people might change |
@@ -59,6 +62,9 @@ Games end up in    ~/Games/Epic
 
 Choosing **Other** for the location lets you name a different starting point, and the
 directory is still added on the end of it.
+
+![The Install Location dropdown open, offering the internal SSD, the MicroSD card, or
+specifying your own path.](images/store-install-location.webp)
 
 **Install Directory is not a full path**, so putting an absolute one there won't send games
 where you expect, it just gets appended to the drive you picked anyway. If you want games

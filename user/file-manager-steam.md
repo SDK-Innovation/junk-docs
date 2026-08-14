@@ -12,7 +12,10 @@ mean. See [Two ways to open it](file-manager.md#two-ways-to-open-it).
 **Add to Steam** makes a Steam shortcut out of whatever file you have focused, so it turns
 up in your library.
 
-If it's an `.exe`, Junk Store sets the launcher to Proton and records the executable's
+![The File Operations menu with Add to Steam among the other
+entries.](images/fm-add-to-steam.webp)
+
+If it's an `.exe`, Junk Store Pro sets the launcher to Proton and records the executable's
 name, its folder and the install path, so it's ready to run straight away. Anything else
 gets added without that step, and you set the launcher yourself if it needs one.
 
@@ -20,17 +23,21 @@ This is how you get an emulator, a tool, or a game you installed by hand into yo
 library.
 
 **Making the entry is the first step of something larger.** Once it exists, the rest of Junk
-Store's tools work on it, artwork, what it launches, what it runs under. See
+Store Pro's tools work on it, artwork, what it launches, what it runs under. See
 [Setting a game up by hand](setting-up-by-hand.md).
 
 ## The Steam submenu
 
 This is the least appreciated part of the File Manager, and probably the most useful.
 
-**It edits your actual Steam shortcut, live.** Not a Junk Store setting that later gets
+**It edits your actual Steam shortcut, live.** Not a Junk Store Pro setting that later gets
 applied: the entry in your Steam library changes as soon as you choose. Artwork appears
 in your library immediately, and a changed executable is what launches next time. You are
-editing Steam from inside Junk Store, using the file in front of you as the value.
+editing Steam from inside Junk Store Pro, using the file in front of you as the value.
+
+![The Steam submenu opening beside the File Operations menu. Only Set as Game Executable is
+offered, because the focused item is a program rather than an
+image.](images/fm-steam-submenu.webp)
 
 That matters because **Steam's own version of this doesn't work properly in Game Mode.**
 The options are there in a shortcut's properties, but the file picker behind them
@@ -47,6 +54,9 @@ the file, and you never leave Game Mode.
 | ⬜ Grid Icon | The small square icon | Image files |
 | 📱 Vertical Cover | The tall capsule in the library grid | Image files |
 | 🌄 Library Background | The page background | Image files |
+
+![The same submenu on an image file, offering all five artwork slots as well as Set as Game
+Executable.](images/fm-steam-artwork.webp)
 
 **Three conditions decide whether the submenu appears at all**, and between them they
 explain nearly every case of "I can't see it":
@@ -89,8 +99,14 @@ This is the natural way to deal with DOS and old Windows games, which typically 
 a folder containing the game, a `dosbox.conf`, and one or more `.bat` files. Browse into
 the folder and import them where they stand.
 
+![A DOS game's folder opened from the game, with several dosbox conf files alongside the
+game's own directories.](images/fm-dosbox-folder.webp)
+
 **A `.conf` file** opens a small dialog before importing, because you need to say how it
 combines with what the game already has:
+
+![The File Operations menu on a conf file, with Import DOSBox Config among the
+entries.](images/fm-dosbox-import.webp)
 
 | Strategy | Effect |
 |---|---|
@@ -98,11 +114,20 @@ combines with what the game already has:
 | Replace existing | The file wins |
 | Autoexec only | Takes just the startup commands, ignores the rest |
 
+![The Import DOSBox Config dialogue, naming the file, with a dropdown for how to combine it
+and another for which DOSBox fork it applies to.](images/fm-dosbox-dialog.webp)
+
+![The strategy dropdown open, offering Merge with existing, Replace existing and Autoexec
+only.](images/fm-dosbox-strategy.webp)
+
 You can also aim it at a particular DOSBox fork, when the conf was written for DOSBox-X
 or DOSBox Staging rather than plain DOSBox. Left alone it applies to all forks.
 
 **Merge is the safe default.** Replace discards configuration you may have set up
 through the interface.
+
+![A DOS game's folder with its `.bat` file sitting among the game's own
+files.](images/fm-bat-file.webp)
 
 **A `.bat` file imports immediately**, with no dialog. The game context is already known
 and there is nothing to decide. The batch file is stored against the game rather than read
@@ -136,10 +161,13 @@ anything else that refers to the game by ID.
 Names are coloured by what kind of thing they belong to, which tells you at a glance what
 you're looking at:
 
+![The compatdata folder with each directory shown by game name and colour, its numeric ID in
+brackets after it.](images/fm-prefixes.webp)
+
 | Colour | Means |
 |---|---|
 | Green | A game from your Steam library |
-| Blue | A non-Steam game: something added as a shortcut, including anything Junk Store installed |
+| Blue | A non-Steam game: something added as a shortcut, including anything Junk Store Pro installed |
 | Yellow | A runtime rather than a game: Proton itself, and similar |
 | Orange **No Game** badge, row dimmed | Nothing on this device claims it |
 
@@ -162,6 +190,9 @@ identifying the number at all.
 
 A numbered directory with **no matching installed game** is an orphan: the game was
 uninstalled but its prefix or shaders were left behind.
+
+![Orphans at the bottom of the list, each a bare number with a No Game badge, several of
+them selected.](images/fm-orphans.webp)
 
 They're easy to spot: an orphan has no name to show, so it stays a bare number, carries an
 orange **No Game** badge, and the whole row is dimmed. Scroll `compatdata` and they stand
@@ -197,6 +228,15 @@ the old one stays behind as an orphan with your saves in it. Find the orphan, di
 **Shader caches never hold saves**, so orphaned shaders are safe to remove without
 checking.
 
+![The shadercache folder, listing the same games by name and colour as
+compatdata.](images/fm-shadercache.webp)
+
+Once you've picked the orphans, the menu offers to move them to the trash and tells you how
+many it's about to take.
+
+![The File Operations menu with Move to Trash showing a count of seven
+items.](images/fm-move-to-trash.webp)
+
 If a prefix is orphaned, the Steam entry that owned it is gone. That's what the badge is
 telling you, and it's why the saves inside are worth a look before it goes.
 
@@ -206,7 +246,10 @@ telling you, and it's why the saves inside are worth a look before it goes.
 you get its game names, not its numbers, even though those games are installed over there
 and not here.
 
-Junk Store asks the other machine what it has installed, over the same SSH connection
+![The sidebar listing two other machines by name and address beneath the local shortcuts,
+with both panes showing a directory.](images/net-remote-pane.webp)
+
+Junk Store Pro asks the other machine what it has installed, over the same SSH connection
 used for browsing. The remote machine's sidebar carries the same **Compatdata** and
 **Shader Cache** entries as the local one.
 

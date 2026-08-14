@@ -49,7 +49,7 @@ twisty to unfold it where it is.
 **`..` is the exception.** One click on it takes you straight up a level.
 
 **The left trigger opens the menu, and it's the button that matters most.** Copying,
-extracting, renaming, and every Junk Store job live in there rather than on buttons of
+extracting, renaming, and every Junk Store Pro job live in there rather than on buttons of
 their own. If you're hunting for a feature, that's where it is. It works on whatever's
 focused, and on the sidebar too, where it offers a different set.
 
@@ -61,6 +61,9 @@ only works from the sidebar, so Tab is the one to learn.
 Turn the second pane on with **L3** (press the left stick), or **Ctrl+U**. You get two
 independent directory listings, each with its own location and its own history. One is
 active; that is where your input goes.
+
+![Two panes side by side. The active one is outlined, and the status line reads Dual-Pane,
+Active: Left Pane.](images/fm-two-panes.webp)
 
 | Job | Controller | Keyboard |
 |---|---|---|
@@ -89,6 +92,9 @@ and the wrong side changes, the other pane was active.
 
 Selection is where the File Manager differs most from what you might expect, because it
 is built for a controller rather than a mouse.
+
+![Four files selected and shown in bold on a blue background, with the cursor on a fifth,
+different file. The hint bar offers Clear Selection.](images/fm-selection.webp)
 
 **Hold the right trigger and move.** Every item you pass over toggles. This is
 paint-selecting, and it is much faster than picking items one at a time. Because it
@@ -146,6 +152,9 @@ cursor is pointing at.
 
 ## Copying, moving, and deleting
 
+![The File Operations menu: Copy, Cut, Copy and Move to the other pane, Rename, New Folder
+Here, Disk Usage, and Move to Trash.](images/fm-menu.webp)
+
 Within a pane, the clipboard works the way it does everywhere:
 
 | Key | Does |
@@ -200,9 +209,13 @@ Long copies show progress and continue while you carry on doing other things.
 Copies keep running when you close the File Manager, so there is a separate place to
 watch and cancel them: hold **SELECT and press B**, or **Ctrl+O** with a keyboard.
 
-It isn't part of the File Manager. It is available anywhere in Junk Store, which is the
+It isn't part of the File Manager. It is available anywhere in Junk Store Pro, which is the
 point: start a large copy, close the File Manager, go back to browsing your library, and
 still be able to check on it. Pressing Ctrl+O again closes it.
+
+![The File Operations panel during an SSH copy, showing where the files are coming from and
+going to, the rate, an estimated time and a Cancel
+Operation button.](images/fm-file-operations.webp)
 
 Each running operation shows what it is doing, where from and where to, a progress bar,
 the current speed, and an estimated time remaining. **Cancel Operation** stops one
@@ -217,6 +230,9 @@ it is still running or check the destination.
 
 Zip and other archives appear as items you can unfold. Press A on one and its contents
 appear underneath, indented.
+
+![Two zip files unfolded in place, their contents listed beneath each in a different colour
+from the files around them.](images/fm-archive.webp)
 
 **You can't navigate into an archive, and you can't paste into one.** It unfolds to be
 read, and that is all. Attempting to paste into an archive tells you it isn't allowed

@@ -7,6 +7,9 @@ limiting, upscaling, and frame generation.
 
 ## Proton settings
 
+**Proton** is its own entry on a game's cog, alongside Game configs. See
+[What's on the menu](game-settings.md#whats-on-the-menu).
+
 For games that run under Proton, the second editor is where the interesting settings are.
 It's the largest of them, and unlike the DOSBox one it's worth going through, because most
 of it is things people genuinely want: anti-cheat runtimes, frame limiting, upscaling, and
@@ -17,7 +20,7 @@ frame generation.
 Worth understanding once, because it explains the whole screen.
 
 **Every setting you fill in becomes an environment variable when the game launches.** Junk
-Store turns the saved configuration into a list of variables, and the launch script applies
+Store Pro turns the saved configuration into a list of variables, and the launch script applies
 them just before starting the game. Nothing is written into the game's files, and nothing is
 changed permanently.
 
@@ -49,6 +52,9 @@ Two consequences worth knowing:
 
 The main section, visible without raising the level.
 
+![The Runtimes section: Easy Anti-Cheat, BattlEye, ESYNC and FSYNC as switches, with Pulse
+Audio latency below them.](images/proton-runtimes.webp)
+
 | Setting | Does |
 |---|---|
 | **Easy Anti-Cheat** | Turns on Steam's anti-cheat runtime for this game. Some online games won't start without it |
@@ -73,6 +79,10 @@ life, so it's worth getting right.
 
 Raise the level to **Expert** to see these. Most people never need them, and one of them
 does nothing at all, it's noted in the table.
+
+![The Advanced section: Additional Variables and Additional Arguments, the custom Mesa
+driver, and the switch that ignores the store launcher's own
+arguments.](images/proton-advanced.webp)
 
 | Setting | Does |
 |---|---|
@@ -103,7 +113,7 @@ just isn't useful. If you've copied a variable from a forum post and it seems to
 effect, this is almost always why. Advice written for a command line often omits `export`,
 because there it isn't needed.
 
-**This is ordinary Linux behaviour rather than a Junk Store rule**, which is why it's worth
+**This is ordinary Linux behaviour rather than a Junk Store Pro rule**, which is why it's worth
 knowing rather than merely remembering. The same distinction applies in any shell script you
 ever write.
 
@@ -130,7 +140,7 @@ ones, so a game running at 30fps can present at 60. On a Deck that can be the di
 between a game feeling playable and not.
 
 **It needs Lossless Scaling and lsfg-vk installed before any of this does anything.**
-Junk Store doesn't install either. These settings only pass your choices along to the layer;
+Junk Store Pro doesn't install either. These settings only pass your choices along to the layer;
 if it isn't there, they do nothing at all, silently. **Setting it up is covered on the Junk
 Store website**. Start there, then come back to this screen.
 
@@ -141,7 +151,7 @@ called *Disable* that you set to *Enable*, options named after the variables the
 than what they do.
 
 **That's because none of this was programmed.** Support for frame generation was added
-entirely by editing a configuration file, no new code in Junk Store, no update to the
+entirely by editing a configuration file, no new code in Junk Store Pro, no update to the
 launcher, nothing rebuilt. The settings you see are that file's contents, and the names came
 across from the tool they're passed to.
 
@@ -153,10 +163,14 @@ ours, and they read like it.
 The names not being ours is also the reason they're worth learning. They're
 [the tool's own](introduction.md#it-doesnt-hide-how-things-work), so anything you read
 elsewhere about configuring frame generation applies here directly, rather than needing
-translating out of a friendlier vocabulary Junk Store invented.
+translating out of a friendlier vocabulary Junk Store Pro invented.
 
 Worth knowing mainly so the oddness reads as what it is. The settings do work; they just
 weren't dressed up.
+
+![The LSFG section, with the two switches that turn it on, the frame multiplier and the flow
+scale slider. The help panel repeats that Lossless Scaling and lsfg-vk have to be installed
+first.](images/proton-lsfg.webp)
 
 Once it's installed, the settings are per game:
 
@@ -211,10 +225,10 @@ suit it; some don't. It's per game precisely because that judgement is per game.
 The other entry is named after what it configures, such as **dosbox 1-0** or
 **dosboxx 1-0**, and it edits that emulator's actual configuration file.
 
-**This is a large amount of settings, and they're not Junk Store's.** A DOSBox
+**This is a large amount of settings, and they're not Junk Store Pro's.** A DOSBox
 configuration covers CPU cycles, memory sizes, sound cards, joystick emulation, video
 scaling and a great deal besides, hundreds of settings, each meaning what the DOSBox
-project says it means. Junk Store presents them and saves them; it doesn't define them.
+project says it means. Junk Store Pro presents them and saves them; it doesn't define them.
 
 So rather than describe them here, use the documentation for the emulator itself:
 
@@ -225,7 +239,7 @@ So rather than describe them here, use the documentation for the emulator itself
 
 Anything those say about a setting applies here, since it's the same file.
 
-**What Junk Store adds is being able to edit it in Game Mode**, per game, without a text
+**What Junk Store Pro adds is being able to edit it in Game Mode**, per game, without a text
 editor or Desktop Mode. The visibility dropdown at the top is worth using: on **Basic** you
 see the handful of settings people actually change, and the full list is there when you want
 it.
@@ -238,6 +252,11 @@ whole file to what the game shipped with.
 
 DOS games often come with `.bat` files that set things up before the game runs. Where a game
 has them, **Bat Files** lets you read and edit them on the device.
+
+![The Bat Files editor: a dropdown naming which batch file you're looking at, and its
+contents below in an editable box.](images/game-bat-files.webp)
+
+**A dropdown at the top picks which one**, since a game can carry several.
 
 This is for the case where a game's batch file needs a small change: a path that's wrong, an
 option that needs adding. If you don't already know what's in these files, you don't need

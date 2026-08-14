@@ -2,19 +2,22 @@
 
 Hold **SELECT** and press **A**, or find it on the main menu.
 
-This is where Junk Store's own settings live, grouped into sections you pick from a list
+This is where Junk Store Pro's own settings live, grouped into sections you pick from a list
 down the side. Several of them are worth knowing about before you need them.
 
-Some parts of the interface still call this screen **About**, which is what it used to be.
-It's the same place.
+This screen used to be called **About**. If you've seen it referred to that way, or you're
+following older instructions, it's the same place under a new name.
 
 ## System
 
-Your version, which channels you're on, and the buttons for updating Junk Store and
+Your version, which channels you're on, and the buttons for updating Junk Store Pro and
 installing the things it depends on.
 
+![The System section, showing the Junk Store Pro version and both channel dropdowns set to
+stable.](images/settings-system.webp)
+
 **Build Channel** and **Extension Channel** decide which releases this device receives.
-Build is Junk Store itself; Extension is the stores and tools that run on it.
+Build is Junk Store Pro itself; Extension is the stores and tools that run on it.
 
 They're set separately, and the same three channel names apply to both. Set them to match
 and leave them there.
@@ -44,7 +47,7 @@ you want new things early and don't mind reporting problems; not worth it if you
 to play games.
 
 That test run is the reason stable takes a while to catch up. It's an automated suite that
-takes over three hours per device, and it runs on several devices. Junk Store is developed
+takes over three hours per device, and it runs on several devices. Junk Store Pro is developed
 on a sailboat, where three hours of testing is a real amount of electricity, so full runs
 happen when they're worth doing rather than continuously. Beta is what exists in between:
 code that's been used and works, waiting for the run that confirms it.
@@ -53,12 +56,12 @@ You may see other channels in the list. They exist for internal reasons and aren
 intended for general use.
 
 If you're not sure, stay on stable. This is the setting most likely to change how Junk
-Store behaves without you connecting the two events.
+Store Pro behaves without you connecting the two events.
 
-**Offline Mode** stops Junk Store expecting a network, so it doesn't sit there timing out
+**Offline Mode** stops Junk Store Pro expecting a network, so it doesn't sit there timing out
 and retrying when there's nothing to reach.
 
-**It mostly looks after itself.** Junk Store watches the Deck's network connection, and
+**It mostly looks after itself.** Junk Store Pro watches the Deck's network connection, and
 turns offline mode on when you lose connectivity and off again when it comes back. Walk out
 of range and it notices; come home and it notices that too. Most people never need to touch
 the toggle.
@@ -85,7 +88,7 @@ again afterwards.
 
 ### The blue dot
 
-Before the buttons themselves, one thing that appears across Junk Store and isn't
+Before the buttons themselves, one thing that appears across Junk Store Pro and isn't
 explained anywhere on screen.
 
 **A small blue dot, gently pulsing, means there's something new here.** It's the same
@@ -96,7 +99,7 @@ Two things use it:
 
 | Where | Means |
 |---|---|
-| **Check for Junk Store updates**, here and on the main menu | An update is waiting to be installed |
+| **Check for Junk Store Pro updates**, here and on the main menu | An update is waiting to be installed |
 | **News**, on the main menu | You have news you haven't read |
 
 The dot goes away once you've done the thing it's pointing at. Nothing breaks if you
@@ -104,13 +107,17 @@ ignore it.
 
 ### The buttons
 
-Most of what you'd ever need to *do* to Junk Store is here, as a column of buttons.
+Most of what you'd ever need to *do* to Junk Store Pro is here, as a column of buttons.
 
-**Check for Junk Store updates** does what it says, and changes to **Install Update** when
+![The rest of the System section: Reload scripts, the two anti-cheat runtimes greyed out,
+Uninstall Dependencies, Refresh License, and the Offline Mode
+switch.](images/settings-system-buttons.webp)
+
+**Check for Junk Store Pro updates** does what it says, and changes to **Install Update** when
 there's one waiting. This is how you take an update, so it's the button to press when
 you've been told a fix is out.
 
-**Install Dependencies** fetches the supporting software Junk Store needs. Extensions rely
+**Install Dependencies** fetches the supporting software Junk Store Pro needs. Extensions rely
 on outside tools to do their work, and this is what puts them in place. Worth running if a
 store has started failing in ways that look like something is missing.
 
@@ -126,7 +133,7 @@ useful when you want a clean slate before reinstalling.
 **Reload scripts** re-reads the extension scripts without restarting anything. Quick, safe,
 and the first thing to try when an extension is behaving oddly after a change.
 
-**Refresh Licence** re-checks your licence with the server. Use it if Junk Store stops
+**Refresh Licence** re-checks your licence with the server. Use it if Junk Store Pro stops
 believing you've paid for it, which occasionally happens after a long spell offline.
 
 ### Anti-cheat runtimes
@@ -165,16 +172,19 @@ thing to check.
 
 ## Network
 
-How this device finds other machines running Junk Store, and how it introduces itself.
+How this device finds other machines running Junk Store Pro, and how it introduces itself.
 What this is all for is covered in [Reaching another machine](networking.md); this is what
 the controls do.
+
+![The Network section: Enable Network Discovery and Respond to Game Queries both on, the
+machine name, and Generate Random Name beneath.](images/settings-network.webp)
 
 **Enable Network Discovery** is on by default. It's what makes this device announce itself
 on your network and notice others doing the same, which is how machines turn up in the File
 Manager's sidebar. Turn it off and this device goes quiet in both directions, so remote
 browsing stops working from here.
 
-**Respond to Game Queries** is also on by default. It lets another Junk Store on your
+**Respond to Game Queries** is also on by default. It lets another Junk Store Pro on your
 network ask this one which games it has. Turning it off doesn't affect file browsing.
 
 **Machine Name** is what other devices call this one. It's the name in the sidebar and,
@@ -190,7 +200,7 @@ a list of nouns. A few hundred combinations, and they're distinctive enough to a
 remember, which is the point: *Mighty Wizard* is easier to pick out of a pairing request
 than a second device also called "Steam Deck".
 
-Your device already has one of these from when you first ran Junk Store. The button is for
+Your device already has one of these from when you first ran Junk Store Pro. The button is for
 getting a different one, either because you don't like what you got or because two of your
 devices happen to have collided.
 
@@ -208,8 +218,11 @@ happily make the generator smarter, and we would very much like to see photos.
 
 ## SteamGridDB
 
-Junk Store can fetch artwork from SteamGridDB, which is a community library of game
+Junk Store Pro can fetch artwork from SteamGridDB, which is a community library of game
 images. Doing that needs an API key, which is free and comes from their website.
+
+![The SteamGridDB section before a key is set, showing API Key Status as Not Configured and
+an empty key box.](images/settings-steamgriddb.webp)
 
 Without a key, artwork comes from whatever the store itself supplies, so this is worth
 setting up if you have games whose artwork is missing or ugly. Setting artwork by hand from
@@ -244,7 +257,7 @@ which holds nothing but the key:
 {"api_key": "your-key-here"}
 ```
 
-Edit that, save, and you're done. Junk Store reads the file each time it fetches artwork,
+Edit that, save, and you're done. Junk Store Pro reads the file each time it fetches artwork,
 so there's nothing to restart and no need to go back to this screen.
 
 If the file doesn't exist yet, create it with that one line in it. Setting the key here and
@@ -257,6 +270,10 @@ for is in [Reaching another machine](networking.md); this is the screen that sho
 
 At the top you'll find your own key's **type** and **fingerprint**, along with the **public
 key** itself, which is the half that's safe to share.
+
+![The SSH Keys section: key type, fingerprint and public key at the top, then Trusted Keys
+listing the machines that can reach this one. Key material is obscured
+here.](images/settings-ssh-keys.webp)
 
 If you haven't got a key, the screen tells you so. Making one takes a single command, and
 [Reaching another machine](networking.md#you-need-a-key-first) covers it.
@@ -296,7 +313,7 @@ switched on.
 
 ### Read this before turning SSH on
 
-**There's no button in Junk Store for this, deliberately.** Turning on SSH opens your
+**There's no button in Junk Store Pro for this, deliberately.** Turning on SSH opens your
 device to the network, and that shouldn't be a toggle somebody flips without knowing what
 it does. Doing it from a terminal means you've read something about it first, which is the
 whole point of the friction. So here's the something.
@@ -387,6 +404,9 @@ answers "what can currently reach this machine".
 
 Where to find the project: the website, the Discord, the subreddit, and X.
 
+![The Links section, each entry with a button that opens it and a second that shows a QR
+code.](images/settings-links.webp)
+
 Each one has two buttons.
 
 **The first opens it** in the Deck's own browser. Fine for a quick look, though browsing
@@ -404,6 +424,9 @@ and nothing about your device is encoded in it.
 
 An old log viewer that predates the rest of this.
 
+![The Logs section, with a dropdown to pick a log file and its contents listed
+beneath.](images/settings-logs.webp)
+
 **Use the File Manager instead.** The
 [logs shortcut](file-manager-tools.md#the-logs-shortcut-is-the-one-to-remember) gets you to
 the same files with a viewer that pages large ones properly, wraps long lines, and lets you
@@ -412,8 +435,11 @@ release.
 
 ## Developer
 
-Tools for people working on Junk Store itself. Nothing here is needed for ordinary use, and
+Tools for people working on Junk Store Pro itself. Nothing here is needed for ordinary use, and
 some of it assumes you know what you're doing.
+
+![The Developer section, a column of switches including UI logging, the diagnostics button,
+and the global installed filter.](images/settings-developer.webp)
 
 ## Related
 

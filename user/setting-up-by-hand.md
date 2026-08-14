@@ -1,6 +1,6 @@
 # Setting a game up by hand
 
-Junk Store's tools work on **Steam entries**, not on games from a particular store. Once a
+Junk Store Pro's tools work on **Steam entries**, not on games from a particular store. Once a
 game has an entry in your Steam library, everything else applies to it: artwork, the
 executable it launches, what it runs under, how it's tuned.
 
@@ -30,7 +30,12 @@ Not all of them apply to every game. Do the first, then as many of the rest as i
 Browse to the game's program in [the File Manager](file-manager.md) and use
 [Add to Steam](file-manager-steam.md#add-to-steam).
 
-**For an `.exe`, that's most of the work.** Junk Store sets the launcher to Proton and
+![The game's folder in the File Manager, with its executable focused among the other
+downloads.](images/fm-game-folder.webp)
+
+![The File Operations menu with Add to Steam highlighted.](images/fm-add-to-steam.webp)
+
+**For an `.exe`, that's most of the work.** Junk Store Pro sets the launcher to Proton and
 records the program, its folder and the install path, so it's ready to run. Anything else is
 added as a plain entry, and you set what runs it yourself at step 3.
 
@@ -45,6 +50,9 @@ game.
 **Set as Game Executable** on a file and **Set as Working Directory** on a folder. Browse the
 whole folder and pick exactly what you want.
 
+![The Steam submenu on a program, offering Set as Game
+Executable.](images/fm-steam-submenu.webp)
+
 **From the game's page**, [Run Exe](game-page.md#run-exe) offers a shortlist of the programs it
 found, which is quicker when the one you want is on it. Remember the
 [toggle-then-X order](game-page.md#changing-what-the-game-launches) if the program needs to run
@@ -56,7 +64,7 @@ starts and immediately complains about missing files, that's the usual cause.
 ### 3. Choose what runs it
 
 On the game's cog, [the platform's configs](game-settings.md#the-platforms-configs) sets what
-Junk Store launches the game through, Proton for a Windows game, or another platform where
+Junk Store Pro launches the game through, Proton for a Windows game, or another platform where
 that fits.
 
 Add to Steam already does this for an `.exe`, so it's mainly the step for anything else: a
@@ -70,9 +78,15 @@ tool there; the Junk Store website covers it.
 
 A hand-made entry starts with nothing, so it sits in your library as a plain box.
 
+![The new entry on the Other tab, showing a blank placeholder where the artwork would
+be.](images/by-hand-result.webp)
+
 **If you have pictures of your own**, assign them with
 [the Steam submenu](file-manager-steam.md#the-steam-submenu): browse to each image and give
 it a slot.
+
+![The Steam submenu on an image file, listing Hero Image, Logo, Grid Icon, Vertical Cover
+and Library Background.](images/fm-steam-artwork.webp)
 
 **If you don't**, [Search SteamGridDB](game-page.md#search-steamgriddb) finds artwork by name and
 applies it for you, which is usually the faster route. It needs
@@ -105,7 +119,7 @@ extension knowing how to talk to a store.
 
 **It's manual, and that's the trade.** A game from a store arrives configured; this is you
 doing that work yourself, a step at a time. What you get for it is that the answer to "can
-Junk Store handle this game?" is usually yes, by this route, whatever the game is.
+Junk Store Pro handle this game?" is usually yes, by this route, whatever the game is.
 
 ## Related
 

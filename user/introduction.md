@@ -1,14 +1,14 @@
-# How Junk Store is put together
+# How Junk Store Pro is put together
 
-**Junk Store aims to bring the PC part of PC gaming into the console experience, on console
+**Junk Store Pro aims to bring the PC part of PC gaming into the console experience, on console
 terms.** A Deck is a PC, but Game Mode hides that: no files, no settings you can reach, no
-way to fix a game that misbehaves without a keyboard and a desktop. Junk Store gives those
+way to fix a game that misbehaves without a keyboard and a desktop. Junk Store Pro gives those
 back without asking you to leave the couch.
 
 **It isn't finished, and it's meant to keep growing.** Some of what a PC gives you is here
 now, some isn't yet, and the gap closes over time. What follows describes what exists today.
 
-Most of the time you won't notice any of it. Junk Store looks like a launcher: install a
+Most of the time you won't notice any of it. Junk Store Pro looks like a launcher: install a
 game, press play, done. Most people use it that way and never need anything else, and that's
 the intended experience rather than a limitation of it.
 
@@ -20,16 +20,19 @@ you only meet a layer when you go looking for it.
 That's what this page is for. You don't have to read the rest of the document, but knowing
 the layers are there is most of the battle.
 
+![Junk Store Pro as it normally looks: a tab for each store across the top, a search box, and
+the grid of games below.](images/overview.webp)
+
 ## It's a platform, not a launcher
 
-Worth saying plainly, because it explains everything else on this page: Junk Store isn't a
+Worth saying plainly, because it explains everything else on this page: Junk Store Pro isn't a
 launcher for Epic and GOG that might one day support other stores. **It's a thing that
 becomes a launcher when you describe one to it.**
 
 Epic and GOG aren't built in. They're descriptions, a folder of scripts and a configuration
 file, read by machinery that has no idea what Epic is. The same machinery reads the
 descriptions for a folder of DOS games, an emulator's library, or a machine on your network.
-Nothing in Junk Store is specialised to any of them.
+Nothing in Junk Store Pro is specialised to any of them.
 
 So in principle it's already every launcher; the definitions just haven't been written yet.
 The tabs you have are the ones somebody got round to.
@@ -45,7 +48,7 @@ store behaves like any other tab, and everything in this document applies to it.
 
 ### You don't need our permission
 
-Junk Store ships with definitions for a handful of stores. **That list isn't a boundary.**
+Junk Store Pro ships with definitions for a handful of stores. **That list isn't a boundary.**
 
 There's no approval step, no submission process and no register of blessed stores. An
 extension is a folder on your Deck. Write your own, or use one whose author has made it
@@ -61,7 +64,7 @@ machinery as anything you write, with no capability reserved for them. Which is 
 mainly because it tells you what an extension of your own can be: exactly as capable as Epic
 or GOG, because those are just definitions too.
 
-**That's permission to build, not permission to copy.** The extensions Junk Store ships with
+**That's permission to build, not permission to copy.** The extensions Junk Store Pro ships with
 are **source available, not open source**. They're on your machine, so read them, run them,
 change your own copy, none of that is in question. What you can't do is redistribute them
 or publish something built out of their code.
@@ -91,7 +94,7 @@ strangers, not the cost of entry.
 
 ### It does what you tell it
 
-The reason all of that works is that **Junk Store doesn't second-guess what it's given.** It
+The reason all of that works is that **Junk Store Pro doesn't second-guess what it's given.** It
 doesn't check whether a store is one it approves of, whether a script is doing something
 sensible, or whether a value you typed is one it would have chosen. It reads the definition
 and carries it out.
@@ -126,7 +129,7 @@ smooth, and everything off it is a wall, you wait for whoever wrote it to suppor
 wanted, or you go without. That's a reasonable way to build something, and it's why those
 tools are easy to pick up.
 
-**Junk Store was built as the antidote to that.** It tries to hand you tools rather than a
+**Junk Store Pro was built as the antidote to that.** It tries to hand you tools rather than a
 procedure, on the assumption that you'll want to do something nobody anticipated. Not every
 combination has been tried, or even thought of, that's rather the point. If you can see how
 two things fit together, they generally do.
@@ -147,7 +150,7 @@ get where you're going without thinking about it, and you can cross them wheneve
 reason. Where things get sharp there's boundary tape instead, a warning or a confirmation
 saying you're leaving the marked part.
 
-**Nothing here is a fence.** A fence decides for you. Everything in Junk Store is markings
+**Nothing here is a fence.** A fence decides for you. Everything in Junk Store Pro is markings
 you can step over, because the alternative is a tool that refuses things nobody thought to
 allow. Some of the ground beyond isn't marked at all, which usually means nobody has walked
 it yet rather than that you shouldn't.
@@ -173,7 +176,7 @@ than a feature that needs writing.
 
 ### It doesn't hide how things work
 
-Your Deck runs Linux, and Junk Store doesn't pretend otherwise. Settings become environment
+Your Deck runs Linux, and Junk Store Pro doesn't pretend otherwise. Settings become environment
 variables, launchers are shell scripts, games live in folders you can browse, and logs are
 text files you can read. That's how a Linux system does these things, and it shows through
 rather than being papered over.
@@ -182,10 +185,10 @@ rather than being papered over.
 `export` in front of it, doesn't look like a normal game launcher. Most software would hide
 that behind a friendlier control, and something would be lost when it did.
 
-**It's deliberate, and it pays you back.** What you learn here is not Junk Store trivia. It's
+**It's deliberate, and it pays you back.** What you learn here is not Junk Store Pro trivia. It's
 how Linux works, and it applies everywhere else on the Deck and on any Linux machine you
 touch afterwards. An interface that invented its own vocabulary for all of this would teach
-you nothing portable, you'd learn Junk Store instead of learning your computer.
+you nothing portable, you'd learn Junk Store Pro instead of learning your computer.
 
 **You don't have to start there.** The defaults are chosen to work without any of this, and
 most people never look. But when you do want to change something, you're looking at the real
@@ -196,7 +199,7 @@ knowing what's actually happening.
 
 ### Where the rough edges come from
 
-Junk Store was built as a tool for people comfortable with this sort of thing. It wasn't
+Junk Store Pro was built as a tool for people comfortable with this sort of thing. It wasn't
 designed for a general audience, because it wasn't expected to have one.
 
 Then it did. Plenty of people arrived who wanted to play their games and had no interest in
@@ -244,12 +247,15 @@ go deeper. It's that the floor doesn't fall out when you need to.
 **The layers are load-bearing, not decorative.** Frame generation support,
 [the LSFG settings](proton-settings.md#lsfg-frame-generation), was added without writing any
 code at all, just by describing the settings in a configuration file. Layer 5 is how Junk
-Store itself gets extended, not only how you'd extend it.
+Store Pro itself gets extended, not only how you'd extend it.
 
 ## Two buttons worth recognising
 
-Junk Store uses the same two icons throughout, and they always mean the same thing. Once you
+Junk Store Pro uses the same two icons throughout, and they always mean the same thing. Once you
 know which is which, most screens explain themselves.
+
+![The sliders and cog buttons side by side, as they appear beside a store's search
+box.](images/two-buttons.webp)
 
 | Icon | Means | Holds |
 |---|---|---|
@@ -315,7 +321,7 @@ assuming you know it.
 **If a setting isn't on your screen**, raise the visibility level. That's almost always the
 reason, and it's the most useful single fact about this interface.
 
-**Expect it to lag a little.** Junk Store changes faster than its documentation does, so a
+**Expect it to lag a little.** Junk Store Pro changes faster than its documentation does, so a
 screen may have gained something this hasn't caught up with, or a label may have been
 improved since. Where the two disagree, believe your Deck. The principles hold up better
 than the particulars.

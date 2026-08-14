@@ -52,7 +52,7 @@ li { margin: .25em 0; }
 a { color: #05a; text-decoration: none; }
 hr { border: none; border-top: 1px solid #ccc; margin: 1.5em 0; }
 figure { margin: 1em 0; page-break-inside: avoid; text-align: center; }
-figure img { max-width: 100%; height: auto; border: 1px solid #bbb; border-radius: 3px; }
+figure img { max-width: 74%; height: auto; border: 1px solid #bbb; border-radius: 3px; }
 figcaption { font-size: 8.5pt; color: #555; margin-top: .4em; text-align: left;
              line-height: 1.35; }
 .cover { page-break-after: always; text-align: center; padding-top: 28vh; }

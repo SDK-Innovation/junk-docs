@@ -13,8 +13,8 @@ this](#think-before-you-enable-this).
 
 Two things, which are easy to confuse:
 
-**Finding machines.** Junk Store announces itself on your local network and listens for
-others doing the same. Machines running Junk Store appear in the File Manager's sidebar
+**Finding machines.** Junk Store Pro announces itself on your local network and listens for
+others doing the same. Machines running Junk Store Pro appear in the File Manager's sidebar
 by themselves. This is discovery, and it only reaches your own network.
 
 **Connecting to them.** Actually reading files needs SSH, and SSH needs the two machines
@@ -31,6 +31,9 @@ you're in one, which is worth recognising when you see it.
 Once two machines are paired, a remote folder behaves much like a local one. Put the
 remote machine in one pane and your Deck in the other, and copy between them the usual
 way. See [Two panes](file-manager-driving.md#two-panes).
+
+![The sidebar listing other machines by name and address below the local shortcuts, each one
+expanding to its own home, prefixes and shader cache.](images/net-remote-pane.webp)
 
 Operations are slower than local ones, and how much slower depends on your network.
 
@@ -49,7 +52,7 @@ turn it off, this Deck stops announcing itself and stops looking for others, and
 sidebar is the only way in, so remote browsing stops working here.
 
 **Your device already has a name, and it made it up.** Rather than calling everything
-"Steam Deck" and leaving you to guess which is which, Junk Store generates something like
+"Steam Deck" and leaving you to guess which is which, Junk Store Pro generates something like
 *Cosmic Raider* or *Blazing Samurai* from a list of adjectives and nouns. There are a few
 hundred combinations, so two devices on the same network are unlikely to collide, and the
 names are distinctive enough to actually remember.
@@ -64,7 +67,7 @@ Change it to whatever you like, or press **Generate Random Name** for a differen
 keep the generated one because it's more fun. Either way, know your device's name before
 you pair anything. See [Settings](settings.md#generate-random-name).
 
-**Respond to Game Queries** is what lets another Junk Store on the network ask this one
+**Respond to Game Queries** is what lets another Junk Store Pro on the network ask this one
 which games it has. Turning it off leaves file browsing unaffected, and does not stop game
 names appearing against prefix directories when someone browses this machine, that
 travels over the SSH connection rather than over discovery.
@@ -74,10 +77,10 @@ and nothing is announced beyond the network you are on.
 
 ## What SSH is, and why keys
 
-SSH is the standard way to reach another computer over a network. Junk Store uses it
+SSH is the standard way to reach another computer over a network. Junk Store Pro uses it
 because it is encrypted, universally available, and already installed on the Deck.
 
-**Junk Store never asks for a password**, and cannot use one. SSH here is authenticated
+**Junk Store Pro never asks for a password**, and cannot use one. SSH here is authenticated
 with *keys* instead, for two reasons: typing a password on a Deck is miserable, and
 background file transfers cannot stop to prompt.
 
@@ -97,7 +100,7 @@ every machine that trusts it. It never leaves your device during any of this.
 
 ## You need a key first
 
-Junk Store looks for an existing key and uses it. **It does not create one for you.**
+Junk Store Pro looks for an existing key and uses it. **It does not create one for you.**
 
 It checks, in order:
 
@@ -130,7 +133,7 @@ machines can reach this one are covered in
 
 ## Pairing two machines
 
-Once both machines have a key, they need to trust each other. Junk Store handles this by
+Once both machines have a key, they need to trust each other. Junk Store Pro handles this by
 showing **the same six digit number on both screens** and asking you to check they match.
 You never touch a key file, and you don't type anything.
 
@@ -140,6 +143,12 @@ You never touch a key file, and you don't type anything.
 3. Walk over to the other machine. A request is waiting, showing who's asking, which
    username, and its own six digit number.
 4. **Look at both numbers.** If they match, accept. If they don't, reject.
+
+![The machine you started from, waiting, showing its verification code and who it is waiting
+for.](images/net-pairing-request.webp)
+
+![The other machine, showing the key exchange request, who wants to connect, the same
+verification code, and Reject and Accept buttons.](images/net-pairing-accept.webp)
 
 You need to be able to see both screens, which is the point. Pairing two machines means
 having both to hand.
@@ -163,7 +172,7 @@ Everything above is ordinary, well understood technology used properly. The risk
 in the mechanism, it is in what it grants. Three things are worth understanding before
 you accept a request.
 
-**A trusted key is not limited to Junk Store.** `authorized_keys` grants SSH access to
+**A trusted key is not limited to Junk Store Pro.** `authorized_keys` grants SSH access to
 the whole user account, not to a folder. Anyone using that key can read, change, or
 delete anything your user can, and run commands. The File Manager is one program that
 uses that access; it is not a boundary around it.
@@ -177,7 +186,7 @@ person" but "do I trust this machine, and everyone who can use it". A shared or 
 computer is not a good candidate.
 
 Two things that are fine, worth saying so nobody worries about the wrong thing. Your keys
-and passwords never pass through any Junk Store server, because there aren't any involved.
+and passwords never pass through any Junk Store Pro server, because there aren't any involved.
 And discovery stays on your local network, so a machine out on the internet can't advertise
 itself into your sidebar.
 
@@ -193,7 +202,7 @@ device's presence to it.
 Worth understanding, because it explains several things that would otherwise look like
 faults.
 
-**Junk Store does not mount remote machines.** There is no network drive, no mount point,
+**Junk Store Pro does not mount remote machines.** There is no network drive, no mount point,
 and nothing attached to your filesystem. Each action, listing a directory, copying a
 file, opens an SSH connection, does that one thing, and closes it. Between actions
 nothing is connected.
@@ -206,7 +215,7 @@ What follows from that:
   manager, no reboot. The next action simply fails, and works again when the machine
   returns.
 - **Other programs cannot see remote files.** A game cannot be run from a remote path, and
-  nothing outside Junk Store can open one, because there is no path on your filesystem to
+  nothing outside Junk Store Pro can open one, because there is no path on your filesystem to
   open. Copy it across first.
 - **Viewing does not work on remote files.** The viewers read local disk. Pressing X on a
   file in a remote pane does nothing.
@@ -219,11 +228,11 @@ costs a little speed and removes an entire category of problem, which matters mo
 Deck that sleeps constantly and moves between networks.
 
 If you do want a genuine mount, that is a job for Desktop Mode and the usual Linux tools,
-outside Junk Store.
+outside Junk Store Pro.
 
 ## Managing trusted keys
 
-Junk Store shows every machine your device currently trusts, with a button to revoke
+Junk Store Pro shows every machine your device currently trusts, with a button to revoke
 each one. That list is the only place that answers "what can reach this machine", and
 reviewing it occasionally is a habit worth having.
 
@@ -232,7 +241,7 @@ See [Settings](settings.md#ssh-keys).
 ## When it does not work
 
 **Nothing appears in the sidebar.** Discovery is local network only. Check both machines
-are on the same network and both are running Junk Store. A network that isolates clients
+are on the same network and both are running Junk Store Pro. A network that isolates clients
 from each other, common on guest and public Wi-Fi, blocks discovery entirely.
 
 **A machine appears but will not open.** Discovery and access are separate. Being listed
@@ -240,9 +249,9 @@ means it was found, not that you may connect. Pair with it.
 
 **Everything looks right and it still refuses.** The most likely cause is a missing key.
 Check `~/.ssh/` on both machines for `id_ed25519` and its `.pub`, and create one if it is
-absent. Junk Store will not generate it.
+absent. Junk Store Pro will not generate it.
 
-**It asks for a password.** It cannot; Junk Store has no way to send one. If a connection
+**It asks for a password.** It cannot; Junk Store Pro has no way to send one. If a connection
 fails silently, treat it as key authentication not being set up rather than a wrong
 password.
 
@@ -250,11 +259,11 @@ password.
 usually the limit, and a large game will take a while.
 
 **A machine vanished from the sidebar.** It went to sleep, left the network, or Junk
-Store is not running on it. Pairing survives this; it will return. Because nothing is
+Store Pro is not running on it. Pairing survives this; it will return. Because nothing is
 mounted, there is nothing left in a bad state and nothing to clean up.
 
 **A remote file will not open, or a game will not run from one.** Remote paths exist only
-inside Junk Store's file browsing. Copy the file to the Deck first. See
+inside Junk Store Pro's file browsing. Copy the file to the Deck first. See
 [Nothing is mounted](#nothing-is-mounted).
 
 **No machines appear even though discovery is on.** Check **Enable Network Discovery** in

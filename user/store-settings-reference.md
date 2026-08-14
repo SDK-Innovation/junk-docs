@@ -20,7 +20,17 @@ that downloads from a website, and it'll still be sitting there.
 A few do nothing at all. They're carried over from earlier versions or from the Generator's
 own workings, and they're noted below where that's the case.
 
+**The sections start collapsed**, so the whole list fits on one screen. Open the one you
+want and the rest stay out of the way.
+
+![A store's settings with every section collapsed: RetroArch, Advanced, RSYNC and WGET
+listed one under another.](images/store-settings-sections-itch.webp)
+
 ### General
+
+![The General section: whether Run Exe is offered, the download method, install location and
+the custom path, with the help pane describing the focused
+setting.](images/store-settings-general.webp)
 
 | Setting | Level | What it does |
 |---|---|---|
@@ -34,10 +44,19 @@ own workings, and they're noted below where that's the case.
 
 ### Advanced
 
+![The Advanced section: where the store's data comes from, its base URL, URL encoding and
+whether it needs a login.](images/store-settings-advanced.webp)
+
+![Further down Advanced: bat files, pre-installation, the proxy cache, and the platform the
+store's games run under.](images/store-settings-advanced-2.webp)
+
+![The end of Advanced: the store's website, cloud saves, the image prefix and the legacy
+client switch.](images/store-settings-advanced-3.webp)
+
 | Setting | Level | What it does |
 |---|---|---|
 | **Show installation options** | Expert | Whether you're asked about those settings each time you install. **Off** on Epic and GOG, so installs start straight away. Only has an effect if the setting above is on |
-| **Use Legacy Clients** | Expert | Uses the older flatpak clients instead of the ones Junk Store supplies. See [Legacy clients](#legacy-clients) |
+| **Use Legacy Clients** | Expert | Uses the older flatpak clients instead of the ones Junk Store Pro supplies. See [Legacy clients](#legacy-clients) |
 | **Data source** | All | Which catalogue artwork and game details come from |
 | **Needs Login** | All | Whether this store has an account, which is what puts **Login** on the menu |
 | **Has bat files** | All | Whether games can carry `.bat` files, for DOS and older Windows games |
@@ -46,13 +65,17 @@ own workings, and they're noted below where that's the case.
 | **Base Url** | All | The address artwork and other content is fetched from. Every image path is built onto the end of this |
 | **image-prefix** | All | Text put in front of each image's own path, for stores that keep artwork in a subfolder of the Base Url. Shows its raw name because it has no label of its own |
 | **Url encode** | All | Whether names are escaped before going into a web address. Needed by stores whose games have spaces or punctuation in their filenames |
-| **Use proxy cache for images** | All | Fetches artwork through Junk Store, keeping a copy on the Deck instead of downloading it again each time. See [The image cache](#the-image-cache) |
+| **Use proxy cache for images** | All | Fetches artwork through Junk Store Pro, keeping a copy on the Deck instead of downloading it again each time. See [The image cache](#the-image-cache) |
 | **Store URL** | All | The address behind the button on the store's tab. See [Visiting the store's website](games.md#visiting-the-stores-website) |
 
 ### Platform
 
 How games from this store are launched. **These are set by the extension and are usually
 right.**
+
+**These four are grouped here for sense, not because the screen groups them.** On the store's
+cog they sit inside **[Advanced]** along with everything else there, so that's where to look
+for them.
 
 | Setting | Level | What it does |
 |---|---|---|
@@ -62,6 +85,9 @@ right.**
 | **Umu Store Name** | All | Identifies the store to the launcher for compatibility purposes |
 
 ### RSYNC
+
+![The RSYNC section: whether to use SSH, and the user, port and host to copy
+from.](images/store-settings-rsync.webp)
 
 Only used when **Download method** is `rsync`.
 
@@ -76,11 +102,17 @@ else.
 
 ### WGET
 
+![The WGET section, holding the base URL downloads are fetched
+from.](images/store-settings-wget.webp)
+
 | Setting | Level | What it does |
 |---|---|---|
 | **Base url** | Basic | The web address to download from, for stores served by a plain web server |
 
 ### ROMs
+
+![The ROMs settings: whether ROMs sit in the root, which ROMs extension to use, and the
+install directory.](images/store-settings-roms.webp)
 
 Used by stores that work from a folder of game files. Ignored by the rest.
 
@@ -92,6 +124,9 @@ Used by stores that work from a folder of game files. Ignored by the rest.
 
 ### RetroArch
 
+![The RetroArch section, with the location RetroArch cores are loaded
+from.](images/store-settings-retroarch.webp)
+
 Used when the store launches games through RetroArch. Ignored otherwise.
 
 | Setting | Level | What it does |
@@ -102,6 +137,9 @@ Used when the store launches games through RetroArch. Ignored otherwise.
 | **Base URL** | All | Where thumbnails come from |
 
 ### Environment
+
+![The Environment section: the two locale variables, the store umu presents itself as, and
+the offline mode switch.](images/store-settings-environment.webp)
 
 | Setting | Level | What it does |
 |---|---|---|
@@ -115,6 +153,9 @@ Extensions can add their own environment variables here too.
 **This isn't how you normally choose a language.** For Epic and GOG that's an install
 choice, made in [Installation](#per-game-installation-settings) on the game's own cog, and
 it's what to use.
+
+![The language list, offering English, German, French, Italian, Spanish, Portuguese,
+Japanese, Chinese and Korean.](images/store-settings-language.webp)
 
 **LANG** and **HOST_LC_ALL** in the Environment section do something narrower: they change
 what the system reports its language as. That only matters for games with no language
@@ -158,7 +199,7 @@ So if you turn it on and the store still tries to reach the network, that's not 
 with the setting, that client doesn't support it yet.
 
 This is separate from the [offline mode in Settings](settings.md#system), which is Junk
-Store's own and applies to everything. This one is per store.
+Store Pro's own and applies to everything. This one is per store.
 
 ### Cloud saves
 
@@ -174,7 +215,7 @@ works.
 ### Legacy clients
 
 **Use Legacy Clients** switches a store back to the older flatpak tools instead of the
-clients Junk Store supplies.
+clients Junk Store Pro supplies.
 
 The supplied clients are better in three ways covered elsewhere in these pages: refreshing
 a library is [quicker](games.md#refresh-games-list), signing in through Google or Apple is
@@ -188,9 +229,12 @@ leave it alone.
 
 ### The image cache
 
-With **Use proxy cache for images** on, artwork is fetched through Junk Store rather than
+With **Use proxy cache for images** on, artwork is fetched through Junk Store Pro rather than
 straight from the store, and a copy is kept on the Deck. The next time that image is needed
 the copy is used, so the grid fills in quickly and works when you're offline.
+
+![The Use proxy cache setting in the Advanced section, with the help panel beside
+it.](images/image-cache.webp)
 
 Everything lives in one place:
 
@@ -222,7 +266,7 @@ problem worth attending to.
 
 If you do want the space back, delete the folders you don't want. **Anything downloaded
 comes back on its own** the next time that image is needed, so nothing is permanently lost
-and no setting has to change. Junk Store notices the file has gone and fetches it again.
+and no setting has to change. Junk Store Pro notices the file has gone and fetches it again.
 
 The [File Manager](file-manager.md) is the way to do it on the device, and
 [Disk Usage](file-manager-tools.md#disk-usage) will show you what's actually taking up the
@@ -259,12 +303,20 @@ answering honestly, not a fault.
 **DLC comes ticked**, on both stores, so by default you install everything you own. Untick
 anything you don't want and it stays off your disk.
 
+![The DLC section for a game, each add-on a switch, all of them on.](images/install-dlc.webp)
+
 **Languages work differently on each store**, which is worth knowing before you go looking
 for a control that isn't there:
 
 - **GOG** gives you a **dropdown**, and you pick one language. English is the default.
 - **Epic** gives you **tickboxes**, none of them ticked, and you can choose several. Epic
   calls these install tags, and they cover more than language on some games.
+
+![GOG's language dropdown, open, listing one language per
+row.](images/install-languages-dropdown.webp)
+
+![Epic's version, a switch per language with none of them
+on.](images/install-languages-tickboxes.webp)
 
 **This is the right place to choose a language**, and the one to use. The LANG setting in
 the Environment section is a different and riskier thing, for the handful of games that have

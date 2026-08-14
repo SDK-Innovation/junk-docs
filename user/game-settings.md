@@ -11,14 +11,26 @@ from the others, and you want to fix that one without disturbing anything else.
 
 ## What's on the menu
 
-Which entries appear depends on the game, because each one is only offered when it applies.
+The menu is headed **Configuration**. Which entries appear depends on the game, because each
+one is only offered when it applies.
+
+![The Configuration menu on a game's cog, listing Game configs, Proton, Installation, Game
+Details and Images.](images/game-settings-menu.webp)
+
+In the order they appear on screen:
 
 | Entry | Covers |
 |---|---|
+| **Game configs** | How this game is run and what it's handed: its environment variables, and whatever else the store's own settings expose per game |
+| **Proton** | The Windows compatibility settings: runtimes, extra variables and arguments, and frame generation |
 | **Installation** | DLC, languages, and other pre-install choices. See [Per-game installation settings](store-settings-reference.md#per-game-installation-settings) |
 | **Game Details** | The game's name, artwork paths, launch settings and other recorded facts |
-| **Images** | The artwork Junk Store holds for the game |
-| **Proton configs** | Settings for the platform the game runs on. Named after that platform |
+| **Images** | The artwork Junk Store Pro holds for the game |
+
+Games on other platforms get their own entries in place of Proton:
+
+| Entry | Covers |
+|---|---|
 | **dosbox 1-0**, **dosboxx 1-0**, … | The emulator's own configuration file, such as `dosbox.conf` |
 | **Bat Files** | The `.bat` files a DOS game uses, where it has any |
 
@@ -26,7 +38,7 @@ Which entries appear depends on the game, because each one is only offered when 
 for games that have them, and the platform editors only where a platform is set and a
 matching configuration exists.
 
-**Each entry edits a different part of what Junk Store has recorded about the game**, and
+**Each entry edits a different part of what Junk Store Pro has recorded about the game**, and
 between them they cover all of it. Game Details is the game's own record; Images is its
 artwork; the platform editors hold the settings for whatever runs it; Bat Files holds its
 batch files. Nothing is shared between them, so a change in one doesn't disturb another.
@@ -37,14 +49,17 @@ the entry to open.
 
 All of them save the same way: **X saves, and backing out asks** whether you want to keep
 your changes. Start resets a field, or the whole screen from the dropdown at the top. That's
-the same everywhere in Junk Store, and it's covered in
+the same everywhere in Junk Store Pro, and it's covered in
 [Editing a setting](store-settings-reference.md#editing-a-setting).
 
 ## Game Details
 
-**This edits Junk Store's database entry for the game, directly.** Every field on the screen
+**This edits Junk Store Pro's database entry for the game, directly.** Every field on the screen
 is a column in the record, and saving writes your values straight into it. There's no layer
 in between checking that what you typed makes sense.
+
+![Game Details part way down, showing the store URL and the fields that point at files, with
+the help pane explaining the focused one.](images/game-details.webp)
 
 That's worth knowing before you change anything, because it explains how this screen
 behaves:
@@ -93,7 +108,7 @@ is deleted.
 | **Root Folder** | The folder the game treats as its base |
 | **Manual Path** | The game's manual, if it came with one |
 
-**Not all of these are used.** Junk Store's game record began life matching another
+**Not all of these are used.** Junk Store Pro's game record began life matching another
 launcher's, because the early version imported data from one, and the design grew away from
 that starting point since. Several fields are still there from then, filled in or not,
 without anything reading them, **Manual Path** and **Root Folder** in particular. Others
@@ -146,7 +161,7 @@ knowing because there's no undo on this screen.
 
 **For a game that isn't installed, delete it and refresh.**
 [Delete Unlinked Games](games.md#delete-unlinked-games) in the store's actions removes games
-with no Steam shortcut from Junk Store's records, and
+with no Steam shortcut from Junk Store Pro's records, and
 [Refresh Games List](games.md#refresh-games-list) then fetches them again from scratch. What
 comes back is the store's current information, not your edited copy.
 
@@ -157,18 +172,18 @@ working from what was fetched at the time, and nothing re-fetches it on its own.
 **It only works for games that aren't installed**, since installed games have a Steam
 shortcut and are deliberately left alone. For those, correct the field by hand.
 
-**It costs nothing but time.** Only Junk Store's records are removed, no files are touched,
+**It costs nothing but time.** Only Junk Store Pro's records are removed, no files are touched,
 and the refresh rebuilds them. A large library takes a while to fetch again, so it's better
 suited to fixing something specific than as a routine tidy-up.
 
 ### The parts to leave alone
 
-These are Junk Store's own bookkeeping. They're editable because the screen shows everything,
+These are Junk Store Pro's own bookkeeping. They're editable because the screen shows everything,
 not because they're meant to be edited.
 
 | Field | Why to leave it |
 |---|---|
-| **Steam Client ID** | How Junk Store knows this game is installed. Clearing it makes an installed game look uninstalled |
+| **Steam Client ID** | How Junk Store Pro knows this game is installed. Clearing it makes an installed game look uninstalled |
 | **Database ID**, **Source** | How the game is matched back to the store it came from |
 | **UMU ID** | Used to apply the right compatibility fixes when launching |
 | **Size** | Recorded at install time, not measured live |
@@ -180,9 +195,12 @@ changed before looking anywhere else.
 
 ## Images
 
-**Images** lists the artwork Junk Store holds for this game, each with a thumbnail and what
-kind it is. This is Junk Store's own artwork, separate from what Steam shows in your
+**Images** lists the artwork Junk Store Pro holds for this game, each with a thumbnail and what
+kind it is. This is Junk Store Pro's own artwork, separate from what Steam shows in your
 library.
+
+![The Images list for a game, each row a thumbnail and the kind of artwork it is, with hints
+for changing the type, deleting and reordering.](images/game-images.webp)
 
 **Like Game Details, this edits the records directly**, one row per picture. The same
 things follow: nothing is checked, there's no undo, and a picture that came from the store
@@ -210,6 +228,9 @@ Move the right one up.
 
 Reordering works by picking an image up and putting it down:
 
+![An image picked up, outlined in green, with the hints changed to Drop and Cancel
+move.](images/game-images-reorder.webp)
+
 | Button | Does |
 |---|---|
 | A | **Pick up** the image, then **Drop** it once it's where you want |
@@ -224,7 +245,7 @@ until you drop it, and B abandons the move rather than the screen.
 **The menu button changes an image's kind**, which is how you fix a picture filed as a Hero
 that ought to be a Logo. SELECT does the same thing.
 
-**The options button deletes an image**, after asking. That removes it from Junk Store's
+**The options button deletes an image**, after asking. That removes it from Junk Store Pro's
 records.
 
 **X saves.** Reordering, changing kinds and deleting are all held until then.
@@ -236,8 +257,8 @@ Most are fetched from the store when your library is refreshed.
 [Steam submenu](file-manager-steam.md#the-steam-submenu) can set one from a file of your
 own.
 
-**Changes here don't reach Steam on their own.** Junk Store's artwork and Steam's are kept
-separately, so a picture set here shows on the game's page in Junk Store while the Steam
+**Changes here don't reach Steam on their own.** Junk Store Pro's artwork and Steam's are kept
+separately, so a picture set here shows on the game's page in Junk Store Pro while the Steam
 shortcut carries on with what it had.
 
 **Reset Launch Options pushes them across.** As well as rebuilding the launch settings, it
@@ -253,21 +274,24 @@ when you're picking a new picture anyway, since it writes to both places at once
 The remaining entries configure whatever actually runs the game. There are two, and they do
 different jobs.
 
-**These are stored per game as well**, in their own part of Junk Store's records rather than
+**These are stored per game as well**, in their own part of Junk Store Pro's records rather than
 as loose files. That's what lets one game run under a different Proton, or with a DOSBox
 setup of its own, without affecting anything else in the store. The store's cog sets the
 starting point; these override it for one game.
 
+![A game's configs, with the section filter at the top and the environment section expanded
+to show its variables.](images/game-platform-configs.webp)
+
 ### The platform's configs
 
-The first is named after the platform the store's games run on, so **Proton configs** on
-Epic and GOG. It holds the platform settings for this one game: which launcher runs it,
-which version, and which variant.
+**Game configs** holds the platform settings for this one game: which launcher runs it,
+which version, and which variant. On a store whose games run under an emulator, the entry is
+named after it instead, such as **dosbox 1-0**.
 
 | Setting | Does |
 |---|---|
 | **platform** | What runs the game: Proton, Linux, DOSBox, RetroArch, ScummVM and so on |
-| **platform-version** | Which version of that platform Junk Store's settings are for, where there's a choice. Not the Proton version a game runs under |
+| **platform-version** | Which version of that platform Junk Store Pro's settings are for, where there's a choice. Not the Proton version a game runs under |
 | **platform-fork** | Which variant, such as DOSBox-X or DOSBox Staging rather than plain DOSBox |
 | **Enable Cloud Saves** | Leave it off. See [Cloud saves](store-settings-reference.md#cloud-saves) |
 
@@ -276,13 +300,13 @@ come here is a game that needs something different from the rest of its store, a
 DOSBox variant for a game one of them handles badly, for instance.
 
 **This isn't where you change a game's Proton version.** That's a Steam setting rather than
-a Junk Store one: press **Y** on the game's page to open its Steam page, and set the
+a Junk Store Pro one: press **Y** on the game's page to open its Steam page, and set the
 compatibility tool through Steam's own properties. The Junk Store website covers that. What
-this screen records is which platform Junk Store launches the game through, which is a
+this screen records is which platform Junk Store Pro launches the game through, which is a
 different thing.
 
 **Changing the platform can change what else is on the cog.** The second editor below only
-appears where Junk Store has a configuration file for the platform you picked, which at the
+appears where Junk Store Pro has a configuration file for the platform you picked, which at the
 moment means Proton and the DOSBox family. Choose something else and that entry isn't there
 at all, not a fault, just nothing to configure.
 

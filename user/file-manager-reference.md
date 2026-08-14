@@ -35,11 +35,16 @@ F5 and F6 act from the active pane toward the other one.
 the host is unreachable. See
 [Reaching another machine](networking.md#when-it-does-not-work).
 
-**You can't paste into a zip.** That's on purpose; zips open for reading only. Extract first, change what you need, and repackage outside Junk Store.
+**You can't paste into a zip.** That's on purpose; zips open for reading only. Extract first, change what you need, and repackage outside Junk Store Pro.
 
 **Something was deleted by accident.** Check the trash in Desktop Mode.
 
 ## Every shortcut
+
+Pressing **?** shows the same list on the device, grouped the same way.
+
+![The Keyboard Shortcuts overlay, with tabs for navigation, file operations, selection and
+other, listing each key against what it does.](images/fm-shortcuts.webp)
 
 The complete list, which is also available inside the File Manager by pressing **?**.
 
@@ -92,7 +97,7 @@ through the `..` entry and unfold folders in place, as described in
 ### Getting here from anywhere
 
 Hold **SELECT** and press a face button. These work throughout the Steam interface, not
-only inside Junk Store.
+only inside Junk Store Pro.
 
 | Chord | Keyboard | Opens |
 |---|---|---|
@@ -106,7 +111,7 @@ you, so there is nothing to memorise.
 
 ### Controller
 
-Junk Store shows these along the bottom of the File Manager, so you don't have to
+Junk Store Pro shows these along the bottom of the File Manager, so you don't have to
 remember them.
 
 | Button | Action |

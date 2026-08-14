@@ -1,14 +1,19 @@
-# Using Junk Store
+# Using Junk Store Pro
 
-Documentation for people using Junk Store, rather than building extensions for it.
+Documentation for people using Junk Store Pro, rather than building extensions for it.
+
+**This documents Junk Store Pro, not the free Decky plugin.** The two share a name and a good
+deal of behaviour, but they aren't the same product. Much of what's described here either
+works differently on the plugin or isn't there at all. If you're on the plugin, read this as
+background rather than as instructions.
 
 **New here, or wondering why this is so long?**
-[How Junk Store is put together](introduction.md) explains the layers: what most people use,
+[How Junk Store Pro is put together](introduction.md) explains the layers: what most people use,
 what's underneath, and why there's always another way to try something.
 
 ## The File Manager
 
-The File Manager is the most capable part of Junk Store, and the least obvious, so it has
+The File Manager is the most capable part of Junk Store Pro, and the least obvious, so it has
 a few pages to itself.
 
 | Page | Covers |
@@ -27,6 +32,7 @@ a few pages to itself.
 | [The main menu](main-menu.md) | What SELECT opens, what's on it, and signing in to a store |
 | [Store tabs and game grids](games.md) | Tabs, grids, finding a game, installing and importing |
 | [A game's page](game-page.md) | Its menu, Run Exe, artwork, Proton Tricks |
+| [The download queue](download-queue.md) | Watching, reordering, pausing and stopping downloads |
 | [A game's own settings](game-settings.md) | The game's cog: details, artwork, and what runs it |
 | [Proton settings](proton-settings.md) | Runtimes, frame limiting, upscaling and frame generation |
 | [A store's settings](store-settings.md) | The cog menu: install paths, and why some of it looks odd |

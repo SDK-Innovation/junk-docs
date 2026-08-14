@@ -6,8 +6,11 @@ drive, and a sidebar that gets you to the places that matter in one press.
 
 ## Viewing files
 
-Press **X** on a file to view it. Junk Store picks a viewer from the file's extension, so
+Press **X** on a file to view it. Junk Store Pro picks a viewer from the file's extension, so
 there's nothing to choose.
+
+![An image open in the viewer, filename at the top, with hints for rotating it and going
+fullscreen along the bottom.](images/fm-viewer.webp)
 
 **The viewers are in the left-trigger menu too**, listed by what suits the file:
 *Preview image*, *View PDF*, *View markdown*, *View hex*, *View as text*. That's useful
@@ -47,7 +50,7 @@ you scroll through it; the viewer fetches only what is on screen.
 
 ### Two things to watch for
 
-**A `.db` that isn't really SQLite falls back to hex.** Junk Store tries to open it as a
+**A `.db` that isn't really SQLite falls back to hex.** Junk Store Pro tries to open it as a
 database first, and if that fails it shows you the bytes rather than an error. The
 extension `.db` gets used for all sorts of things, so this happens more than you might
 expect.
@@ -91,9 +94,12 @@ Added when they apply:
 
 **📜 JunkStore Logs** is the most useful entry in that list and the easiest to overlook.
 
-It takes you to `~/.config/junkstore/logs`, where Junk Store's own backend writes down
+It takes you to `~/.config/junkstore/logs`, where Junk Store Pro's own backend writes down
 what it's doing. When a game won't launch, an install fails, or an extension misbehaves,
 this is where the reason is recorded, usually in plain words.
+
+![A game's log open in the viewer, numbered lines, the line count and file size in the
+corner, and hints for paging and wrapping.](images/fm-log-viewer.webp)
 
 Together with the [text viewer](#viewing-files) that means reading the log on the device,
 in Game Mode, the moment something goes wrong. The alternative is Desktop Mode, a
@@ -113,10 +119,21 @@ If you have a support ticket open, you can send a file to it straight from the F
 Manager, instead of copying it off the Deck first. Focus the file, open the menu with the
 left trigger, and choose **☁️ Upload to JunkStore Portal**.
 
+![The File Operations menu scrolled down, with Upload to JunkStore Portal highlighted below
+the viewer entries.](images/fm-upload-support.webp)
+
+**You need a ticket first**, filed on the portal.
+
+![The portal's Support page with the new ticket form: a subject line, a description box, and
+a File ticket button.](images/portal-new-ticket.webp)
+
 **Uploads have to be turned on for your ticket first.** Support enables them per ticket,
 so this only works when someone at the other end is expecting a file. If none of your
-tickets is accepting uploads, Junk Store says so and suggests replying on the portal to
+tickets is accepting uploads, Junk Store Pro says so and suggests replying on the portal to
 ask.
+
+![A filed ticket on the portal, awaiting support, with a reply box and a note that uploads
+are not enabled for it.](images/portal-ticket-uploads.webp)
 
 With one ticket accepting uploads it goes straight to a confirmation. With several you
 pick which, and each shows how many uploads it has left.
@@ -134,6 +151,9 @@ Nothing leaves your Deck until you confirm, and you're told which ticket it's go
 The left trigger works on sidebar entries too, and offers a different set. This is worth
 knowing because clicking a sidebar shortcut always navigates the *active* pane, which is
 not always the one you meant.
+
+![The menu on a sidebar entry, offering to open it in the active, left or right pane, or to
+run Disk Usage on it.](images/fm-sidebar-menu.webp)
 
 | Item | Does |
 |---|---|
@@ -163,6 +183,9 @@ Deck is full and you can't work out why.
 It draws the folder as a **treemap**: every folder and file inside becomes a rectangle,
 sized by how much space it takes up. The biggest thing on screen is the biggest thing on
 disk, so you can see what's filling your drive at a glance.
+
+![Disk Usage as a treemap, each game a rectangle sized by how much space it uses, with the
+folder's total in the corner.](images/fm-disk-usage.webp)
 
 **It fills in as it scans.** Results stream in while the scan runs, so a large directory
 starts showing its shape immediately instead of leaving you at a progress bar. Scanning

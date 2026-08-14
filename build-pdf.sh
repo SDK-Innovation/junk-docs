@@ -5,6 +5,7 @@
 # temporary directory and writes the PDF to the path given.
 #
 # Requires: python3, and either chromium or google-chrome for the PDF step.
+# Uses ghostscript to shrink the result if it is installed; works without it.
 #
 # Usage: ./build-pdf.sh [section] [output.pdf]
 #   ./build-pdf.sh                     -> extensions, junk-store-extensions.pdf
@@ -53,6 +54,7 @@ PAGES=(
     "main-menu.md"
     "games.md"
     "game-page.md"
+    "download-queue.md"
     "game-settings.md"
     "proton-settings.md"
     "store-settings.md"
@@ -113,5 +115,16 @@ python3 "${HERE}/tools/md2html.py" \
     --no-pdf-header-footer \
     --print-to-pdf="${OUT}" \
     "file://${WORK}/doc.html" >/dev/null 2>&1
+
+# Chromium writes each screenshot into the PDF far larger than it needs to be:
+# 4 MB of source images comes out around 30 MB. Ghostscript recompresses them
+# without changing their size on the page or their pixel dimensions. Optional,
+# so the build still works without it.
+if command -v gs >/dev/null 2>&1; then
+    if gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/printer \
+          -dNOPAUSE -dQUIET -dBATCH -sOutputFile="${WORK}/small.pdf" "${OUT}"; then
+        mv "${WORK}/small.pdf" "${OUT}"
+    fi
+fi
 
 echo "Wrote ${OUT}"

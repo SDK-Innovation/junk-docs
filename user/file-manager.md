@@ -2,7 +2,7 @@
 
 The File Manager lets you work with the files on your Deck without leaving Game Mode.
 Copy, move, rename and delete them, look inside zip files, read files on another computer
-over your network, and do a few Junk Store jobs you can't do anywhere else.
+over your network, and do a few Junk Store Pro jobs you can't do anywhere else.
 
 It can do a lot, and most of it isn't obvious.
 
@@ -31,7 +31,7 @@ around pointing and dragging.
 
 ### It works with a keyboard and mouse too
 
-Junk Store is used on desktops as well as Decks, so the File Manager isn't controller-only.
+Junk Store Pro is used on desktops as well as Decks, so the File Manager isn't controller-only.
 If you have a keyboard and mouse, the usual things work the way you'd expect:
 
 | | |
@@ -55,6 +55,10 @@ the [full list](file-manager-reference.md#every-shortcut) at the end of this pag
 
 The one thing that differs from a desktop file manager: a single click on a folder
 highlights it rather than opening it. See [Moving around](file-manager-driving.md#moving-around).
+
+![The File Manager as it opens: the sidebar down the left, one directory listing, and the
+hints for the menu, sidebar, dual pane and selection along the
+bottom.](images/fm-single-pane.webp)
 
 ## Start with these four
 
@@ -142,11 +146,17 @@ installed, its Proton prefix, and its shader cache. You don't need to know any I
 see
 [Prefixes, shader caches, and the numbers problem](file-manager-steam.md#prefixes-shader-caches-and-the-numbers-problem).
 
+![The File Manager opened from a game, titled with the game's name, its install directory,
+Proton prefix and shader cache at the top of the sidebar.](images/fm-from-game.webp)
+
 ## When it opens as a picker
 
 Sometimes the File Manager opens on its own, because something else needs you to point at
 a file or a folder. Importing a game asks you for a folder this way, and so do settings
 that hold a path.
+
+![The File Manager opened as a picker, titled Select Directory, with the bottom hint reading
+Accept rather than View.](images/fm-picker.webp)
 
 It's the same File Manager doing a different job, and a few things change:
 

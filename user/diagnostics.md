@@ -1,7 +1,7 @@
 # Diagnostics
 
 Hold **SELECT** and press **Y**, or press **Ctrl+D** with a keyboard. It works anywhere in
-Steam, not just inside Junk Store, and pressing it again closes it.
+Steam, not just inside Junk Store Pro, and pressing it again closes it.
 
 This is where you look when something's wrong and you want to know what, rather than
 guessing. Four tabs, and the first one is the most useful.
@@ -9,6 +9,9 @@ guessing. Four tabs, and the first one is the most useful.
 ## Processes
 
 A live list of everything running on your Deck, updating every couple of seconds.
+
+![The Processes tab, with a running count, a filter box, and a table of PID, CPU, memory and
+the full command for each process.](images/diag-processes.webp)
 
 This answers the question nothing else on the device can: **did the thing I just started
 actually start?** Launch a game, open this, and either it's in the list or it isn't. If it
@@ -44,7 +47,7 @@ it.
 
 **The buttons do different things depending on where you are.** On the filter box at the
 top they work on the whole filtered set; down in the list they work on the one process you
-have highlighted. Junk Store shows the current meaning along the bottom of the screen, so
+have highlighted. Junk Store Pro shows the current meaning along the bottom of the screen, so
 you can check rather than remember.
 
 On the **filter box**:
@@ -99,9 +102,12 @@ so you can see which Proton version a game got and what was passed to it.
 
 ## Status
 
-Whether Junk Store's own pieces are running and talking to each other. If the interface is
+Whether Junk Store Pro's own pieces are running and talking to each other. If the interface is
 behaving strangely, this tells you whether the problem is the backend, the loader, or
 something above them.
+
+![The Status tab, each piece listed with a result beside it, and a collapsed Steam APIs
+group showing a count.](images/diag-status.webp)
 
 Sections start collapsed. **A** opens and closes the one you're on.
 
@@ -110,12 +116,20 @@ Sections start collapsed. **A** opens and closes the one you're on.
 Checks that run on demand and report pass, warn or fail, grouped by area. **A** expands a
 group to show the individual checks and what each one said.
 
+![Backend Tests after a run, with a summary line and collapsed groups for Debug, Core and
+each installed store, each showing its pass and warning
+counts.](images/diag-backend-tests.webp)
+
 **Extensions can add their own tests**, which is what makes this more than a self-check.
 An extension can ship checks for the things it depends on, so a store can tell you its
 login has expired or its download tool is missing, in the same list as everything else.
 
-This is the first place to look when a store stops working but the rest of Junk Store is
+This is the first place to look when a store stops working but the rest of Junk Store Pro is
 fine.
+
+![The Itch group expanded, listing that extension's own checks: platform detection, bundled
+libraries, its extension directory, and whether its downloader and launcher scripts are
+present.](images/diag-backend-tests-itch.webp)
 
 ## System Info
 
@@ -123,12 +137,15 @@ What the device is, what versions are installed, and where things live. Mostly u
 someone is helping you and asks what you're running, and it's the sort of thing worth
 including in a support ticket.
 
+![The System Info tab, listing the operating system, Steam build, CPU, memory, GPU and
+video memory.](images/diag-system-info.webp)
+
 ## Before you dig in: check offline mode
 
 If the symptom involves **downloads failing, logins not working, or a store refusing to do
 anything** while your network is plainly fine, check offline mode before anything else.
 
-Junk Store switches offline mode on and off by itself as your connection comes and goes,
+Junk Store Pro switches offline mode on and off by itself as your connection comes and goes,
 and it occasionally gets stuck on when you're actually connected. Everything that needs the
 network then quietly declines to work, which looks like a broken download rather than a
 setting.
