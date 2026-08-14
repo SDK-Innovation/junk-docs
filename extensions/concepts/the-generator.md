@@ -3,7 +3,7 @@
 The Generator is reached from the **SELECT** side menu, under **Tools**:
 
 ![The SELECT side menu, listing Games, Tools, News and
-Settings.](../images/select-side-menu.png)
+Settings.](../images/select-side-menu.webp)
 
 The Generator turns your extension's definition into the shell scripts Junk Store Pro
 runs. What follows explains the entries that hold that definition, and what each
@@ -63,14 +63,14 @@ Everything in that file comes from the entries below. This is why hand editing
 
 ![The Generator, reached from Tools. Each extension is listed with its version and its own
 controls, and A opens the configuration menu for the focused
-one.](../images/generator-extensions.png)
+one.](../images/generator-extensions.webp)
 
 Select an extension and open its configuration menu. Each entry edits a different part of
 the definition:
 
 ![The configuration menu for an extension, listing Tab configs, Commandmap configs,
 Launchers configs, Settingsfile configs, Customscripts configs and Generator
-configs.](../images/generator-editors-menu.png)
+configs.](../images/generator-editors-menu.webp)
 
 **All six entries feed generation.** Each supplies part of what regenerating writes out, and
 they differ in which file they end up in.
@@ -117,7 +117,7 @@ becomes one shell function and one entry in `ACTIONS`.
 
 ![The commandmap editor for the Epic extension. Each action is a collapsible entry named
 after itself, and the open one shows its fields: the action set it belongs to, the command
-it runs, and whether it asks for confirmation.](../images/generator-commandmap.png)
+it runs, and whether it asks for confirmation.](../images/generator-commandmap.webp)
 
 The screenshot shows the shape rather than any particular action. Every entry is one action,
 collapsed by default, and opening one reveals the fields below. `Download` is open here, and
@@ -249,7 +249,7 @@ Scripts that ship with the extension and are written out during generation.
 
 ![The customscripts editor with the downloader entry open, showing its filename, the
 generate toggle switched on, the language set to python, and the script field holding a
-shebang line.](../images/generator-customscripts.png)
+shebang line.](../images/generator-customscripts.webp)
 
 Each section is one script, named after it. The screenshot has `downloader` open with
 `gamesize` collapsed below, both of which are real scripts documented in
@@ -312,7 +312,7 @@ choices come from: that dropdown is built from the list of launchers, so adding 
 adds a platform a store or game can select.
 
 ![The launchers editor. Each platform is a section, with Proton opened to show its script,
-script-pre and script-post fields.](../images/generator-launchers.png)
+script-pre and script-post fields.](../images/generator-launchers.webp)
 
 The section names in the screenshot are the platforms: `Linux`, `Proton`, `RetroArch`. That
 list is the `platform` dropdown, seen from the other side. Adding a section here is what

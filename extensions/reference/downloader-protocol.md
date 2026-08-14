@@ -124,7 +124,7 @@ So only **two** of your nine keys reach the screen directly. The rest are ingred
 
 ![A game downloading. Above the progress bar is the assembled caption reading "1% 64.74
 MB/4.91 GB (14.6 MB/s) ETA: 9:38"; below the bar a fainter line shows the same download in raw
-byte counts.](../images/download-in-progress.png)
+byte counts.](../images/download-in-progress.webp)
 
 Both lines are visible here because this device is in developer mode. Reading the upper one
 against the table above shows where each part came from: `Percent` gave the `1%`, `Size` and

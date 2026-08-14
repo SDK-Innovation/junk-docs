@@ -20,28 +20,28 @@ leaving game mode.
 interface:
 
 ![The controller hints sheet, listing SELECT plus A, B, X and Y against the tool each
-opens.](images/select-chord-hints.png)
+opens.](images/select-chord-hints.webp)
 
 The flow uses three of them.
 
 **Start at the game.** Its detail page is where the actions live, and the sliders menu holds
 the file manager already pointed at this game.
 
-![A game's detail page, with its actions and the play button.](images/game-detail-page.png)
+![A game's detail page, with its actions and the play button.](images/game-detail-page.webp)
 
 ![The game's actions menu, including the entry that opens the file
-manager.](images/game-actions-menu.png)
+manager.](images/game-actions-menu.webp)
 
 **1. Read the log.** SELECT + X opens the file manager, or reach it from the menu above and it
 arrives already mapped: the game's install directory, its Proton prefix and its shader cache
 are in the sidebar, so you are not hunting for paths.
 
 ![The file manager with the game's install directory, Proton prefix and shader cache in the
-sidebar.](images/file-manager-from-game.png)
+sidebar.](images/file-manager-from-game.webp)
 
 Open `launcher.log` and read the last lines. It usually names the thing that failed.
 
-![launcher.log open in the text viewer.](images/launcher-log-in-viewer.png)
+![launcher.log open in the text viewer.](images/launcher-log-in-viewer.webp)
 
 → [Step 1: read launcher.log](guides/when-a-game-will-not-run.md#step-1-read-launcherlog)
 
@@ -49,7 +49,7 @@ Open `launcher.log` and read the last lines. It usually names the thing that fai
 databases and raw binaries. If the log blamed a missing file, look in the folder. If it blamed
 a config, open it. If a client keeps its state in a database, that opens too, read only.
 
-![The SQLite viewer showing a table's rows.](images/sqlite-viewer.png)
+![The SQLite viewer showing a table's rows.](images/sqlite-viewer.webp)
 
 → [Step 3: look at the thing that failed](guides/when-a-game-will-not-run.md#step-3-look-at-the-thing-that-failed)
 
@@ -57,7 +57,7 @@ a config, open it. If a client keeps its state in a database, that opens too, re
 filterable process list.
 
 ![The Processes tab, a filterable table of running processes with their full command
-lines.](images/diagnostics-processes.png)
+lines.](images/diagnostics-processes.webp)
 
 Filter by the game and watch while you launch. Nothing at all means the launch never happened.
 Appears and vanishes means it started and died. Still there with no picture means a display
@@ -80,7 +80,7 @@ The shortest path from a pile of files to a working store tab.
    you where the answer will land, with arrows pointing at the tab strip and the menu section.
 
    ![The wizard's first step, showing annotated pictures of where the name will
-appear.](images/wizard.png)
+appear.](images/wizard.webp)
 
    → [Create a new extension with the wizard](guides/quickstart.md#a-create-a-new-extension-with-the-wizard)
 
@@ -104,7 +104,7 @@ You like an extension but one thing about it is wrong. You do not have to fork i
    the Generator shows them as records rather than code.
 
    ![The commandmap editor, with one action opened to show its
-fields.](images/generator-commandmap.png)
+fields.](images/generator-commandmap.webp)
 
    → [Naming the function you want to replace](guides/overriding-actions.md#naming-the-function-you-want-to-replace)
 
@@ -138,7 +138,7 @@ your network. Whatever it is, two scripts are enough.
    printed.
 
    ![A game downloading, with the assembled caption above the progress bar and a raw debug
-   line below it.](images/download-in-progress.png)
+   line below it.](images/download-in-progress.webp)
 
    → [Where your keys end up on screen](reference/downloader-protocol.md#where-your-keys-end-up-on-screen)
 
@@ -146,7 +146,7 @@ your network. Whatever it is, two scripts are enough.
    `key:::label:::value` lines gets form controls back, with the type inferred from the value:
    brackets make a dropdown, parentheses make a slider, `true` or `false` makes a toggle.
 
-   ![Sliders and a toggle, produced by lines a script printed.](images/install-options-form.png)
+   ![Sliders and a toggle, produced by lines a script printed.](images/install-options-form.webp)
 
    → [The pre install form](reference/custom-scripts.md#the-pre-install-form-getdeps-getdlc-getlanguages-userconfigs)
 
@@ -155,7 +155,7 @@ your network. Whatever it is, two scripts are enough.
    entry rather than a mysterious failure.
 
    ![The Backend Tests tab, with one extension expanded to show its individual
-checks.](images/diagnostics-modal.png)
+checks.](images/diagnostics-modal.webp)
 
    → [Diagnostics](reference/custom-scripts.md#diagnostics)
 

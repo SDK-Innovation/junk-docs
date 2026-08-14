@@ -254,7 +254,7 @@ The type is chosen by pattern matching the value, in this order:
 
 ![The User_Configs section of a game's configuration, showing Max Workers and Max Shared
 Memory as sliders with their current values beside them, and Enable Reorder as a
-toggle.](../images/install-options-form.png)
+toggle.](../images/install-options-form.webp)
 
 That is the inference at work. `Max Workers` and `Max Shared Memory` came from lines whose
 value was parenthesised, so they render as sliders with a numeric field; `Enable Reorder` came
@@ -754,7 +754,7 @@ whether tokens exist, what paths resolved.
 ![The Backend Tests tab of the diagnostics view. A summary line reads "Completed 147
 diagnostics: 142 passed, 5 warnings, 0 failed", above a Run Diagnostics button and one
 collapsible row per extension. Amazon is expanded, showing individual checks with a pass mark,
-a name, and a detail line.](../images/diagnostics-modal.png)
+a name, and a detail line.](../images/diagnostics-modal.webp)
 
 This is where your script's output ends up. Each extension gets one collapsible row carrying
 its own pass and fail counts, and expanding it lists the individual checks. The expanded rows
