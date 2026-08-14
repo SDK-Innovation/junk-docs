@@ -306,25 +306,5 @@ Some of the paths that already exist:
 None of these are hidden. They're just further down than the first screen, which is why this
 document is longer than a launcher's manual has any right to be.
 
-## How to use this document
-
-**Don't read it front to back.** It's a reference. The contents list is the map, and each
-page stands alone.
-
-**Start where your question is.** [Store tabs and game grids](games.md) covers day-to-day
-use. [A game's own settings](game-settings.md) and [A store's settings](store-settings.md)
-cover the two cogs. [The File Manager](file-manager.md) covers the tools.
-
-**If a word is unfamiliar**, the [glossary](../glossary.md) explains the vocabulary without
-assuming you know it.
-
-**If a setting isn't on your screen**, raise the visibility level. That's almost always the
-reason, and it's the most useful single fact about this interface.
-
-**Expect it to lag a little.** Junk Store Pro changes faster than its documentation does, so a
-screen may have gained something this hasn't caught up with, or a label may have been
-improved since. Where the two disagree, believe your Deck. The principles hold up better
-than the particulars.
-
 And when you do get stuck: **if something seems impossible, it's because you haven't been
 shown the layer underneath.**

@@ -11,19 +11,25 @@ background rather than as instructions.
 [How Junk Store Pro is put together](introduction.md) explains the layers: what most people use,
 what's underneath, and why there's always another way to try something.
 
-## The File Manager
+## How to use this document
 
-The File Manager is the most capable part of Junk Store Pro, and the least obvious, so it has
-a few pages to itself.
+**Don't read it front to back.** It's a reference. The tables below are the map, and each
+page stands alone.
 
-| Page | Covers |
-|---|---|
-| [The File Manager](file-manager.md) | Start here. Where it comes from, the four ideas, and how to open it |
-| [Using the File Manager](file-manager-driving.md) | Moving around, two panes, selecting, copying and deleting, archives |
-| [The File Manager and Steam](file-manager-steam.md) | Setting artwork and executables, importing a DOSBox conf, Proton prefixes and shader caches, cleaning up orphans |
-| [File Manager tools](file-manager-tools.md) | Viewers for reading any file, the disk analyser, the sidebar and the logs shortcut |
-| [Reaching another machine](networking.md) | Browsing another computer over SSH: pairing, what access it grants, managing trusted keys |
-| [File Manager reference](file-manager-reference.md) | Every shortcut, and what to do when something misbehaves |
+**Start where your question is.** [Store tabs and game grids](games.md) covers day-to-day
+use. [A game's own settings](game-settings.md) and [A store's settings](store-settings.md)
+cover the two cogs. [The File Manager](file-manager.md) covers the tools.
+
+**If a word is unfamiliar**, the [glossary](../glossary.md) explains the vocabulary without
+assuming you know it.
+
+**If a setting isn't on your screen**, raise the visibility level. That's almost always the
+reason, and it's the most useful single fact about this interface.
+
+**Expect it to lag a little.** Junk Store Pro changes faster than its documentation does, so a
+screen may have gained something this hasn't caught up with, or a label may have been
+improved since. Where the two disagree, believe your Deck. The principles hold up better
+than the particulars.
 
 ## Getting around
 
@@ -39,15 +45,26 @@ a few pages to itself.
 | [Every store setting](store-settings-reference.md) | The full field list, for looking things up |
 | [Setting a game up by hand](setting-up-by-hand.md) | Getting a game no store covers into your library, from the controller |
 
+## The File Manager
+
+The File Manager is the most capable part of Junk Store Pro, and the least obvious, so it has
+a few pages to itself.
+
+| Page | Covers |
+|---|---|
+| [The File Manager](file-manager.md) | Start here. Where it comes from, the four ideas, and how to open it |
+| [Using the File Manager](file-manager-driving.md) | Moving around, two panes, selecting, copying and deleting, archives |
+| [The File Manager and Steam](file-manager-steam.md) | Setting artwork and executables, importing a DOSBox conf, Proton prefixes and shader caches, cleaning up orphans |
+| [File Manager tools](file-manager-tools.md) | Viewers for reading any file, the disk analyser, the sidebar and the logs shortcut |
+| [Reaching another machine](networking.md) | Browsing another computer over SSH: pairing, what access it grants, managing trusted keys |
+| [File Manager reference](file-manager-reference.md) | Every shortcut, and what to do when something misbehaves |
+
 ## Settings and diagnostics
 
 | Page | Covers |
 |---|---|
 | [Settings](settings.md) | Update channels, offline mode, artwork keys, SSH keys, on SELECT+A |
 | [Diagnostics](diagnostics.md) | The process monitor, backend checks and system info, on SELECT+Y |
-
-If a word is unfamiliar, the [glossary](../glossary.md) explains the vocabulary in plain
-language.
 
 Building an extension rather than using one is covered separately, in
 [Extensions](../extensions/).

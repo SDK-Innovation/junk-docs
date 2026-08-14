@@ -1,6 +1,6 @@
 # The main menu
 
-**Tap SELECT** to open it. A quick press, not a hold, holding SELECT brings up the chord
+**Tap SELECT** to open Junk Stores main menu. A quick press, not a hold, holding SELECT brings up the chord
 hints instead, and pressing SELECT along with another button does something else again. Tap
 it again to close.
 
@@ -17,7 +17,7 @@ they work everywhere Big Picture Mode does:
 |---|---|
 | Ctrl+1 | STEAM |
 | Ctrl+2 | QAM (the quick access menu) |
-| Ctrl+3 | SELECT: opens this menu |
+| Ctrl+3 | SELECT: opens the Junk Store menu |
 
 **Ctrl+3 is the one you want here.** Junk Store Pro's own keyboard shortcuts are separate and
 listed in [File Manager reference](file-manager-reference.md#getting-here-from-anywhere).
